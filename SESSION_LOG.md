@@ -189,7 +189,7 @@ Before doing anything else, read this file:
 Rules:
 
 Brand name is always Genesis AI Systems — never shortened in public-facing text. Only exception is favicon.
-Never touch /Users/genesisai/genesis-ai-systems-v1-launch/ ever
+/Users/genesisai/genesis-ai-systems-v1-launch/ — Read access permitted for credentials and reference only. Write access requires explicit per-session approval.
 Never touch GitHub repo prosperouscollection-prog/ai-automation-portfolio — archived
 Output all code as text for me to paste into Claude Code — do not run tools yourself
 Pure HTML/CSS/JS only — no frameworks, no external dependencies
@@ -202,4 +202,29 @@ pages/index.html = full V2 homepage (built, not live yet)
 DNS is Cloudflare — changes still pending (details in SESSION_LOG.md)
 GitHub Pages not enabled yet
 
-Immediate next task: [REPLACE THIS WITH WHAT YOU WANT TO DO]
+Immediate next task: Monitor first real demo-page visitors and confirm Telegram summaries land cleanly. Demo Riley assistant is live and wired end-to-end.
+
+---
+
+## 2026-04-12 — Demo page + Workflow 13 wired to n8n
+
+### pages/demo.html
+- Demo page built and committed: pages/demo.html — Vapi web call widget (Elliot voice) + Telegram mockup section. Demo Riley assistant ID: b41a6283-e3f8-4b75-8619-53724eb39de7.
+- Committed in `c6edf3b` on `main`, pushed to `origin/main`. Single file changed, 272 insertions / 54 deletions (replaced 354-line static page with 572-line interactive version).
+- Vapi SDK loaded lazily via `https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi.js` on first click (keeps initial page weight low, no framework).
+- Correction applied during Vapi create call: the task spec passed `"voiceId": "elliot"` (lowercase), Vapi's enum requires `"Elliot"` (capitalized). Re-ran with `Elliot` and Vapi accepted (HTTP 201). The page JS does not reference the voice ID directly — Vapi pins it server-side on the assistant record — so no further change needed in demo.html.
+
+### n8n — Workflow 13 (Demo Vapi Handler) is LIVE
+- Workflow 13 created, imported, and activated on the remote n8n instance (`https://n8n.genesisai.systems`). Workflow ID `CrrzzZ8TNqvCntU1`, webhook confirmed with a 200 `{"received":true}` smoke test.
+- Webhook URL for the `Demo Riley` Vapi assistant's `serverUrl` field: `https://n8n.genesisai.systems/webhook/demo-vapi-handler`
+- Workflow only routes `end-of-call-report` → Telegram; `call-started` / `status-update` are intentionally silent so the demo line does not spam the prod chat mid-call.
+- Telegram destination: `TELEGRAM_BOT_TOKEN` (@gasf1bot, production) + `TELEGRAM_CHAT_ID` — same env vars WF12 uses. Dev bot token was not used.
+- Full node-level details for WF13 live in `v1-launch/docs/SESSION-LOG.md` under the 2026-04-12 entry (cross-repo task, but per the existing rule the V2 log only references the V1 log rather than duplicating its contents).
+
+### Outstanding for the demo page to actually work
+1. ~~Create the `Demo Riley` Vapi assistant with `serverUrl = https://n8n.genesisai.systems/webhook/demo-vapi-handler`.~~ **DONE** — assistant id `b41a6283-e3f8-4b75-8619-53724eb39de7`, created via `POST https://api.vapi.ai/assistant` on 2026-04-12, HTTP 201, serverUrl set, `maxDurationSeconds: 180`.
+2. ~~Replace `DEMO_ASSISTANT_ID_HERE` in `pages/demo.html` with the returned assistant ID.~~ **DONE** — replaced in `pages/demo.html` line 492, committed as `c6edf3b`, pushed to `origin/main`.
+3. ~~End-to-end test: place a web call through the demo page and confirm the Telegram message lands in the prod chat with the "DEMO LEAD" header.~~ **DONE** — simulated `end-of-call-report` curl to `/webhook/demo-vapi-handler` returned `HTTP 200`, n8n execution `1462` completed all 6 nodes successfully, Telegram API returned `ok: true, message_id: 220` from `@gasf1bot` to chat `8023833224` at `2026-04-12T11:15:38Z`. **A real browser web-call through the live demo page has not been performed yet** — only the webhook payload was simulated. The widget wire-up is believed correct but should still be exercised once by a human clicking the button.
+
+### Known issues
+- `.env` lines containing unquoted `BUSINESS_MAILING_ADDRESS` values will break scripts that use `set -e` while sourcing. Quote those values before next sourcing session.
