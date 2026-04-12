@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genesis AI Systems — Stop Losing Calls. Start Winning Jobs.</title>
+  <meta name="description" content="Genesis AI Systems builds AI receptionists that answer every call, qualify every lead, and send you instant summaries — so you never miss another job." />
+  <meta property="og:title" content="Genesis AI Systems — Stop Losing Calls. Start Winning Jobs." />
+  <meta property="og:description" content="Your phone rings while you're on a job. We make sure you never lose that call again." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://genesisai.systems" />
+  <link rel="icon" type="image/png" href="../assets/logos/favicon.png" />
+
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:        #0A1628;
+      --navy-mid:    #0F1E38;
+      --navy-light:  #162847;
+      --blue:        #4A8FD4;
+      --blue-light:  #6BAEE8;
+      --white:       #FFFFFF;
+      --offwhite:    #E8EDF5;
+      --muted:       #8FA3BF;
+      --border:      rgba(74, 143, 212, 0.18);
+      --cta:         #4A8FD4;
+      --cta-hover:   #3A7FC4;
+      --font:        -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--navy);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILS ── */
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .btn {
+      display: inline-block;
+      background: var(--cta);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      padding: 1rem 2.25rem;
+      border-radius: 6px;
+      border: 2px solid var(--cta);
+      transition: background .2s, transform .15s, box-shadow .2s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn:hover, .btn:focus {
+      background: var(--cta-hover);
+      border-color: var(--cta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(74,143,212,.35);
+      outline: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,22,40,.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+
+    /* LOGO
+       SWAP: once logos exported, replace the entire .nav-logo anchor with:
+       <a href="../index.html" class="nav-logo">
+         <img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="38">
+       </a>
+    */
+    .nav-logo {
+      display: flex; align-items: center; gap: .65rem;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-text .wm {
+      font-size: .95rem; font-weight: 800; letter-spacing: .1em;
+      color: var(--white); text-transform: uppercase;
+    }
+    .nav-logo-text .sub {
+      font-size: .58rem; letter-spacing: .22em; color: var(--blue);
+      text-transform: uppercase; margin-top: 3px;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      color: var(--offwhite); text-decoration: none; font-size: .88rem;
+      font-weight: 500; opacity: .82; transition: opacity .2s, color .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--blue-light); }
+    .nav-links a.active { opacity: 1; color: var(--blue-light); }
+    .nav-btn { font-size: .82rem !important; padding: .55rem 1.15rem !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .hamburger span {
+      display: block; height: 2px; width: 100%; background: var(--white);
+      border-radius: 2px; transition: all .28s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--navy-mid); border-bottom: 1px solid var(--border);
+      padding: 1.5rem 1.5rem 2rem; z-index: 999;
+      flex-direction: column; gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--offwhite); text-decoration: none; font-size: 1rem;
+      font-weight: 500; padding: .9rem 0;
+      border-bottom: 1px solid var(--border); transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--blue-light); }
+    .mobile-menu .m-cta { margin-top: 1.25rem; }
+    .mobile-menu .m-cta .btn { width: 100%; text-align: center; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 148px 0 100px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -160px; left: 50%;
+      transform: translateX(-50%); width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(74,143,212,.07) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--blue); background: rgba(74,143,212,.1);
+      padding: .4rem 1rem; border-radius: 100px;
+      border: 1px solid rgba(74,143,212,.28); margin-bottom: 1.6rem;
+    }
+    .live-dot-sm {
+      width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
+      animation: blink 1.8s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5.5vw, 4rem);
+      font-weight: 800; line-height: 1.09; letter-spacing: -.03em;
+      margin-bottom: 1.5rem; max-width: 840px;
+      margin-left: auto; margin-right: auto;
+    }
+    .hero h1 .accent { color: var(--blue-light); }
+
+    .hero-sub {
+      font-size: clamp(.95rem, 2vw, 1.2rem);
+      line-height: 1.7; color: var(--muted);
+      max-width: 580px; margin: 0 auto 2.5rem;
+    }
+    .hero-sub strong { color: var(--offwhite); }
+
+    .hero-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+    .hero-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
+    .micro { font-size: .78rem; color: var(--muted); }
+
+    /* ── PROOF STRIP ── */
+    .proof-strip {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+    .proof-strip-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2.75rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat .num { font-size: 1.9rem; font-weight: 800; color: var(--blue-light); line-height: 1; }
+    .stat .lbl {
+      font-size: .7rem; color: var(--muted); letter-spacing: .07em;
+      text-transform: uppercase; margin-top: 5px;
+    }
+    .divider { width: 1px; height: 42px; background: var(--border); }
+
+    /* ── PAIN ── */
+    .pain { padding: 104px 0; }
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+
+    .section-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
+    }
+    .pain h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.25rem;
+    }
+    .pain h2 .accent { color: var(--blue-light); }
+    .pain-body { font-size: 1rem; line-height: 1.78; color: var(--muted); }
+    .pain-body p + p { margin-top: 1rem; }
+    .pain-body strong { color: var(--offwhite); }
+
+    .pain-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .pain-card {
+      background: var(--navy-mid); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.2rem 1.4rem;
+      display: flex; align-items: flex-start; gap: .95rem;
+    }
+    .pain-card-icon { font-size: 1.45rem; flex-shrink: 0; margin-top: 1px; }
+    .pain-card h3 { font-size: .92rem; font-weight: 700; color: var(--white); margin-bottom: .22rem; }
+    .pain-card p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── OUTCOMES ── */
+    .outcomes {
+      padding: 104px 0;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1rem;
+    }
+    .section-header p { font-size: 1rem; color: var(--muted); max-width: 500px; margin: 0 auto; line-height: 1.65; }
+
+    .outcomes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
+    .outcome-card {
+      background: var(--navy-light); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem 1.65rem; position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .outcome-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,.32); }
+    .outcome-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    }
+    .outcome-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .outcome-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .55rem; }
+    .outcome-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof { padding: 104px 0; }
+    .proof-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .proof-card {
+      background: var(--navy-mid); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+    }
+    .proof-card-head {
+      display: flex; align-items: center; gap: .95rem; margin-bottom: 1.25rem;
+    }
+    .avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--navy-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .proof-meta h4 { font-size: .98rem; font-weight: 700; }
+    .proof-meta span { font-size: .75rem; color: var(--blue); letter-spacing: .05em; text-transform: uppercase; }
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: #4ade80; background: rgba(74,222,128,.1);
+      border: 1px solid rgba(74,222,128,.28); padding: 3px 9px; border-radius: 100px;
+      margin-left: auto;
+    }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: blink 1.8s infinite; }
+    .proof-card p { font-size: .92rem; color: var(--muted); line-height: 1.68; }
+    .proof-card p strong { color: var(--offwhite); }
+    .proof-footer {
+      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
+      font-size: .78rem; color: var(--blue); font-weight: 600; letter-spacing: .04em;
+    }
+
+    /* ── MID CTA ── */
+    .mid-cta {
+      padding: 104px 0; text-align: center;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .mid-cta h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.75rem);
+      font-weight: 800; letter-spacing: -.02em; line-height: 1.13; margin-bottom: 1rem;
+    }
+    .mid-cta p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.65; }
+    .mid-cta .btn { font-size: 1.05rem; padding: 1.05rem 2.5rem; }
+
+    /* ── HOW IT WORKS ── */
+    .how { padding: 104px 0; }
+    .how-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; position: relative; }
+    .how-steps::before {
+      content: ''; position: absolute; top: 27px;
+      left: calc(12.5% + 27px); right: calc(12.5% + 27px);
+      height: 1px; background: var(--border); z-index: 0;
+    }
+    .how-step { text-align: center; position: relative; z-index: 1; }
+    .step-num {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--navy-light); border: 2px solid var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem; font-weight: 800; color: var(--blue-light);
+      margin: 0 auto 1.2rem;
+    }
+    .how-step h3 { font-size: .92rem; font-weight: 700; margin-bottom: .45rem; }
+    .how-step p { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── FOOTER CTA ── */
+    .footer-cta {
+      padding: 128px 0; text-align: center; position: relative; overflow: hidden;
+    }
+    .footer-cta::before {
+      content: ''; position: absolute; bottom: -180px; left: 50%;
+      transform: translateX(-50%); width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(74,143,212,.06) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .footer-cta h2 {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 800; letter-spacing: -.03em; line-height: 1.09; margin-bottom: 1.2rem;
+    }
+    .footer-cta p { font-size: 1rem; color: var(--muted); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.65; }
+    .footer-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.75rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-mid); border-top: 1px solid var(--border); padding: 2.75rem 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .footer-brand { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-nav a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
+    .footer-nav a:hover { color: var(--blue-light); }
+    .footer-copy { font-size: .74rem; color: var(--muted); opacity: .55; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .pain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .outcomes-grid { grid-template-columns: 1fr 1fr; }
+      .how-steps { grid-template-columns: 1fr 1fr; }
+      .how-steps::before { display: none; }
+      .proof-cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .divider { display: none; }
+      .proof-strip-inner { gap: 1.5rem; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 116px 0 80px; }
+      .btn { width: 100%; max-width: 340px; text-align: center; }
+      .hero-cta { padding: 0 1rem; }
+      .how-steps { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+
+    <!--
+      SWAP: Once logo PNGs are exported, replace this entire block with:
+      <a href="../index.html" class="nav-logo" aria-label="Genesis AI Systems home">
+        <img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="38">
+      </a>
+    -->
+    <a href="../index.html" class="nav-logo" aria-label="Genesis AI Systems home">
+      <svg class="nav-logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="38" height="38" rx="8" fill="#162847"/>
+        <path d="M27 19H21.5M21.5 19C21.5 21.5 19.2 23.5 16.5 23.5C13.8 23.5 11.5 21.5 11.5 19C11.5 16.5 13.8 14.5 16.5 14.5H27V19Z" stroke="#6BAEE8" stroke-width="2" stroke-linecap="round"/>
+        <path d="M23 23.5L27 27.5" stroke="#4A8FD4" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="wm">Genesis</span>
+        <span class="sub">AI Systems</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="demo.html">Demo</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+           target="_blank" rel="noopener noreferrer"
+           class="btn nav-btn">Book a Demo</a>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="demo.html">Demo</a>
+  <a href="faq.html">FAQ</a>
+  <a href="pricing.html">Pricing</a>
+  <div class="m-cta">
+    <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+       target="_blank" rel="noopener noreferrer" class="btn">Book Your Free Demo Call</a>
+  </div>
+</div>
+
+
+<main>
+
+  <!-- ════ HERO ════ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="eyebrow">
+        <span class="live-dot-sm"></span>
+        AI Receptionist — Live &amp; Answering Calls Now
+      </div>
+      <h1 id="hero-heading">
+        Your Phone Rings<br>
+        While You're on the Job.<br>
+        <span class="accent">That Call Just Went to a Competitor.</span>
+      </h1>
+      <p class="hero-sub">
+        Contractors and service businesses miss an average of
+        <strong>$2,000–$8,000 in booked jobs every month</strong>
+        from unanswered calls alone. Genesis AI Systems fixes that — without hiring anyone.
+      </p>
+      <div class="hero-cta">
+        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+           target="_blank" rel="noopener noreferrer"
+           class="btn">Stop Losing Calls — Book Your Free Demo</a>
+        <span class="micro">Free 30-min call &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; No obligation</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ PROOF STRIP (above second scroll) ════ -->
+  <div class="proof-strip" role="region" aria-label="Quick stats">
+    <div class="container proof-strip-inner">
+      <div class="stat">
+        <div class="num">24/7</div>
+        <div class="lbl">Always Answering</div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="num">&lt;2s</div>
+        <div class="lbl">Answer Time</div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="num">100%</div>
+        <div class="lbl">Calls Captured</div>
+      </div>
+      <div class="divider" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="num">2</div>
+        <div class="lbl">Live Deployments</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════ PAIN ════ -->
+  <section class="pain" aria-labelledby="pain-heading">
+    <div class="container pain-grid">
+      <div>
+        <div class="section-label">The Problem</div>
+        <h2 id="pain-heading">
+          Every Missed Call Is a<br>
+          <span class="accent">Job You Didn't Book.</span>
+        </h2>
+        <div class="pain-body">
+          <p>
+            You're on a roof, under a sink, or driving between jobs.
+            Your phone rings. You can't answer.
+            <strong>That caller hangs up and calls the next contractor on Google.</strong>
+          </p>
+          <p>
+            You never even knew the job existed. That's not a bad day —
+            that's a broken system that costs you
+            <strong>thousands of dollars every single month.</strong>
+          </p>
+          <p>
+            Hiring a receptionist costs $3,000–$4,500/month before benefits.
+            Most small contractors can't justify it. So the calls keep getting missed.
+            Until now.
+          </p>
+        </div>
+      </div>
+      <div class="pain-cards">
+        <div class="pain-card">
+          <div class="pain-card-icon">📵</div>
+          <div>
+            <h3>Calls Go to Voicemail</h3>
+            <p>62% of callers won't leave a message. If you don't answer, they move on — immediately.</p>
+          </div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-card-icon">⏱️</div>
+          <div>
+            <h3>Speed Wins the Job</h3>
+            <p>The first contractor to respond wins 78% of the time. Every minute you wait costs you money.</p>
+          </div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-card-icon">💸</div>
+          <div>
+            <h3>Receptionist Is Too Expensive</h3>
+            <p>A full-time receptionist runs $36,000–$54,000/year. Genesis AI Systems costs a fraction of that — and never calls in sick.</p>
+          </div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-card-icon">🌙</div>
+          <div>
+            <h3>After-Hours Jobs Disappear</h3>
+            <p>Emergency calls come in at 9pm. Your competitor picks up. You find out Monday morning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ OUTCOMES ════ -->
+  <section class="outcomes" aria-labelledby="outcomes-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What You Get</div>
+        <h2 id="outcomes-heading">Not Features. <span style="color:var(--blue-light)">Results.</span></h2>
+        <p>Here's what your business looks like after Genesis AI Systems is running.</p>
+      </div>
+      <div class="outcomes-grid">
+        <div class="outcome-card">
+          <div class="outcome-icon">📞</div>
+          <h3>Zero Missed Calls</h3>
+          <p>Every call gets answered in under 2 seconds, 24 hours a day, 7 days a week — including holidays and weekends.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-icon">📋</div>
+          <h3>Instant Job Summaries</h3>
+          <p>After every call you get a clean summary — caller name, number, reason for call, and urgency — sent straight to your phone.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-icon">🎯</div>
+          <h3>Pre-Qualified Leads Only</h3>
+          <p>Your AI receptionist asks the right questions, filters out time-wasters, and only escalates calls worth your time.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-icon">📅</div>
+          <h3>Bookings While You Work</h3>
+          <p>Appointments get scheduled, callbacks get promised, and customers feel taken care of — all while you're on the job.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-icon">💬</div>
+          <h3>Sounds Like Your Business</h3>
+          <p>Your AI receptionist is trained on your services, your prices, your service area — it represents you, not a call center.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-icon">🔄</div>
+          <h3>Runs Itself After Setup</h3>
+          <p>One setup call, one phone number forward. After that, it runs in the background — no maintenance, no babysitting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ SOCIAL PROOF ════ -->
+  <section class="social-proof" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Live Right Now</div>
+        <h2 id="proof-heading">Real AI Receptionists. <span style="color:var(--blue-light)">Actually Running.</span></h2>
+        <p>We don't sell hypotheticals. These systems are live and answering calls today.</p>
+      </div>
+      <div class="proof-cards">
+
+        <!-- Riley -->
+        <div class="proof-card">
+          <div class="proof-card-head">
+            <div class="avatar">🤖</div>
+            <div class="proof-meta">
+              <h4>Riley</h4>
+              <span>Genesis AI Systems · Internal</span>
+            </div>
+            <span class="live-badge"><span class="live-dot"></span> Live</span>
+          </div>
+          <p>
+            Riley is our own in-house AI receptionist — the same system we build for clients,
+            running on our own business line right now.
+            <strong>Every call to Genesis AI Systems is answered by Riley, in under 2 seconds,
+            with a full summary delivered immediately after.</strong>
+            We built it, we use it, and we stand behind it.
+          </p>
+          <div class="proof-footer">
+            ▶ See Riley in action — <a href="demo.html" style="color:var(--blue-light);text-decoration:none;">visit the Demo page</a>
+          </div>
+        </div>
+
+        <!-- Cortland -->
+        <div class="proof-card">
+          <div class="proof-card-head">
+            <div class="avatar">🏗️</div>
+            <div class="proof-meta">
+              <h4>Active Client Deployment</h4>
+              <span>Contracting Business · Michigan</span>
+            </div>
+            <span class="live-badge"><span class="live-dot"></span> Live</span>
+          </div>
+          <p>
+            A Michigan-based contractor came to us losing jobs to voicemail every week.
+            <strong>We deployed a custom AI receptionist trained on their services, their
+            service area, and their pricing.</strong>
+            It's been live since day one — answering every call, qualifying every lead,
+            and delivering instant summaries to the owner's phone while he's on the job.
+          </p>
+          <div class="proof-footer">
+            ✓ Setup complete &nbsp;·&nbsp; Answering calls now &nbsp;·&nbsp; Zero missed calls since go-live
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ MID CTA ════ -->
+  <section class="mid-cta" aria-labelledby="mid-cta-heading">
+    <div class="container">
+      <h2 id="mid-cta-heading">
+        How Much Is One Missed Call<br>Worth to Your Business?
+      </h2>
+      <p>
+        If the average job is worth $500–$2,000 and you're missing even 4 calls a month,
+        that's up to $8,000 walking out the door. We can stop that — in one week.
+      </p>
+      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+         target="_blank" rel="noopener noreferrer"
+         class="btn">Book Your Free Demo Call — See It Live</a>
+    </div>
+  </section>
+
+
+  <!-- ════ HOW IT WORKS ════ -->
+  <section class="how" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">The Process</div>
+        <h2 id="how-heading">Up and Running in <span style="color:var(--blue-light)">Under a Week.</span></h2>
+        <p>No IT team. No complicated setup. Four steps and your AI receptionist is live.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num">1</div>
+          <h3>Free Demo Call</h3>
+          <p>We listen to your business, your calls, and your pain points. No pitch — just clarity.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">2</div>
+          <h3>We Build Your AI</h3>
+          <p>We train your AI receptionist on your services, your area, your prices — sounds like you, not a robot.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">3</div>
+          <h3>Forward Your Number</h3>
+          <p>One call forward setting. Takes 90 seconds. Your AI is live and answering immediately.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">4</div>
+          <h3>Get Summaries Instantly</h3>
+          <p>Every call gets summarized and sent to your phone. You always know who called and why.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ FOOTER CTA ════ -->
+  <section class="footer-cta" aria-labelledby="footer-cta-heading">
+    <div class="container">
+      <h2 id="footer-cta-heading">
+        Stop Losing Jobs<br>to Voicemail.
+      </h2>
+      <p>
+        Book a free 30-minute demo call. We'll show you exactly what your
+        AI receptionist would sound like — live, on the call.
+      </p>
+      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+         target="_blank" rel="noopener noreferrer"
+         class="btn">Book Your Free Demo Call</a>
+      <div style="margin-top:1rem;">
+        <span class="micro">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 30 minutes</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">Genesis AI Systems</div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="demo.html">Demo</a>
+      <a href="faq.html">FAQ</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
+    </nav>
+    <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>
+  </div>
+</footer>
+
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Nav scroll shadow
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.4)' : 'none';
+  }, { passive: true });
+</script>
+
+</body>
+</html>
