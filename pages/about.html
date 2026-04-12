@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genesis AI Systems. Built for the Trades.</title>
+  <meta name="description" content="Genesis AI Systems is a small Michigan team building AI receptionists for service businesses. Built by someone who watched small contractors lose jobs to voicemail." />
+  <meta property="og:title" content="Genesis AI Systems. Built for the Trades." />
+  <meta property="og:description" content="Not a tech company that stumbled into AI. Built specifically for service businesses that run on phone calls." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://genesisai.systems/pages/about.html" />
+  <link rel="icon" type="image/png" href="../assets/logos/favicon.png" />
+
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:        #0A1628;
+      --navy-mid:    #0F1E38;
+      --navy-light:  #162847;
+      --blue:        #4A8FD4;
+      --blue-light:  #6BAEE8;
+      --white:       #FFFFFF;
+      --offwhite:    #E8EDF5;
+      --muted:       #8FA3BF;
+      --border:      rgba(74, 143, 212, 0.18);
+      --cta:         #4A8FD4;
+      --cta-hover:   #3A7FC4;
+      --font:        -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--navy);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .btn {
+      display: inline-block;
+      background: var(--cta);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      padding: 1rem 2.25rem;
+      border-radius: 6px;
+      border: 2px solid var(--cta);
+      transition: background .2s, transform .15s, box-shadow .2s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn:hover, .btn:focus {
+      background: var(--cta-hover);
+      border-color: var(--cta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(74,143,212,.35);
+      outline: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,22,40,.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between; height: 68px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-icon { width: 38px; height: 38px; flex-shrink: 0; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-text .wm {
+      font-size: .95rem; font-weight: 800; letter-spacing: .1em;
+      color: var(--white); text-transform: uppercase;
+    }
+    .nav-logo-text .sub {
+      font-size: .58rem; letter-spacing: .22em; color: var(--blue);
+      text-transform: uppercase; margin-top: 3px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      color: var(--offwhite); text-decoration: none; font-size: .88rem;
+      font-weight: 500; opacity: .82; transition: opacity .2s, color .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--blue-light); }
+    .nav-links a.active { opacity: 1; color: var(--blue-light); }
+    .nav-btn { font-size: .82rem !important; padding: .55rem 1.15rem !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .hamburger span {
+      display: block; height: 2px; width: 100%; background: var(--white);
+      border-radius: 2px; transition: all .28s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--navy-mid); border-bottom: 1px solid var(--border);
+      padding: 1.5rem 1.5rem 2rem; z-index: 999;
+      flex-direction: column; gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--offwhite); text-decoration: none; font-size: 1rem;
+      font-weight: 500; padding: .9rem 0;
+      border-bottom: 1px solid var(--border); transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--blue-light); }
+    .mobile-menu .m-cta { margin-top: 1.25rem; }
+    .mobile-menu .m-cta .btn { width: 100%; text-align: center; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 148px 0 80px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -160px; left: 50%;
+      transform: translateX(-50%); width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(74,143,212,.07) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--blue); background: rgba(74,143,212,.1);
+      padding: .4rem 1rem; border-radius: 100px;
+      border: 1px solid rgba(74,143,212,.28); margin-bottom: 1.6rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.1rem, 5.5vw, 4rem);
+      font-weight: 800; line-height: 1.09; letter-spacing: -.03em;
+      margin-bottom: 1.5rem; max-width: 820px;
+      margin-left: auto; margin-right: auto;
+    }
+    .hero h1 .accent { color: var(--blue-light); }
+    .hero-sub {
+      font-size: clamp(.95rem, 2vw, 1.2rem);
+      line-height: 1.7; color: var(--muted);
+      max-width: 620px; margin: 0 auto;
+    }
+    .hero-sub strong { color: var(--offwhite); }
+
+    /* ── SECTION LABEL + HEADER ── */
+    .section-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
+    }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1rem;
+    }
+    .section-header h2 .accent { color: var(--blue-light); }
+    .section-header p { font-size: 1rem; color: var(--muted); max-width: 620px; margin: 0 auto; line-height: 1.7; }
+    .section-header p strong { color: var(--offwhite); }
+
+    /* ── PAIN ── */
+    .pain { padding: 96px 0; }
+    .pain-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .pain h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
+    }
+    .pain h2 .accent { color: var(--blue-light); }
+    .pain-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); }
+    .pain-body strong { color: var(--offwhite); }
+
+    /* ── VALUE ── */
+    .value {
+      padding: 96px 0;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .value-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .value h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
+    }
+    .value h2 .accent { color: var(--blue-light); }
+    .value-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); }
+    .value-body p + p { margin-top: 1rem; }
+    .value-body strong { color: var(--offwhite); }
+
+    /* ── BELIEFS ── */
+    .beliefs { padding: 104px 0; }
+    .beliefs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .belief-card {
+      background: var(--navy-mid); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2.25rem 1.75rem; position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .belief-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,.32); }
+    .belief-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    }
+    .belief-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--navy-light); border: 1.5px solid var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; font-weight: 800; color: var(--blue-light);
+      margin-bottom: 1.1rem;
+    }
+    .belief-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .65rem; line-height: 1.35; }
+    .belief-card p { font-size: .92rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── TEAM ── */
+    .team {
+      padding: 104px 0;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .team-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .team h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
+    }
+    .team h2 .accent { color: var(--blue-light); }
+    .team-body { font-size: 1rem; line-height: 1.78; color: var(--muted); margin-bottom: 2.75rem; }
+    .team-body strong { color: var(--offwhite); }
+    .founder {
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    }
+    .founder-name { font-size: 1.1rem; font-weight: 800; color: var(--white); }
+    .founder-role {
+      font-size: .78rem; color: var(--blue); letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ── TRUST ── */
+    .trust { padding: 104px 0; }
+    .trust-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .trust h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
+    }
+    .trust h2 .accent { color: var(--blue-light); }
+    .trust-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); }
+    .trust-body p + p { margin-top: 1rem; }
+    .trust-body strong { color: var(--offwhite); }
+
+    /* ── FOOTER CTA ── */
+    .footer-cta {
+      padding: 128px 0; text-align: center; position: relative; overflow: hidden;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+    }
+    .footer-cta::before {
+      content: ''; position: absolute; bottom: -180px; left: 50%;
+      transform: translateX(-50%); width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(74,143,212,.06) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .footer-cta h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -.03em; line-height: 1.12; margin-bottom: 1.2rem;
+      max-width: 740px; margin-left: auto; margin-right: auto;
+    }
+    .footer-cta h2 .accent { color: var(--blue-light); }
+    .footer-cta p { font-size: 1rem; color: var(--muted); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .footer-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.75rem; }
+    .micro { font-size: .78rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-mid); border-top: 1px solid var(--border); padding: 2.75rem 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.75rem; flex-wrap: wrap;
+    }
+    .footer-brand-group { display: flex; flex-direction: column; gap: .4rem; }
+    .footer-brand {
+      font-size: .75rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .footer-phone {
+      color: var(--blue-light); text-decoration: none;
+      font-size: .88rem; font-weight: 700;
+      transition: color .2s;
+    }
+    .footer-phone:hover { color: var(--white); }
+    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-nav a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
+    .footer-nav a:hover { color: var(--blue-light); }
+    .footer-copy { font-size: .74rem; color: var(--muted); opacity: .55; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .beliefs-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 116px 0 60px; }
+      .btn { width: 100%; max-width: 340px; text-align: center; }
+      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+      .footer-brand-group { align-items: center; }
+      .footer-nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+
+    <!--
+      SWAP: Once logo PNGs are exported, replace this entire block with:
+      <a href="../index.html" class="nav-logo" aria-label="Genesis AI Systems home">
+        <img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="38">
+      </a>
+    -->
+    <a href="../index.html" class="nav-logo" aria-label="Genesis AI Systems home">
+      <svg class="nav-logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="38" height="38" rx="8" fill="#162847"/>
+        <path d="M27 19H21.5M21.5 19C21.5 21.5 19.2 23.5 16.5 23.5C13.8 23.5 11.5 21.5 11.5 19C11.5 16.5 13.8 14.5 16.5 14.5H27V19Z" stroke="#6BAEE8" stroke-width="2" stroke-linecap="round"/>
+        <path d="M23 23.5L27 27.5" stroke="#4A8FD4" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="wm">Genesis</span>
+        <span class="sub">AI Systems</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="demo.html">Demo</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+           target="_blank" rel="noopener noreferrer"
+           class="btn nav-btn">Book a Call</a>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="demo.html">Demo</a>
+  <a href="faq.html">FAQ</a>
+  <a href="pricing.html">Pricing</a>
+  <div class="m-cta">
+    <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+       target="_blank" rel="noopener noreferrer" class="btn">Book Your Free Call</a>
+  </div>
+</div>
+
+
+<main>
+
+  <!-- ════ HERO ════ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="eyebrow">About Genesis AI Systems</div>
+      <h1 id="hero-heading">
+        Built for the Trades.<br>
+        <span class="accent">Not for the Boardroom.</span>
+      </h1>
+      <p class="hero-sub">
+        Genesis AI Systems is a small Michigan team that builds AI receptionists for service businesses.
+        This page tells you who we are and why we do it.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════ PAIN ════ -->
+  <section class="pain" aria-labelledby="pain-heading">
+    <div class="container">
+      <div class="pain-inner">
+        <div class="section-label">The Problem</div>
+        <h2 id="pain-heading">
+          Most AI Companies Have <span class="accent">Never Run a Business.</span>
+        </h2>
+        <p class="pain-body">
+          They build tools that look impressive in a demo and fall apart in real life.
+          You end up paying for something your guys cannot use and your customers do not trust.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ VALUE ════ -->
+  <section class="value" aria-labelledby="value-heading">
+    <div class="container">
+      <div class="value-inner">
+        <div class="section-label">Why We Exist</div>
+        <h2 id="value-heading">
+          We Built This Because <span class="accent">the Problem Was Real.</span>
+        </h2>
+        <div class="value-body">
+          <p>
+            Genesis AI Systems was built by someone who watched small contractors
+            lose jobs to voicemail every single week.
+          </p>
+          <p>
+            <strong>Not a tech company that stumbled into AI.</strong>
+            Built specifically for service businesses that run on phone calls.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ BELIEFS ════ -->
+  <section class="beliefs" aria-labelledby="beliefs-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What We Believe</div>
+        <h2 id="beliefs-heading">
+          Three Things We <span class="accent">Will Not Budge On.</span>
+        </h2>
+        <p>Everything we build is measured against these.</p>
+      </div>
+      <div class="beliefs-grid">
+        <div class="belief-card">
+          <div class="belief-num">1</div>
+          <h3>Every Missed Call Is a Missed Paycheck</h3>
+          <p>That is not a technology problem. It is a revenue problem. And it has a straightforward fix.</p>
+        </div>
+        <div class="belief-card">
+          <div class="belief-num">2</div>
+          <h3>If Setup Takes More Than a Week, It Is Too Complicated</h3>
+          <p>Your business should not have to adapt to your tools. The tools should adapt to your business.</p>
+        </div>
+        <div class="belief-card">
+          <div class="belief-num">3</div>
+          <h3>Small Businesses Deserve the Same Advantages Big Companies Have</h3>
+          <p>Enterprise-level call handling used to cost $40,000 a year in staff alone. Not anymore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ TEAM ════ -->
+  <section class="team" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="team-inner">
+        <div class="section-label">The Team</div>
+        <h2 id="team-heading">
+          Small Team. <span class="accent">Real Results.</span>
+        </h2>
+        <p class="team-body">
+          No roster of titles. No stock photos. Just a founder who built this,
+          runs it on his own business line, and stands behind every deployment.
+          <strong>If something is not working, you are talking to the person who built it.</strong>
+        </p>
+        <div class="founder">
+          <!--
+            SWAP: Replace src with the real founder photo path once dropped in assets/images/.
+            Update [FOUNDER NAME] with the real name in both the alt text and the caption below.
+          -->
+          <img src="../assets/images/founder.jpg"
+               alt="[FOUNDER NAME], Genesis AI Systems"
+               style="width:180px;height:180px;object-fit:cover;border-radius:50%;border:3px solid var(--blue);">
+          <div class="founder-name">[FOUNDER NAME]</div>
+          <div class="founder-role">Founder, Genesis AI Systems</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ TRUST ════ -->
+  <section class="trust" aria-labelledby="trust-heading">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="section-label">The Proof</div>
+        <h2 id="trust-heading">
+          We Use <span class="accent">What We Build.</span>
+        </h2>
+        <div class="trust-body">
+          <p>
+            Riley, our AI receptionist, answers every call to Genesis AI Systems right now.
+            Same system we build for clients.
+          </p>
+          <p>
+            Two live client deployments running today.
+            <strong>We do not sell anything we have not tested on our own business first.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ LOW-PRESSURE CTA ════ -->
+  <section class="footer-cta" aria-labelledby="footer-cta-heading">
+    <div class="container">
+      <h2 id="footer-cta-heading">
+        If This Sounds Like What <span class="accent">Your Business Needs.</span>
+      </h2>
+      <p>
+        Book a free 30-minute call. No pitch.
+        We will show you exactly what an AI receptionist built for your business would sound like.
+        If it is not a fit, we will tell you that too.
+      </p>
+      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+         target="_blank" rel="noopener noreferrer"
+         class="btn">Book Your Free Call</a>
+      <div style="margin-top:1rem;">
+        <span class="micro">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; 30 minutes</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand-group">
+      <div class="footer-brand">Genesis AI Systems</div>
+      <a href="tel:+15866369550" class="footer-phone">(586) 636-9550</a>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="demo.html">Demo</a>
+      <a href="faq.html">FAQ</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
+    </nav>
+    <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>
+  </div>
+</footer>
+
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.4)' : 'none';
+  }, { passive: true });
+</script>
+
+</body>
+</html>
