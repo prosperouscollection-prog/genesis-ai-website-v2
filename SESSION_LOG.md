@@ -48,6 +48,7 @@ Only exception: favicon where space forces abbreviation.
   - 20f72fd — V2 launch — temp page live, full site ready behind it
   - e874f79 — chore: remove .DS_Store, add .gitignore
   - 1cdbe9d — chore: track empty asset folders with .gitkeep
+  - db0df00 — refactor: extract shared CSS and JS, fix mobile menu and footer nav
 
 ---
 
@@ -157,18 +158,21 @@ Goes on every CTA button on every page. Opens in new tab.
 ---
 
 ## Next Steps (in order)
-1. [ ] Complete Cloudflare DNS changes (see above)
-2. [ ] Enable GitHub Pages in repo settings, set custom domain to genesisai.systems
+1. [x] Complete Cloudflare DNS changes (see above)
+2. [x] Enable GitHub Pages in repo settings, set custom domain to genesisai.systems
 3. [ ] Confirm temp page is live on genesisai.systems
 4. [ ] Export logo PNGs from Illustrator, drop into assets/logos/, swap comments
-5. [ ] Build Demo page
-6. [ ] Build Pricing page
-7. [ ] Build About page
-8. [ ] Build FAQ page
+5. [x] Build Demo page
+6. [x] Build Pricing page
+7. [x] Build About page
+8. [x] Build FAQ page
 9. [ ] Get real metric from Cortland deployment (calls handled, response time, etc.)
 10. [ ] When all pages done + logos in — swap index.html to full homepage
 11. [ ] Set up demo version of Riley on Vapi
 12. [ ] Swap Calendly placeholder on Demo page with live Vapi button
+13. [x] Extract shared CSS into css/style.css and shared JS into js/main.js, link from all 5 pages
+14. [x] Fix mobile menu visibility on load with hidden attribute + hidden property toggle in main.js
+15. [x] Reset footer nav so it does not inherit the fixed/blurred topnav styles
 
 ---
 
