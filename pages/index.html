@@ -10,182 +10,18 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genesisai.systems" />
   <link rel="icon" type="image/png" href="../assets/logos/favicon.png" />
+  <link rel="stylesheet" href="../css/style.css" />
 
   <style>
-    /* ── RESET ── */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ── PAGE-SPECIFIC: index.html ── */
 
-    :root {
-      --navy:        #0A1628;
-      --navy-mid:    #0F1E38;
-      --navy-light:  #162847;
-      --blue:        #4A8FD4;
-      --blue-light:  #6BAEE8;
-      --white:       #FFFFFF;
-      --offwhite:    #E8EDF5;
-      --muted:       #8FA3BF;
-      --border:      rgba(74, 143, 212, 0.18);
-      --cta:         #4A8FD4;
-      --cta-hover:   #3A7FC4;
-      --font:        -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font);
-      background: var(--navy);
-      color: var(--white);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* ── UTILS ── */
-    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-
-    .btn {
-      display: inline-block;
-      background: var(--cta);
-      color: var(--white);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      padding: 1rem 2.25rem;
-      border-radius: 6px;
-      border: 2px solid var(--cta);
-      transition: background .2s, transform .15s, box-shadow .2s;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn:hover, .btn:focus {
-      background: var(--cta-hover);
-      border-color: var(--cta-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(74,143,212,.35);
-      outline: none;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(10,22,40,.96);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
-    }
-
-    /* LOGO
-       SWAP: once logos exported, replace the entire .nav-logo anchor with:
-       <a href="../index.html" class="nav-logo">
-         <img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="38">
-       </a>
-    */
-    .nav-logo {
-      display: flex; align-items: center; gap: .65rem;
-      text-decoration: none; flex-shrink: 0;
-    }
-    .nav-logo-icon {
-      width: 38px; height: 38px; flex-shrink: 0;
-    }
-    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .nav-logo-text .wm {
-      font-size: .95rem; font-weight: 800; letter-spacing: .1em;
-      color: var(--white); text-transform: uppercase;
-    }
-    .nav-logo-text .sub {
-      font-size: .58rem; letter-spacing: .22em; color: var(--blue);
-      text-transform: uppercase; margin-top: 3px;
-    }
-
-    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
-    .nav-links a {
-      color: var(--offwhite); text-decoration: none; font-size: .88rem;
-      font-weight: 500; opacity: .82; transition: opacity .2s, color .2s;
-    }
-    .nav-links a:hover { opacity: 1; color: var(--blue-light); }
-    .nav-links a.active { opacity: 1; color: var(--blue-light); }
-    .nav-btn { font-size: .82rem !important; padding: .55rem 1.15rem !important; }
-
-    /* Hamburger */
-    .hamburger {
-      display: none; flex-direction: column; justify-content: space-between;
-      width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0;
-    }
-    .hamburger span {
-      display: block; height: 2px; width: 100%; background: var(--white);
-      border-radius: 2px; transition: all .28s ease;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    /* Mobile menu */
-    .mobile-menu {
-      display: none; position: fixed; top: 68px; left: 0; right: 0;
-      background: var(--navy-mid); border-bottom: 1px solid var(--border);
-      padding: 1.5rem 1.5rem 2rem; z-index: 999;
-      flex-direction: column; gap: 0;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      color: var(--offwhite); text-decoration: none; font-size: 1rem;
-      font-weight: 500; padding: .9rem 0;
-      border-bottom: 1px solid var(--border); transition: color .2s;
-    }
-    .mobile-menu a:hover { color: var(--blue-light); }
-    .mobile-menu .m-cta { margin-top: 1.25rem; }
-    .mobile-menu .m-cta .btn { width: 100%; text-align: center; }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 148px 0 100px; text-align: center; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: -160px; left: 50%;
-      transform: translateX(-50%); width: 900px; height: 900px;
-      background: radial-gradient(circle, rgba(74,143,212,.07) 0%, transparent 68%);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--blue); background: rgba(74,143,212,.1);
-      padding: .4rem 1rem; border-radius: 100px;
-      border: 1px solid rgba(74,143,212,.28); margin-bottom: 1.6rem;
-    }
-    .live-dot-sm {
-      width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
-      animation: blink 1.8s infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-
-    .hero h1 {
-      font-size: clamp(2.1rem, 5.5vw, 4rem);
-      font-weight: 800; line-height: 1.09; letter-spacing: -.03em;
-      margin-bottom: 1.5rem; max-width: 840px;
-      margin-left: auto; margin-right: auto;
-    }
-    .hero h1 .accent { color: var(--blue-light); }
-
-    .hero-sub {
-      font-size: clamp(.95rem, 2vw, 1.2rem);
-      line-height: 1.7; color: var(--muted);
-      max-width: 580px; margin: 0 auto 2.5rem;
-    }
-    .hero-sub strong { color: var(--offwhite); }
-
+    /* Hero overrides */
+    .hero { padding: 148px 0 100px; }
+    .hero-sub { margin: 0 auto 2.5rem; }
     .hero-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
     .hero-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
-    .micro { font-size: .78rem; color: var(--muted); }
 
-    /* ── PROOF STRIP ── */
+    /* Proof strip */
     .proof-strip {
       background: var(--navy-mid);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -203,14 +39,9 @@
     }
     .divider { width: 1px; height: 42px; background: var(--border); }
 
-    /* ── PAIN ── */
+    /* Pain */
     .pain { padding: 104px 0; }
     .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
-
-    .section-label {
-      font-size: .7rem; font-weight: 700; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
-    }
     .pain h2 {
       font-size: clamp(1.7rem, 3.5vw, 2.6rem);
       font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.25rem;
@@ -219,7 +50,6 @@
     .pain-body { font-size: 1rem; line-height: 1.78; color: var(--muted); }
     .pain-body p + p { margin-top: 1rem; }
     .pain-body strong { color: var(--offwhite); }
-
     .pain-cards { display: flex; flex-direction: column; gap: 1rem; }
     .pain-card {
       background: var(--navy-mid); border: 1px solid var(--border);
@@ -230,19 +60,12 @@
     .pain-card h3 { font-size: .92rem; font-weight: 700; color: var(--white); margin-bottom: .22rem; }
     .pain-card p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
 
-    /* ── OUTCOMES ── */
+    /* Outcomes */
     .outcomes {
       padding: 104px 0;
       background: var(--navy-mid);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
-    .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-header h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1rem;
-    }
-    .section-header p { font-size: 1rem; color: var(--muted); max-width: 500px; margin: 0 auto; line-height: 1.65; }
-
     .outcomes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
     .outcome-card {
       background: var(--navy-light); border: 1px solid var(--border);
@@ -258,7 +81,7 @@
     .outcome-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .55rem; }
     .outcome-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── SOCIAL PROOF ── */
+    /* Social proof */
     .social-proof { padding: 104px 0; }
     .proof-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .proof-card {
@@ -275,7 +98,10 @@
       font-size: 1.4rem; flex-shrink: 0;
     }
     .proof-meta h4 { font-size: .98rem; font-weight: 700; }
-    .proof-meta span { font-size: .75rem; color: var(--blue); letter-spacing: .05em; text-transform: uppercase; }
+    .proof-meta span {
+      font-size: .75rem; color: var(--blue);
+      letter-spacing: .05em; text-transform: uppercase;
+    }
     .live-badge {
       display: inline-flex; align-items: center; gap: 5px;
       font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
@@ -291,7 +117,7 @@
       font-size: .78rem; color: var(--blue); font-weight: 600; letter-spacing: .04em;
     }
 
-    /* ── MID CTA ── */
+    /* Mid CTA */
     .mid-cta {
       padding: 104px 0; text-align: center;
       background: var(--navy-mid);
@@ -304,7 +130,7 @@
     .mid-cta p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.65; }
     .mid-cta .btn { font-size: 1.05rem; padding: 1.05rem 2.5rem; }
 
-    /* ── HOW IT WORKS ── */
+    /* How it works */
     .how { padding: 104px 0; }
     .how-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; position: relative; }
     .how-steps::before {
@@ -323,38 +149,17 @@
     .how-step h3 { font-size: .92rem; font-weight: 700; margin-bottom: .45rem; }
     .how-step p { font-size: .8rem; color: var(--muted); line-height: 1.55; }
 
-    /* ── FOOTER CTA ── */
+    /* Footer CTA override (homepage version has no navy-mid bg) */
     .footer-cta {
-      padding: 128px 0; text-align: center; position: relative; overflow: hidden;
-    }
-    .footer-cta::before {
-      content: ''; position: absolute; bottom: -180px; left: 50%;
-      transform: translateX(-50%); width: 900px; height: 900px;
-      background: radial-gradient(circle, rgba(74,143,212,.06) 0%, transparent 68%);
-      pointer-events: none;
+      padding: 128px 0;
     }
     .footer-cta h2 {
       font-size: clamp(2rem, 4.5vw, 3.25rem);
-      font-weight: 800; letter-spacing: -.03em; line-height: 1.09; margin-bottom: 1.2rem;
+      max-width: none;
     }
-    .footer-cta p { font-size: 1rem; color: var(--muted); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.65; }
-    .footer-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.75rem; }
+    .footer-cta p { max-width: 460px; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy-mid); border-top: 1px solid var(--border); padding: 2.75rem 0;
-    }
-    .footer-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1.5rem; flex-wrap: wrap;
-    }
-    .footer-brand { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-nav a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
-    .footer-nav a:hover { color: var(--blue-light); }
-    .footer-copy { font-size: .74rem; color: var(--muted); opacity: .55; }
-
-    /* ── RESPONSIVE ── */
+    /* Homepage responsive */
     @media (max-width: 900px) {
       .pain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .outcomes-grid { grid-template-columns: 1fr 1fr; }
@@ -363,19 +168,14 @@
       .proof-cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
       .divider { display: none; }
       .proof-strip-inner { gap: 1.5rem; }
       .outcomes-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .hero { padding: 116px 0 80px; }
-      .btn { width: 100%; max-width: 340px; text-align: center; }
       .hero-cta { padding: 0 1rem; }
       .how-steps { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-nav { justify-content: center; }
     }
   </style>
 </head>
@@ -423,7 +223,7 @@
 </nav>
 
 <!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+<div class="mobile-menu" id="mobileMenu" hidden role="navigation" aria-label="Mobile navigation">
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="demo.html">Demo</a>
@@ -465,7 +265,7 @@
   </section>
 
 
-  <!-- ════ PROOF STRIP (above second scroll) ════ -->
+  <!-- ════ PROOF STRIP ════ -->
   <div class="proof-strip" role="region" aria-label="Quick stats">
     <div class="container proof-strip-inner">
       <div class="stat">
@@ -593,7 +393,6 @@
         <p>Riley is live on our own business line right now. Two client deployments are running today. This is not a pitch. It is a track record.</p>
       </div>
 
-      <!-- Full-width Riley card -->
       <div class="proof-card">
         <div class="proof-card-head">
           <div class="avatar">🤖</div>
@@ -614,7 +413,6 @@
         </div>
       </div>
 
-      <!-- Supporting stat row -->
       <div class="proof-strip-inner" style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);">
         <div class="stat">
           <div class="num">2</div>
@@ -642,7 +440,7 @@
         How Much Is One Missed Call<br>Worth to Your Business?
       </h2>
       <p>
-        If the average job is worth $500–$2,000 and you're missing even 4 calls a month,
+        If the average job is worth $500 to $2,000 and you're missing even 4 calls a month,
         that is up to $8,000 walking out the door. We can stop that in one week.
       </p>
       <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
@@ -711,7 +509,10 @@
 <!-- ════ FOOTER ════ -->
 <footer>
   <div class="container footer-inner">
-    <div class="footer-brand">Genesis AI Systems</div>
+    <div class="footer-brand-group">
+      <div class="footer-brand">Genesis AI Systems</div>
+      <a href="tel:+15866369550" class="footer-phone">(586) 636-9550</a>
+    </div>
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -720,38 +521,10 @@
       <a href="pricing.html">Pricing</a>
       <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </nav>
-    <div class="footer-phone" style="font-size:.85rem;color:var(--offwhite);font-weight:600;letter-spacing:.02em;">(586) 636-9550</div>
     <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>
   </div>
 </footer>
 
-
-<script>
-  // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Close mobile menu on link click
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Nav scroll shadow
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.boxShadow =
-      window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.4)' : 'none';
-  }, { passive: true });
-</script>
-
+<script src="../js/main.js"></script>
 </body>
 </html>
