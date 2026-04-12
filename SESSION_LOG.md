@@ -235,3 +235,36 @@ Immediate next task: Push all built pages live behind temp page, export logos pe
 - Demo page Telegram mockup previously showed "contractor" — fixed to "service business" in commit `01aaefe`.
 - `assets/images/founder.jpg`: resized from 2.3 MB to 43 KB at 400px via sips. RESOLVED.
 - `logo-dark.png` and `logo-light.png` have black canvas areas visible — confirm transparent on live site before going public.
+
+---
+
+## 2026-04-12 — Stripe Payment Links Created and Wired
+
+### Stripe Products and Links (live mode)
+| Product                      | Type            | Amount         | Link |
+|------------------------------|-----------------|----------------|------|
+| AI Receptionist Build        | One-time        | $1,500         | https://buy.stripe.com/fZubJ08nT7VRbY94Ij2Fa06 |
+| AI Receptionist Retainer     | Recurring       | $479/month     | https://buy.stripe.com/14A00i8nTa3Z5zLeiT2Fa07 |
+| AI Receptionist Full Setup   | Combined        | $1,500 + $479/mo | https://buy.stripe.com/fZu00i1Zvcc76DP2Ab2Fa08 |
+
+Combined link puts $1,500 setup fee as a one-time line item alongside the $479/month subscription. Customer pays both in a single Stripe checkout session and is immediately enrolled in the monthly subscription.
+
+### Stripe IDs (live mode)
+- prod_UK6HgKWbgXu80R — AI Receptionist Build
+- price_1TLSDxCroybrh0k8cFSJQekZ — $1,500 one-time
+- prod_UK6RH4saXVcqtj — AI Receptionist Retainer
+- price_1TLSEnCroybrh0k8AjnCiIXY — $479/month
+- prod_UK6SvSxzwsOYTM — AI Receptionist Full Setup
+- price_1TLSFKCroybrh0k8XikEnJte — $1,500 setup fee
+- price_1TLSFKCroybrh0k8mAyJMYM4 — $479/month retainer
+
+### Changes Made
+- pages/pricing.html line 337-339: System Built CTA swapped from Calendly to BUILD LINK
+- pages/pricing.html line 357-359: Full System Plus Retainer CTA swapped from Calendly to COMBINED LINK
+- config/stripe.js: Written with all three payment link URLs as named constants, no secret keys
+
+### Next Steps
+- [ ] Commit and push pricing.html + config/stripe.js to main
+- [ ] Smoke test all three Stripe links in browser — confirm checkout loads correctly in live mode
+- [ ] Build About page
+- [ ] Build FAQ page
