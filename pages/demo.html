@@ -217,6 +217,7 @@
       .tg-mockup { padding: 1.75rem 1.25rem 1.25rem; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.0.0/dist/vapi.umd.js"></script>
 </head>
 <body>
 
@@ -498,21 +499,6 @@
   var vapi     = null;
   var calling  = false;
 
-  function loadVapiSDK(cb) {
-    if (window.Vapi) { cb(); return; }
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/@vapi-ai/web@2.2.4/dist/vapi.iife.js';
-    s.onload = function() {
-      if (typeof window.Vapi === 'undefined') {
-        setStatus('Could not load the call SDK. Please refresh and try again.');
-        return;
-      }
-      cb();
-    };
-    s.onerror = function() { setStatus('Could not load the call SDK. Please refresh and try again.'); };
-    document.head.appendChild(s);
-  }
-
   function setStatus(msg, active) {
     statusEl.textContent = msg;
     statusEl.className = active ? 'active' : '';
@@ -535,8 +521,13 @@
     btnText.textContent = 'Connecting...';
     setStatus('Starting your call with Riley...', true);
 
-    loadVapiSDK(function() {
-      try {
+    if (typeof window.Vapi === 'undefined') {
+      setStatus('Could not load the call SDK. Please refresh and try again.');
+      endCall();
+      return;
+    }
+
+    try {
         vapi = new window.Vapi(VAPI_PUBLIC_KEY);
         vapi.on('call-start', function() {
           btnText.textContent = 'End Call';
@@ -558,7 +549,6 @@
         endCall();
         setStatus('Could not start the call. Please try again.');
       }
-    });
   }
 
   function stopCall() {
