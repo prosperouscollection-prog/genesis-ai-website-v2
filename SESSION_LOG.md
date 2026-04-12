@@ -22,7 +22,7 @@ Only exception: favicon where space forces abbreviation.
 │   ├── faq.html                ← placeholder
 │   └── pricing.html            ← placeholder
 ├── assets/
-│   ├── logos/                  ← EMPTY — waiting for exported PNGs
+│   ├── logos/                  ← logo-dark.png, logo-light.png, favicon-32.png, favicon-180.png, favicon.png
 │   ├── images/                 ← EMPTY
 │   └── video/                  ← EMPTY
 ├── css/style.css               ← empty, styles are inline for now
@@ -102,12 +102,11 @@ Goes on every CTA button on every page. Opens in new tab.
   - Horizontal — dark on black
   - Icon only — blue G-mark
   - Icon only — navy rounded square tile (favicon-ready)
-- STILL NEEDED: Individual exported PNGs
-  - logo-dark.png (800×200 @2x, horizontal, for dark bg)
-  - logo-light.png (800×200 @2x, horizontal, for light bg — TBD if exists)
-  - favicon.png (32×32 and 180×180, navy tile icon)
-- All logo swap points are marked with comments in both HTML files:
-  <!-- SWAP: replace with logo-dark.png once exported -->
+- [x] logo-dark.png — DONE, exported and in assets/logos/
+- [x] logo-light.png — DONE, exported and in assets/logos/
+- [x] favicon.png, favicon-32.png, favicon-180.png — DONE, exported and in assets/logos/
+- SVG placeholder logos swapped to real PNGs across all 5 pages (commit 869de4e)
+- Favicon updated to favicon-32.png + favicon-180.png Apple touch icon on all 5 pages
 
 ---
 
@@ -164,7 +163,7 @@ Goes on every CTA button on every page. Opens in new tab.
 1. [x] Complete Cloudflare DNS changes (see above)
 2. [x] Enable GitHub Pages in repo settings, set custom domain to genesisai.systems
 3. [ ] Confirm temp page is live on genesisai.systems
-4. [ ] Export logo PNGs from Illustrator, drop into assets/logos/, swap comments
+4. [x] Export logo PNGs from Illustrator, drop into assets/logos/, swap comments
 5. [x] Build Demo page
 6. [x] Build Pricing page
 7. [x] Build About page
@@ -177,7 +176,7 @@ Goes on every CTA button on every page. Opens in new tab.
 14. [x] Fix mobile menu visibility on load with hidden attribute + hidden property toggle in main.js
 15. [x] Reset footer nav so it does not inherit the fixed/blurred topnav styles
 16. [ ] Real browser test of demo page Vapi button once GitHub Pages is live
-17. [ ] Export logos — see docs/LOGO-EXPORT-SPECS.md
+17. [x] Export logos — see docs/LOGO-EXPORT-SPECS.md
 
 ---
 
@@ -235,3 +234,4 @@ Immediate next task: Push all built pages live behind temp page, export logos pe
 - `.env` lines containing unquoted `BUSINESS_MAILING_ADDRESS` values will break scripts that use `set -e` while sourcing. Quote those values before next sourcing session.
 - Demo page Telegram mockup previously showed "contractor" — fixed to "service business" in commit `01aaefe`.
 - `assets/images/founder.jpg`: resized from 2.3 MB to 43 KB at 400px via sips. RESOLVED.
+- `logo-dark.png` and `logo-light.png` have black canvas areas visible — confirm transparent on live site before going public.

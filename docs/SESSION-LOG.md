@@ -64,3 +64,13 @@
 - [ ] Swap root index.html to full V2 homepage (new chat window — do not do in an active session)
 
 ---
+
+## Session 1 Addendum 2 — 2026-04-12
+
+- Logos exported and dropped into assets/logos/ by designer/founder
+- Files: logo-dark.png, logo-light.png, favicon.png, favicon-32.png, favicon-180.png
+- SVG placeholder nav logo swapped to real PNG across all 5 pages
+- Favicon updated to favicon-32.png + favicon-180.png Apple touch icon on all 5 pages
+- Commit: 869de4e
+
+---
