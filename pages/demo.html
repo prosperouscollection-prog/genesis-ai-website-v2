@@ -501,7 +501,7 @@
   function loadVapiSDK(cb) {
     if (window.Vapi) { cb(); return; }
     var s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.iife.js';
+    s.src = 'https://unpkg.com/@vapi-ai/web@2.2.4/dist/vapi.iife.js';
     s.onload = function() {
       if (typeof window.Vapi === 'undefined') {
         setStatus('Could not load the call SDK. Please refresh and try again.');
