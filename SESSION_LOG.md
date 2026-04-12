@@ -276,3 +276,55 @@ Combined link puts $1,500 setup fee as a one-time line item alongside the $479/m
 - [x] Smoke test all three Stripe links in browser — all three confirmed loading correctly in live mode 2026-04-12
 - [x] Build About page
 - [x] Build FAQ page
+
+---
+
+## 2026-04-12 — Site-wide copy, CTA, and trust pass
+
+### Files changed (5)
+- `pages/index.html`
+- `pages/about.html`
+- `pages/demo.html`
+- `pages/faq.html`
+- `pages/pricing.html`
+
+### Files created (2)
+- `pages/privacy.html` (Privacy Policy)
+- `pages/terms.html` (Terms of Service)
+
+### Copy and trust changes
+- Replaced the uncited home-page stats strip with three cited research stats: Invoca (2021) on missed calls, BT Business Research (2014) on caller patience, InsideSales.com (2021) on 5-minute lead response.
+- Softened absolute claims on the home page. "Zero Missed Calls" card becomes "Calls Answered Around the Clock". "100% Calls Captured" removed from stats and replaced with "Every call gets a response" in the secondary proof strip. "Wins 78% of the time" sentence removed from pain card.
+- Added hero audience line naming the buyer (contractors, plumbers, HVAC, electricians, roofers, landscapers) and a short reassurance line explaining what happens next after talking to Riley.
+- Added a "We use what we build" proof block on the home page with a replica call summary card for the Genesis AI Systems own line. Name/number redacted. Card reuses the existing demo-page summary visual pattern via a new `call-summary-card` class so the home-page card does not render the "Telegram" label.
+- About page: added forwarding reassurance line ("You forward your number to us. No new phone number required. Setup takes less than a week.") and inserted an early CTA block above the rest of the body.
+
+### CTA hierarchy flipped to demo-first sitewide
+- Every CTA block across the 5 edited pages now uses the standard stacked pair: primary `Talk to Riley (60 sec)` linking to `/pages/demo.html` (new tab), secondary `Book Free Audit Call` linking to Calendly (new tab), with microcopy under each.
+- Exceptions preserved per brief: the demo page live-call interaction block keeps its custom Option A / Option B layout (preserving the existing Vapi trigger, button id, spans, and `#callStatus`, with the assistant id `b41a6283-e3f8-4b75-8619-53724eb39de7` unchanged). The pricing page retains a single-primary pre-pricing CTA block directly above the plans.
+- Mobile nav button and top-nav button on every page now carry a single primary "Talk to Riley (60 sec)" CTA, not a pair. Confirmed with the user before applying.
+- Banned phrases removed from live copy: "Book Your Free Demo Call", "Book Your Free Call", "Book Your Free Audit Call", "Stop Losing Calls. Book Your Free Demo".
+- Pricing free tier standardized: tier name is now "Free AI Audit Call", button label is "Book Free Audit Call".
+
+### Delivery method language
+- Removed all customer-facing references to "Telegram" on pages/demo.html. The `.tg-mockup::before` pseudo-element label (which rendered the word "Telegram" above the call summary card) was removed from the page-specific `<style>` block. The "Goes Where You Are" wyg-point paragraph was rewritten to: "After every call, you get an instant summary showing who called, why they called, and what happens next. Delivered to your phone."
+
+### Privacy and Terms pages
+- Created `pages/privacy.html` and `pages/terms.html`, each modeled on the about-page layout (hero + single-column body + footer), using a page-specific `.legal` style block for the sections and bullet lists. Both pages include the full nav, mobile menu, footer, and a "Last updated: April 2026" line. Neither page carries a CTA pair (user-confirmed, legal pages stay clean).
+- Business mailing address included on both: Genesis AI Systems, 28475 Greenfield Road, Suite 113 7709, Lathrup Village, MI 48076.
+- Contact email: info@genesisai.systems.
+
+### Footer changes
+- Every edited and newly created page now includes Privacy and Terms links in the footer nav, placed between the existing Pricing link and the Calendly "Book a Call" link.
+
+### FAQ additions
+- Added a new FAQ item "Can I try it without booking a call?" after the "Can I hear it before I pay anything?" item, pointing to the demo page.
+- Expanded the existing "Is my call data private?" answer to describe recording/transcript retention and link "Privacy Policy" to `privacy.html`.
+
+### Styling approach
+- `css/style.css` was not touched. Each edited page has an additional small block in its existing page-specific `<style>` defining `.cta-pair`, `.cta-stack`, and (on pages without it) `.btn-outline`. The home page also adds `.we-use`, `.call-summary-card`, and `.stat.cited` helpers in its block. Pricing adds `.pre-pricing-cta` styles.
+
+### Open items
+- Swap root `/index.html` to the full homepage once all content is final. Currently still the holding page.
+- Get a real metric from the Cortland deployment to replace the Invoca/BT/InsideSales citations where appropriate.
+- Record and drop in a real screenshot of a Genesis AI Systems call summary to replace the handcrafted replica on the home-page proof block.

@@ -18,9 +18,88 @@
 
     /* Hero overrides */
     .hero { padding: 148px 0 100px; }
-    .hero-sub { margin: 0 auto 2.5rem; }
+    .hero-sub { margin: 0 auto 1.25rem; }
+    .hero-audience { margin: 0 auto 2.25rem; max-width: 560px; }
     .hero-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
     .hero-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
+
+    /* Sitewide CTA pair */
+    .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+    .cta-stack .micro { margin: 0; }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--blue-light);
+      border: 1px solid var(--blue); padding: 1rem 2rem; border-radius: 10px;
+      font-weight: 700; text-decoration: none; transition: background .2s, color .2s;
+    }
+    .btn-outline:hover, .btn-outline:focus {
+      background: rgba(58, 134, 255, .08); color: var(--white);
+    }
+
+    /* Cited stats overrides */
+    .stat.cited { max-width: 300px; }
+    .stat.cited .num {
+      font-size: .92rem; line-height: 1.45; color: var(--offwhite); font-weight: 600;
+      white-space: normal;
+    }
+    .stat.cited .lbl {
+      font-size: .65rem; color: var(--muted); margin-top: .6rem;
+      text-transform: none; letter-spacing: .02em; font-style: italic;
+    }
+
+    /* We use what we build */
+    .we-use {
+      padding: 0 0 104px;
+    }
+    .we-use-inner {
+      background: rgba(255, 255, 255, .025);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 14px;
+      padding: 2.75rem;
+    }
+    .we-use h3 {
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      font-weight: 800; letter-spacing: -.01em; margin-bottom: .75rem;
+    }
+    .we-use > .we-use-inner > p.lede {
+      font-size: 1rem; color: var(--muted); line-height: 1.65; max-width: 620px; margin-bottom: 1.75rem;
+    }
+    .we-use .section-label { margin-bottom: .75rem; }
+
+    .call-summary-card {
+      background: #1a1f2e;
+      border: 1px solid rgba(107, 174, 232, .22);
+      border-radius: 12px;
+      padding: 1.6rem 1.75rem;
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: .82rem;
+      line-height: 1.7;
+      color: #d7e1f0;
+      max-width: 620px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, .35);
+    }
+    .call-summary-card .csc-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: .85rem; margin-bottom: .85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+    .call-summary-card .csc-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(74, 222, 128, .1); color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, .28);
+      font-size: .68rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: .08em;
+      font-family: inherit;
+    }
+    .call-summary-card .csc-time { color: #8fa3bf; font-size: .72rem; }
+    .call-summary-card .csc-row { display: flex; gap: .5rem; }
+    .call-summary-card .csc-row .csc-label {
+      color: #8fa3bf; min-width: 82px; text-transform: uppercase;
+      font-size: .68rem; letter-spacing: .06em; padding-top: 3px;
+    }
+    .call-summary-card .csc-row .csc-value { flex: 1; color: #e7edf7; }
+    .we-use-caption { font-size: .78rem; color: var(--muted); margin-top: .9rem; max-width: 620px; }
 
     /* Proof strip */
     .proof-strip {
@@ -197,9 +276,9 @@
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li>
-        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+        <a href="/pages/demo.html"
            target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Book a Demo</a>
+           class="btn nav-btn">Talk to Riley (60 sec)</a>
       </li>
     </ul>
 
@@ -217,8 +296,8 @@
   <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
   <div class="m-cta">
-    <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-       target="_blank" rel="noopener noreferrer" class="btn">Book Your Free Demo Call</a>
+    <a href="/pages/demo.html"
+       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley (60 sec)</a>
   </div>
 </div>
 
@@ -242,37 +321,46 @@
         qualifies every lead, and sends you a summary before you even put your tools down.
         No staff. No voicemail. No missed jobs.
       </p>
-      <div class="hero-cta">
-        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-           target="_blank" rel="noopener noreferrer"
-           class="btn">Stop Losing Calls. Book Your Free Demo</a>
-        <span class="micro">Free 30-min call &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; No obligation</span>
+      <p class="micro hero-audience">
+        Built for contractors, plumbers, HVAC, electricians, roofers, landscapers, and other phone-driven service businesses.
+      </p>
+      <p class="micro" style="max-width:560px;margin:0 auto 1rem;">
+        Hear Riley now. If it fits, book a short audit call and get a recommended setup plan. Setup takes less than a week.
+      </p>
+      <div class="cta-pair">
+        <div class="cta-stack">
+          <a href="/pages/demo.html"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">Talk to Riley (60 sec)</a>
+          <p class="micro">No credit card. Hear the call flow now.</p>
+        </div>
+        <div class="cta-stack">
+          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-outline">Book Free Audit Call</a>
+          <p class="micro">15-30 min. Get a recommended setup plan.</p>
+        </div>
       </div>
     </div>
   </section>
 
 
   <!-- ════ PROOF STRIP ════ -->
-  <div class="proof-strip" role="region" aria-label="Quick stats">
+  <div class="proof-strip" role="region" aria-label="Industry call-handling research">
     <div class="container proof-strip-inner">
-      <div class="stat">
-        <div class="num">24/7</div>
-        <div class="lbl">Always Answering</div>
+      <div class="stat cited">
+        <div class="num">Small businesses miss up to 60% of inbound calls, and only 2-3% of callers ever leave a voicemail.</div>
+        <div class="lbl">Invoca, 2021</div>
       </div>
       <div class="divider" aria-hidden="true"></div>
-      <div class="stat">
-        <div class="num">&lt;2s</div>
-        <div class="lbl">Answer Time</div>
+      <div class="stat cited">
+        <div class="num">Customers will try calling a maximum of twice before taking their business elsewhere.</div>
+        <div class="lbl">BT Business Research, 2014</div>
       </div>
       <div class="divider" aria-hidden="true"></div>
-      <div class="stat">
-        <div class="num">100%</div>
-        <div class="lbl">Calls Captured</div>
-      </div>
-      <div class="divider" aria-hidden="true"></div>
-      <div class="stat">
-        <div class="num">2</div>
-        <div class="lbl">Live Deployments</div>
+      <div class="stat cited">
+        <div class="num">Leads contacted within 5 minutes convert at 8x the rate of leads contacted later.</div>
+        <div class="lbl">InsideSales.com, 2021</div>
       </div>
     </div>
   </div>
@@ -305,7 +393,7 @@
           <div class="pain-card-icon">⏱️</div>
           <div>
             <h3>Speed Wins the Customer</h3>
-            <p>The first business to respond wins 78% of the time. Every minute you wait is a customer choosing someone else.</p>
+            <p>Every minute you wait is a customer choosing someone else.</p>
           </div>
         </div>
         <div class="pain-card">
@@ -338,7 +426,7 @@
       <div class="outcomes-grid">
         <div class="outcome-card">
           <div class="outcome-icon">📞</div>
-          <h3>Zero Missed Calls</h3>
+          <h3>Calls Answered Around the Clock</h3>
           <p>Every call gets answered in under 2 seconds, 24 hours a day, 7 days a week, including holidays and weekends.</p>
         </div>
         <div class="outcome-card">
@@ -407,14 +495,39 @@
         </div>
         <div class="divider" aria-hidden="true"></div>
         <div class="stat">
-          <div class="num">100%</div>
-          <div class="lbl">Calls Answered</div>
+          <div class="num" style="font-size:1rem;max-width:180px;line-height:1.35;">Every call gets a response</div>
+          <div class="lbl">Since Go-Live</div>
         </div>
         <div class="divider" aria-hidden="true"></div>
         <div class="stat">
           <div class="num">Day 1</div>
-          <div class="lbl">Zero Missed Calls Since Go-Live</div>
+          <div class="lbl">Calls Answered Since Go-Live</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ WE USE WHAT WE BUILD ════ -->
+  <section class="we-use" aria-labelledby="we-use-heading">
+    <div class="container">
+      <div class="we-use-inner">
+        <h3 id="we-use-heading">We use what we build.</h3>
+        <p class="lede">Riley has been answering calls for Genesis AI Systems since March. Before we put it on client lines, we put it on our own.</p>
+        <div class="section-label">Actual call summary from our own line</div>
+        <div class="call-summary-card" role="figure" aria-label="Example call summary from the Genesis AI Systems line">
+          <div class="csc-head">
+            <span class="csc-badge">📞 Call Complete</span>
+            <span class="csc-time">8:47 PM</span>
+          </div>
+          <div class="csc-row"><span class="csc-label">Caller</span><span class="csc-value">[Redacted]</span></div>
+          <div class="csc-row"><span class="csc-label">Time</span><span class="csc-value">8:47 PM</span></div>
+          <div class="csc-row"><span class="csc-label">Duration</span><span class="csc-value">2m 14s</span></div>
+          <div class="csc-row"><span class="csc-label">Intent</span><span class="csc-value">Pricing inquiry, asked about monthly cost and setup timeline</span></div>
+          <div class="csc-row"><span class="csc-label">Status</span><span class="csc-value">Lead captured, callback requested</span></div>
+          <div class="csc-row"><span class="csc-label">Next step</span><span class="csc-value">Owner follow-up before noon next day</span></div>
+        </div>
+        <p class="we-use-caption">Name and number redacted for privacy. Same summary format clients receive after each call.</p>
       </div>
     </div>
   </section>
@@ -430,9 +543,20 @@
         If the average job is worth $500 to $2,000 and you're missing even 4 calls a month,
         that is up to $8,000 walking out the door. We can stop that in one week.
       </p>
-      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-         target="_blank" rel="noopener noreferrer"
-         class="btn">Book Your Free Demo Call. See It Live</a>
+      <div class="cta-pair">
+        <div class="cta-stack">
+          <a href="/pages/demo.html"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">Talk to Riley (60 sec)</a>
+          <p class="micro">No credit card. Hear the call flow now.</p>
+        </div>
+        <div class="cta-stack">
+          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-outline">Book Free Audit Call</a>
+          <p class="micro">15-30 min. Get a recommended setup plan.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -448,7 +572,7 @@
       <div class="how-steps">
         <div class="how-step">
           <div class="step-num">1</div>
-          <h3>Free Demo Call</h3>
+          <h3>Free Audit Call</h3>
           <p>We listen to your business, your calls, and your pain points. No pitch. Just clarity.</p>
         </div>
         <div class="how-step">
@@ -478,14 +602,21 @@
         Stop Losing Jobs<br>to Voicemail.
       </h2>
       <p>
-        Book a free 30-minute demo call. We will show you exactly what your
-        AI receptionist would sound like. Live, on the call.
+        Hear exactly what your AI receptionist would sound like right now, or book a short audit call and get a recommended setup plan.
       </p>
-      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-         target="_blank" rel="noopener noreferrer"
-         class="btn">Book Your Free Demo Call</a>
-      <div style="margin-top:1rem;">
-        <span class="micro">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 30 minutes</span>
+      <div class="cta-pair">
+        <div class="cta-stack">
+          <a href="/pages/demo.html"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">Talk to Riley (60 sec)</a>
+          <p class="micro">No credit card. Hear the call flow now.</p>
+        </div>
+        <div class="cta-stack">
+          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-outline">Book Free Audit Call</a>
+          <p class="micro">15-30 min. Get a recommended setup plan.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -506,6 +637,8 @@
       <a href="demo.html">Demo</a>
       <a href="faq.html">FAQ</a>
       <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </nav>
     <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>

@@ -181,6 +181,32 @@
       border-top: 1px solid var(--border);
     }
 
+    /* Sitewide CTA pair */
+    .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+    .cta-stack .micro { margin: 0; }
+
+    /* Pre-pricing single CTA */
+    .pre-pricing-cta {
+      padding: 0 0 72px;
+      text-align: center;
+    }
+    .pre-pricing-cta-inner {
+      max-width: 720px; margin: 0 auto;
+      padding: 2.25rem 2rem;
+      background: rgba(74, 143, 212, .06);
+      border: 1px solid rgba(107, 174, 232, .25);
+      border-radius: 14px;
+    }
+    .pre-pricing-cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800; letter-spacing: -.01em; margin-bottom: .65rem;
+    }
+    .pre-pricing-cta p {
+      font-size: 1rem; color: var(--muted); max-width: 520px;
+      margin: 0 auto 1.5rem; line-height: 1.6;
+    }
+
     /* Pricing responsive */
     @media (max-width: 900px) {
       .plans-grid { grid-template-columns: 1fr; max-width: 480px; }
@@ -231,9 +257,9 @@
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html" class="active">Pricing</a></li>
       <li>
-        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+        <a href="/pages/demo.html"
            target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Book a Call</a>
+           class="btn nav-btn">Talk to Riley (60 sec)</a>
       </li>
     </ul>
 
@@ -250,8 +276,8 @@
   <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
   <div class="m-cta">
-    <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-       target="_blank" rel="noopener noreferrer" class="btn">Book Your Free Call</a>
+    <a href="/pages/demo.html"
+       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley (60 sec)</a>
   </div>
 </div>
 
@@ -292,6 +318,20 @@
   </section>
 
 
+  <!-- ════ PRE-PRICING CTA ════ -->
+  <section class="pre-pricing-cta" aria-labelledby="pre-pricing-heading">
+    <div class="container">
+      <div class="pre-pricing-cta-inner">
+        <h2 id="pre-pricing-heading">Not sure yet? Talk to Riley first.</h2>
+        <p>Hear exactly how it handles a call before you decide anything.</p>
+        <a href="/pages/demo.html"
+           target="_blank" rel="noopener noreferrer"
+           class="btn">Talk to Riley (60 sec)</a>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ════ PLANS ════ -->
   <section class="plans" aria-labelledby="plans-heading">
     <div class="container">
@@ -306,7 +346,7 @@
 
         <div class="plan-card">
           <span class="plan-badge-muted">Free</span>
-          <div class="plan-name">Free Demo Call<br>AI Audit</div>
+          <div class="plan-name">Free AI Audit Call</div>
           <div class="plan-price">$0</div>
           <p class="plan-price-note">No credit card. No obligation.</p>
           <ul class="plan-features">
@@ -318,7 +358,7 @@
           <div class="plan-cta">
             <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
                target="_blank" rel="noopener noreferrer"
-               class="btn btn-outline">Book Your Free Audit Call</a>
+               class="btn btn-outline">Book Free Audit Call</a>
           </div>
         </div>
 
@@ -471,14 +511,21 @@
         The Audit Call <span class="accent">Is Free.</span>
       </h2>
       <p>
-        The only thing it costs is 30 minutes.
-        You will leave knowing whether this makes sense for your business.
+        Hear Riley right now, or book a short audit call and leave knowing whether this makes sense for your business.
       </p>
-      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-         target="_blank" rel="noopener noreferrer"
-         class="btn">Book Your Free Audit Call</a>
-      <div style="margin-top:1rem;">
-        <span class="micro">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; 30 minutes</span>
+      <div class="cta-pair">
+        <div class="cta-stack">
+          <a href="/pages/demo.html"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">Talk to Riley (60 sec)</a>
+          <p class="micro">No credit card. Hear the call flow now.</p>
+        </div>
+        <div class="cta-stack">
+          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline">Book Free Audit Call</a>
+          <p class="micro">15-30 min. Get a recommended setup plan.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -499,6 +546,8 @@
       <a href="demo.html">Demo</a>
       <a href="faq.html">FAQ</a>
       <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </nav>
     <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>

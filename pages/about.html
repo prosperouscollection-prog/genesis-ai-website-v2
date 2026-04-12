@@ -113,6 +113,29 @@
     }
     .footer-cta h2 { max-width: 740px; }
 
+    /* Sitewide CTA pair */
+    .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+    .cta-stack .micro { margin: 0; }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--blue-light);
+      border: 1px solid var(--blue); padding: 1rem 2rem; border-radius: 10px;
+      font-weight: 700; text-decoration: none; transition: background .2s, color .2s;
+    }
+    .btn-outline:hover, .btn-outline:focus {
+      background: rgba(58, 134, 255, .08); color: var(--white);
+    }
+    .early-cta {
+      padding: 80px 0 0;
+    }
+    .early-cta-inner {
+      max-width: 720px; margin: 0 auto; text-align: center;
+    }
+    .early-cta h3 {
+      font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+      font-weight: 800; letter-spacing: -.01em;
+    }
+
     /* About responsive */
     @media (max-width: 900px) {
       .beliefs-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
@@ -139,9 +162,9 @@
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li>
-        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+        <a href="/pages/demo.html"
            target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Book a Call</a>
+           class="btn nav-btn">Talk to Riley (60 sec)</a>
       </li>
     </ul>
 
@@ -158,8 +181,8 @@
   <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
   <div class="m-cta">
-    <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-       target="_blank" rel="noopener noreferrer" class="btn">Book Your Free Call</a>
+    <a href="/pages/demo.html"
+       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley (60 sec)</a>
   </div>
 </div>
 
@@ -176,8 +199,32 @@
       </h1>
       <p class="hero-sub">
         Genesis AI Systems is a small Michigan team that builds AI receptionists for service businesses.
+        You forward your number to us. No new phone number required. Setup takes less than a week.
         This page tells you who we are and why we do it.
       </p>
+    </div>
+  </section>
+
+  <!-- ════ EARLY CTA ════ -->
+  <section class="early-cta" aria-labelledby="early-cta-heading">
+    <div class="container">
+      <div class="early-cta-inner">
+        <h3 id="early-cta-heading">Want to hear it before you talk to anyone?</h3>
+        <div class="cta-pair">
+          <div class="cta-stack">
+            <a href="/pages/demo.html"
+               target="_blank" rel="noopener noreferrer"
+               class="btn">Talk to Riley (60 sec)</a>
+            <p class="micro">No credit card. Hear the call flow now.</p>
+          </div>
+          <div class="cta-stack">
+            <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+               target="_blank" rel="noopener noreferrer"
+               class="btn-outline">Book Free Audit Call</a>
+            <p class="micro">15-30 min. Get a recommended setup plan.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -308,15 +355,21 @@
         If This Sounds Like What <span class="accent">Your Business Needs.</span>
       </h2>
       <p>
-        Book a free 30-minute call. No pitch.
-        We will show you exactly what an AI receptionist built for your business would sound like.
-        If it is not a fit, we will tell you that too.
+        Hear exactly what an AI receptionist built for your business would sound like right now, or book a short audit call. If it is not a fit, we will tell you that too.
       </p>
-      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-         target="_blank" rel="noopener noreferrer"
-         class="btn">Book Your Free Call</a>
-      <div style="margin-top:1rem;">
-        <span class="micro">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; 30 minutes</span>
+      <div class="cta-pair">
+        <div class="cta-stack">
+          <a href="/pages/demo.html"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">Talk to Riley (60 sec)</a>
+          <p class="micro">No credit card. Hear the call flow now.</p>
+        </div>
+        <div class="cta-stack">
+          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-outline">Book Free Audit Call</a>
+          <p class="micro">15-30 min. Get a recommended setup plan.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -337,6 +390,8 @@
       <a href="demo.html">Demo</a>
       <a href="faq.html">FAQ</a>
       <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </nav>
     <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>

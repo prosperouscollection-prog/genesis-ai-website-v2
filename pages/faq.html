@@ -84,6 +84,19 @@
     }
     .footer-cta p { max-width: 520px; }
 
+    /* Sitewide CTA pair */
+    .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+    .cta-stack .micro { margin: 0; }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--blue-light);
+      border: 1px solid var(--blue); padding: 1rem 2rem; border-radius: 10px;
+      font-weight: 700; text-decoration: none; transition: background .2s, color .2s;
+    }
+    .btn-outline:hover, .btn-outline:focus {
+      background: rgba(58, 134, 255, .08); color: var(--white);
+    }
+
     /* FAQ responsive */
     @media (max-width: 768px) {
       .faq-question { font-size: .96rem; padding: 1.2rem 1.35rem; }
@@ -112,9 +125,9 @@
       <li><a href="faq.html" class="active">FAQ</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li>
-        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+        <a href="/pages/demo.html"
            target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Book a Call</a>
+           class="btn nav-btn">Talk to Riley (60 sec)</a>
       </li>
     </ul>
 
@@ -131,8 +144,8 @@
   <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
   <div class="m-cta">
-    <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-       target="_blank" rel="noopener noreferrer" class="btn">Book Your Free Call</a>
+    <a href="/pages/demo.html"
+       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley (60 sec)</a>
   </div>
 </div>
 
@@ -248,6 +261,7 @@
           </button>
           <div class="faq-answer">
             <p>Yes. Your data belongs to you. We do not sell it or share it with anyone.</p>
+            <p>Call recordings and transcripts are stored only as long as needed to deliver your summaries. You can request deletion at any time. Full details are in our <a href="privacy.html">Privacy Policy</a>.</p>
           </div>
         </div>
 
@@ -258,6 +272,16 @@
           </button>
           <div class="faq-answer">
             <p>Yes. Book a free call and you will hear a live AI receptionist during that call. No commitment required.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I try it without booking a call?</span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Go to the <a href="demo.html">demo page</a> and talk to Riley right now, in your browser. It takes about 60 seconds and you do not need to give a phone number to hear how it handles a call. If you want the summary delivered after, there is an option for that too.</p>
           </div>
         </div>
 
@@ -273,13 +297,21 @@
         Still Have <span class="accent">a Question?</span>
       </h2>
       <p>
-        Book a call and ask it directly. Thirty minutes, no pressure.
+        Hear Riley right now, or book a short audit call and ask it directly. No pressure either way.
       </p>
-      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-         target="_blank" rel="noopener noreferrer"
-         class="btn">Book Your Free Call</a>
-      <div style="margin-top:1rem;">
-        <span class="micro">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; 30 minutes</span>
+      <div class="cta-pair">
+        <div class="cta-stack">
+          <a href="/pages/demo.html"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">Talk to Riley (60 sec)</a>
+          <p class="micro">No credit card. Hear the call flow now.</p>
+        </div>
+        <div class="cta-stack">
+          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-outline">Book Free Audit Call</a>
+          <p class="micro">15-30 min. Get a recommended setup plan.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -300,6 +332,8 @@
       <a href="demo.html">Demo</a>
       <a href="faq.html">FAQ</a>
       <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </nav>
     <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>
@@ -308,7 +342,7 @@
 
 <script src="../js/main.js"></script>
 <script>
-  /* FAQ accordion — page-specific */
+  /* FAQ accordion, page-specific */
   document.querySelectorAll('.faq-question').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var item = btn.closest('.faq-item');

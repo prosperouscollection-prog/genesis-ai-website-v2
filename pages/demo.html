@@ -116,6 +116,42 @@
       max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6;
     }
 
+    /* Sitewide CTA pair */
+    .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+    .cta-stack .micro { margin: 0; }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--blue-light);
+      border: 1px solid var(--blue); padding: 1rem 2rem; border-radius: 10px;
+      font-weight: 700; text-decoration: none; transition: background .2s, color .2s;
+    }
+    .btn-outline:hover, .btn-outline:focus {
+      background: rgba(58, 134, 255, .08); color: var(--white);
+    }
+
+    /* Option A / Option B demo layout */
+    .demo-options {
+      display: grid; grid-template-columns: 1fr; gap: 2.25rem;
+      margin-top: .5rem;
+    }
+    .demo-option { display: flex; flex-direction: column; align-items: center; gap: .9rem; }
+    .demo-option .section-label { margin-bottom: 0; font-size: .72rem; }
+    .demo-options-sep {
+      font-size: .72rem; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .15em; font-weight: 700;
+    }
+    .demo-supporting {
+      margin-top: 1.25rem; font-size: .82rem; color: var(--muted);
+      max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6;
+    }
+    @media (min-width: 720px) {
+      .demo-options {
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 2rem;
+      }
+    }
+
     /* Steps */
     .steps {
       padding: 96px 0;
@@ -142,7 +178,7 @@
     .what-you-get { padding: 96px 0; }
     .wyg-inner { max-width: 760px; margin: 0 auto; }
 
-    /* Telegram mockup */
+    /* Call summary mockup */
     .tg-mockup {
       background: #1a1f2e; border-radius: 16px;
       padding: 2rem 2rem 1.5rem; max-width: 520px;
@@ -150,13 +186,6 @@
       box-shadow: 0 24px 60px rgba(0,0,0,.5);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       position: relative;
-    }
-    .tg-mockup::before {
-      content: 'Telegram'; position: absolute; top: -11px; left: 50%;
-      transform: translateX(-50%);
-      font-size: .65rem; font-weight: 700; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--muted);
-      background: var(--navy); padding: 2px 10px; border-radius: 100px;
     }
     .tg-bubble {
       background: #212738; border-radius: 12px 12px 12px 2px;
@@ -234,9 +263,9 @@
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li>
-        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+        <a href="/pages/demo.html"
            target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Book a Call</a>
+           class="btn nav-btn">Talk to Riley (60 sec)</a>
       </li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -252,8 +281,8 @@
   <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
   <div class="m-cta">
-    <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-       target="_blank" rel="noopener noreferrer" class="btn">Book Your Free Call</a>
+    <a href="/pages/demo.html"
+       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley (60 sec)</a>
   </div>
 </div>
 
@@ -325,15 +354,31 @@
           Talk to Riley <span class="accent">Right Now.</span>
         </h3>
         <p class="phone-card-sub">
-          Click the button. Riley will greet you, ask a few questions, and show you
-          exactly how your callers would be handled. Takes about 60 seconds.
+          Pick how you want to experience Riley. Either option shows you exactly
+          how your callers would be handled.
         </p>
-        <!-- SWAP: replace DEMO_ASSISTANT_ID_HERE with the Vapi assistant ID once created -->
-        <button id="vapiCallBtn" aria-label="Start demo call with Riley">
-          <span id="btnIcon">📞</span>
-          <span id="btnText">Talk to Riley</span>
-        </button>
-        <div id="callStatus" role="status" aria-live="polite"></div>
+
+        <div class="demo-options">
+          <div class="demo-option">
+            <div class="section-label">No phone number needed</div>
+            <button id="vapiCallBtn" aria-label="Start demo call with Riley">
+              <span id="btnIcon">📞</span>
+              <span id="btnText">Talk to Riley (60 sec)</span>
+            </button>
+            <div id="callStatus" role="status" aria-live="polite"></div>
+          </div>
+          <div class="demo-options-sep" aria-hidden="true">or</div>
+          <div class="demo-option">
+            <div class="section-label">Get the summary delivered after the call</div>
+            <a class="btn-outline"
+               href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+               target="_blank" rel="noopener noreferrer">Send me the call summary</a>
+          </div>
+        </div>
+
+        <p class="demo-supporting">
+          Option A lets you hear Riley right now. Option B books a real call and sends the summary to you.
+        </p>
         <p class="phone-disclaimer">
           This is a demo line for Genesis AI Systems. Riley will ask for your name,
           phone number, and what kind of business you run. This is a real AI, not a recording.
@@ -391,7 +436,7 @@
           <div class="tg-bubble">
             <div class="tg-badge">📞 Call Complete</div>
             <div class="tg-field"><span>From: </span><span>John Smith (<span class="tg-link">+1 313 555 1234</span>)</span></div>
-            <div class="tg-field"><span>Business: </span><span>Demo Genesis AI Systems &mdash; service business</span></div>
+            <div class="tg-field"><span>Business: </span><span>Demo Genesis AI Systems, service business</span></div>
             <div class="tg-field"><span>Intent: </span><span>requested_quote</span></div>
             <div class="tg-field"><span>Duration: </span><span>87s</span></div>
             <div class="tg-summary">
@@ -401,7 +446,7 @@
             </div>
             <div class="tg-action">
               <span>&#9989;</span>
-              <span>Lead captured &mdash; callback requested by end of day</span>
+              <span>Lead captured, callback requested by end of day</span>
             </div>
             <div class="tg-time">4:59 PM</div>
           </div>
@@ -426,7 +471,7 @@
             <div class="wyg-point-icon">&#128242;</div>
             <div>
               <h4>Goes Where You Are.</h4>
-              <p>Summaries go straight to Telegram, already on your phone. No apps to install, no dashboards to check. It finds you.</p>
+              <p>After every call, you get an instant summary showing who called, why they called, and what happens next. Delivered to your phone.</p>
             </div>
           </div>
         </div>
@@ -441,14 +486,21 @@
         Want One Built <span class="accent">for Your Business?</span>
       </h2>
       <p>
-        Book a free call and we will walk you through exactly what an AI receptionist
-        trained on your business would sound like. You will hear it live on the call.
+        Hear exactly what an AI receptionist trained on your business would sound like, or book a short audit call and get a recommended setup plan.
       </p>
-      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-         target="_blank" rel="noopener noreferrer"
-         class="btn">Book Your Free Call</a>
-      <div style="margin-top:1rem;">
-        <span class="micro">Free &nbsp;&#183;&nbsp; No credit card &nbsp;&#183;&nbsp; 30 minutes</span>
+      <div class="cta-pair">
+        <div class="cta-stack">
+          <a href="/pages/demo.html"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">Talk to Riley (60 sec)</a>
+          <p class="micro">No credit card. Hear the call flow now.</p>
+        </div>
+        <div class="cta-stack">
+          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-outline">Book Free Audit Call</a>
+          <p class="micro">15-30 min. Get a recommended setup plan.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -468,6 +520,8 @@
       <a href="demo.html">Demo</a>
       <a href="faq.html">FAQ</a>
       <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </nav>
     <div class="footer-copy">&copy; 2026 Genesis AI Systems. All rights reserved.</div>
@@ -499,7 +553,7 @@
     btn.disabled = false;
     btn.classList.remove('calling');
     btnIcon.textContent = '📞';
-    btnText.textContent = 'Talk to Riley';
+    btnText.textContent = 'Talk to Riley (60 sec)';
     vapi = null;
   }
 
@@ -527,7 +581,7 @@
         endCall();
         var msg = (e && e.error && e.error.message) ? e.error.message :
                   (e && e.message) ? e.message :
-                  'Unknown error — check browser console';
+                  'Unknown error, check browser console';
         setStatus('Error: ' + msg);
       });
       vapi.start(ASSISTANT_ID);
