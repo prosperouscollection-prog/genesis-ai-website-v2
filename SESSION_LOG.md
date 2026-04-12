@@ -29,7 +29,10 @@ Only exception: favicon where space forces abbreviation.
 ├── js/main.js                  ← empty, JS is inline for now
 ├── config/stripe.js            ← placeholder
 ├── .gitignore                  ← DS_Store, node_modules, .env
-└── SESSION_LOG.md              ← this file
+├── SESSION_LOG.md              ← this file
+└── docs/
+    ├── SESSION-LOG.md          ← dedicated website session log (new)
+    └── LOGO-EXPORT-SPECS.md   ← logo export guide for designer (new)
 ```
 
 ---
@@ -120,7 +123,7 @@ Goes on every CTA button on every page. Opens in new tab.
 |----------|-------------------------------|--------------------------------------------|
 | Home     | BUILT — pages/index.html      | Full production code, waiting behind temp  |
 | About    | Empty placeholder             | Not started                                |
-| Demo     | Empty placeholder             | Vapi button (Calendly until number ready)  |
+| Demo     | BUILT — pages/demo.html       | Vapi web call widget + Telegram mockup, wired to Demo Riley (b41a6283) |
 | FAQ      | Empty placeholder             | Not started                                |
 | Pricing  | Empty placeholder             | 3 cards, no pricing on homepage            |
 
@@ -168,11 +171,13 @@ Goes on every CTA button on every page. Opens in new tab.
 8. [x] Build FAQ page
 9. [ ] Get real metric from Cortland deployment (calls handled, response time, etc.)
 10. [ ] When all pages done + logos in — swap index.html to full homepage
-11. [ ] Set up demo version of Riley on Vapi
-12. [ ] Swap Calendly placeholder on Demo page with live Vapi button
+11. [x] Set up demo version of Riley on Vapi
+12. [x] Swap Calendly placeholder on Demo page with live Vapi button
 13. [x] Extract shared CSS into css/style.css and shared JS into js/main.js, link from all 5 pages
 14. [x] Fix mobile menu visibility on load with hidden attribute + hidden property toggle in main.js
 15. [x] Reset footer nav so it does not inherit the fixed/blurred topnav styles
+16. [ ] Real browser test of demo page Vapi button once GitHub Pages is live
+17. [ ] Export logos — see docs/LOGO-EXPORT-SPECS.md
 
 ---
 
@@ -202,7 +207,7 @@ pages/index.html = full V2 homepage (built, not live yet)
 DNS is Cloudflare — changes still pending (details in SESSION_LOG.md)
 GitHub Pages not enabled yet
 
-Immediate next task: Monitor first real demo-page visitors and confirm Telegram summaries land cleanly. Demo Riley assistant is live and wired end-to-end.
+Immediate next task: Push all built pages live behind temp page, export logos per docs/LOGO-EXPORT-SPECS.md, enable GitHub Pages once logos are confirmed.
 
 ---
 
@@ -228,3 +233,4 @@ Immediate next task: Monitor first real demo-page visitors and confirm Telegram 
 
 ### Known issues
 - `.env` lines containing unquoted `BUSINESS_MAILING_ADDRESS` values will break scripts that use `set -e` while sourcing. Quote those values before next sourcing session.
+- Demo page Telegram mockup previously showed "contractor" — fixed to "service business" in commit `01aaefe`.

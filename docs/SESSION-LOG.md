@@ -44,3 +44,21 @@
 - [ ] Swap root index.html to full V2 homepage once logos are in
 
 ---
+
+## Session 1 Addendum — 2026-04-12
+
+- Pushed all session 1 work to origin/main (commit: c9c5355)
+- Fixed demo page Telegram mockup copy: "contractor" changed to "service business" (commit: 01aaefe)
+- Created docs/LOGO-EXPORT-SPECS.md with export instructions for the designer
+- V1 access rule updated: read access permitted, write requires explicit per-session approval. Standing approval for appending to docs/SESSION-LOG.md.
+
+### Outstanding going into Session 2
+- [ ] Enable GitHub Pages on genesis-ai-website-v2 (Settings → Pages → main / root → custom domain genesisai.systems)
+- [ ] Real browser test of Vapi web call button on demo page once live
+- [ ] Designer exports logos per docs/LOGO-EXPORT-SPECS.md, drops into assets/logos/
+- [ ] Swap logo comments in all 5 pages once PNGs are confirmed in assets/logos/
+- [ ] Stripe integration (after logos confirmed)
+- [ ] Replace homepage placeholder stats with real metrics
+- [ ] Swap root index.html to full V2 homepage (new chat window — do not do in an active session)
+
+---
