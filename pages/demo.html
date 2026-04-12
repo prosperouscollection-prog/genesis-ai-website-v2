@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Genesis AI Systems. Hear It For Yourself.</title>
-  <meta name="description" content="Meet Riley, the AI receptionist that answers every call to Genesis AI Systems right now. Call the live demo line and hear it for yourself." />
+  <meta name="description" content="Talk to Riley, the AI receptionist built by Genesis AI Systems. This is a live demo. Hear exactly what your callers would experience." />
   <meta property="og:title" content="Genesis AI Systems. Hear It For Yourself." />
-  <meta property="og:description" content="Not a recording. A live AI receptionist handling real calls for a real business." />
+  <meta property="og:description" content="Not a recording. Talk to a live AI receptionist right now in your browser." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genesisai.systems/pages/demo.html" />
   <link rel="icon" type="image/png" href="../assets/logos/favicon.png" />
@@ -15,11 +15,9 @@
   <style>
     /* ── PAGE-SPECIFIC: demo.html ── */
 
-    /* Hero override */
     .hero { padding: 148px 0 60px; }
     .hero-sub { margin: 0 auto; }
 
-    /* Section header override */
     .section-header p { max-width: 620px; line-height: 1.7; }
 
     /* Pain */
@@ -49,7 +47,7 @@
     .value-body p + p { margin-top: 1rem; }
     .value-body strong { color: var(--offwhite); }
 
-    /* Demo phone card */
+    /* Demo call section */
     .demo-card-section { padding: 96px 0; }
     .phone-card {
       max-width: 720px; margin: 0 auto;
@@ -83,28 +81,39 @@
     .phone-card h3 .accent { color: var(--blue-light); }
     .phone-card-sub {
       font-size: 1rem; color: var(--muted);
-      max-width: 480px; margin: 0 auto 1.75rem; line-height: 1.6;
+      max-width: 480px; margin: 0 auto 2rem; line-height: 1.6;
     }
-    .phone-number {
-      display: block;
-      font-size: clamp(1.5rem, 4.5vw, 2.25rem);
-      font-weight: 800; letter-spacing: .02em;
-      color: var(--white);
-      margin: 1.25rem 0 .75rem;
+
+    /* Vapi call button */
+    #vapiCallBtn {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-size: 1.05rem; font-weight: 700;
+      padding: 1rem 2.25rem; border-radius: 6px;
+      border: 2px solid var(--cta); background: var(--cta); color: var(--white);
+      cursor: pointer; transition: background .2s, transform .15s, box-shadow .2s;
     }
-    .phone-status {
-      display: inline-block;
-      font-size: .78rem; color: var(--muted);
-      background: rgba(74,143,212,.08);
-      border: 1px solid rgba(74,143,212,.18);
-      padding: .45rem 1rem; border-radius: 100px;
-      margin-bottom: 1.5rem;
+    #vapiCallBtn:hover:not(:disabled) {
+      background: var(--cta-hover); border-color: var(--cta-hover);
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(74,143,212,.35);
     }
-    .phone-meta {
-      font-size: .85rem; color: var(--muted); line-height: 1.65;
-      max-width: 480px; margin: 0 auto;
+    #vapiCallBtn:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+    #vapiCallBtn.calling {
+      background: #1a3a5c; border-color: var(--blue);
+      animation: pulse-btn 2s infinite;
     }
-    .phone-meta strong { color: var(--offwhite); }
+    @keyframes pulse-btn {
+      0%,100% { box-shadow: 0 0 0 0 rgba(74,143,212,.5); }
+      50% { box-shadow: 0 0 0 10px rgba(74,143,212,0); }
+    }
+    #callStatus {
+      margin-top: 1.25rem; font-size: .85rem; color: var(--muted);
+      min-height: 1.4em; transition: color .3s;
+    }
+    #callStatus.active { color: var(--blue-light); }
+    .phone-disclaimer {
+      margin-top: 1.5rem; font-size: .78rem; color: var(--muted);
+      max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6;
+    }
 
     /* Steps */
     .steps {
@@ -128,7 +137,75 @@
     }
     .step h3 { font-size: .94rem; font-weight: 700; margin-bottom: .5rem; line-height: 1.4; }
 
-    /* Demo responsive */
+    /* What you get */
+    .what-you-get { padding: 96px 0; }
+    .wyg-inner { max-width: 760px; margin: 0 auto; }
+
+    /* Telegram mockup */
+    .tg-mockup {
+      background: #1a1f2e; border-radius: 16px;
+      padding: 2rem 2rem 1.5rem; max-width: 520px;
+      margin: 0 auto 2.5rem;
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      position: relative;
+    }
+    .tg-mockup::before {
+      content: 'Telegram'; position: absolute; top: -11px; left: 50%;
+      transform: translateX(-50%);
+      font-size: .65rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--muted);
+      background: var(--navy); padding: 2px 10px; border-radius: 100px;
+    }
+    .tg-bubble {
+      background: #212738; border-radius: 12px 12px 12px 2px;
+      padding: 1.1rem 1.25rem 1rem;
+      color: #e0e6f0; font-size: .92rem; line-height: 1.55;
+    }
+    .tg-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: #f0a500; color: #000;
+      font-weight: 800; font-size: .85rem;
+      padding: .2rem .65rem; border-radius: 6px; margin-bottom: .85rem;
+    }
+    .tg-field { margin: .2rem 0; }
+    .tg-field span:first-child { color: #8fa3bf; }
+    .tg-field span.tg-link { color: #6baee8; }
+    .tg-summary {
+      margin: .85rem 0; padding: .75rem 0;
+      border-top: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      font-size: .88rem; color: #c8d4e4; line-height: 1.6;
+    }
+    .tg-action {
+      display: flex; align-items: flex-start; gap: .5rem;
+      margin-top: .75rem; font-size: .85rem; color: #e0e6f0;
+    }
+    .tg-time {
+      text-align: right; margin-top: .75rem;
+      font-size: .74rem; color: #4a5a72;
+    }
+    .tg-draft-btn {
+      display: flex; align-items: center; gap: .5rem;
+      justify-content: center;
+      background: #2a3244; border-radius: 0 0 10px 10px;
+      padding: .75rem 1.25rem; font-size: .85rem; color: #8fa3bf;
+      margin: .5rem -1.25rem -1rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* Explainer points */
+    .wyg-points { display: flex; flex-direction: column; gap: 1rem; }
+    .wyg-point {
+      display: flex; align-items: flex-start; gap: .9rem;
+      background: var(--navy-light); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.1rem 1.3rem;
+    }
+    .wyg-point-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+    .wyg-point h4 { font-size: .9rem; font-weight: 700; margin-bottom: .2rem; }
+    .wyg-point p { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+
+    /* Responsive */
     @media (max-width: 900px) {
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .steps-grid::before { display: none; }
@@ -137,6 +214,7 @@
       .hero { padding: 116px 0 40px; }
       .phone-card { padding: 2.25rem 1.5rem; }
       .steps-grid { grid-template-columns: 1fr; }
+      .tg-mockup { padding: 1.75rem 1.25rem 1.25rem; }
     }
   </style>
 </head>
@@ -145,7 +223,6 @@
 <!-- ════ NAV ════ -->
 <nav role="navigation" aria-label="Main navigation">
   <div class="container nav-inner">
-
     <a href="../index.html" class="nav-logo" aria-label="Genesis AI Systems home">
       <svg class="nav-logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect width="38" height="38" rx="8" fill="#162847"/>
@@ -157,7 +234,6 @@
         <span class="sub">AI Systems</span>
       </div>
     </a>
-
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -170,7 +246,6 @@
            class="btn nav-btn">Book a Call</a>
       </li>
     </ul>
-
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -189,7 +264,6 @@
   </div>
 </div>
 
-
 <main>
 
   <!-- ════ HERO ════ -->
@@ -200,15 +274,15 @@
         Live Demo
       </div>
       <h1 id="hero-heading">
-        Hear It<br>
-        <span class="accent">For Yourself.</span>
+        Talk to an AI Receptionist.<br>
+        <span class="accent">Right Now, in Your Browser.</span>
       </h1>
       <p class="hero-sub">
-        Not a recording. A real AI receptionist handling real calls for a real business.
+        This is not a recording. Click the button below and have a real conversation
+        with Riley, the demo AI receptionist built by Genesis AI Systems.
       </p>
     </div>
   </section>
-
 
   <!-- ════ PAIN ════ -->
   <section class="pain" aria-labelledby="pain-heading">
@@ -227,7 +301,6 @@
     </div>
   </section>
 
-
   <!-- ════ VALUE ════ -->
   <section class="value" aria-labelledby="value-heading">
     <div class="container">
@@ -238,43 +311,43 @@
         </h2>
         <div class="value-body">
           <p>
-            Riley is the AI receptionist that answers every call to Genesis AI Systems right now.
-            Not a recording. Not a controlled demo environment.
+            Riley is the AI receptionist Genesis AI Systems builds for service businesses.
+            What you are about to hear is a demo version of the real thing.
           </p>
           <p>
-            A live system handling real calls for a real business.
-            <strong>The same system we build for every client.</strong>
+            Same voice. Same flow. Same summaries sent straight to your phone after every call.
+            <strong>This is exactly what your callers would experience.</strong>
           </p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- ════ DEMO PHONE CARD ════ -->
+  <!-- ════ DEMO CALL CARD ════ -->
   <section class="demo-card-section" aria-labelledby="demo-card-heading">
     <div class="container">
       <div class="phone-card">
-        <div class="phone-icon">📞</div>
+        <div class="phone-icon">🎙️</div>
         <h3 id="demo-card-heading">
-          Hear a Live <span class="accent">AI Receptionist.</span>
+          Talk to Riley <span class="accent">Right Now.</span>
         </h3>
         <p class="phone-card-sub">
-          Call the demo line and hear it for yourself.
+          Click the button. Riley will greet you, ask a few questions, and show you
+          exactly how your callers would be handled. Takes about 60 seconds.
         </p>
-        <!--
-          SWAP: Replace the [DEMO NUMBER] placeholder below with the real dedicated demo line
-          once it is provisioned. Update the display text and the phone-status line accordingly.
-        -->
-        <div class="phone-number">[DEMO NUMBER]</div>
-        <div class="phone-status">Coming soon</div>
-        <p class="phone-meta">
-          This is a dedicated demo line. It will be live shortly.
+        <!-- SWAP: replace DEMO_ASSISTANT_ID_HERE with the Vapi assistant ID once created -->
+        <button id="vapiCallBtn" aria-label="Start demo call with Riley">
+          <span id="btnIcon">📞</span>
+          <span id="btnText">Talk to Riley</span>
+        </button>
+        <div id="callStatus" role="status" aria-live="polite"></div>
+        <p class="phone-disclaimer">
+          This is a demo line for Genesis AI Systems. Riley will ask for your name,
+          phone number, and what kind of business you run. This is a real AI, not a recording.
         </p>
       </div>
     </div>
   </section>
-
 
   <!-- ════ STEPS ════ -->
   <section class="steps" aria-labelledby="steps-heading">
@@ -307,8 +380,68 @@
     </div>
   </section>
 
+  <!-- ════ WHAT YOU GET ════ -->
+  <section class="what-you-get" aria-labelledby="wyg-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What Lands in Your Phone</div>
+        <h2 id="wyg-heading">
+          Every Call Ends With <span class="accent">This in Your Pocket.</span>
+        </h2>
+        <p>
+          The moment Riley hangs up, a summary hits your phone.
+          Name, number, reason for the call. Nothing falls through the cracks.
+        </p>
+      </div>
+      <div class="wyg-inner">
+        <div class="tg-mockup" role="img" aria-label="Example call summary sent to your phone after every call">
+          <div class="tg-bubble">
+            <div class="tg-badge">📞 Call Complete</div>
+            <div class="tg-field"><span>From: </span><span>John Smith (<span class="tg-link">+1 313 555 1234</span>)</span></div>
+            <div class="tg-field"><span>Business: </span><span>Demo Genesis AI Systems &mdash; contractor</span></div>
+            <div class="tg-field"><span>Intent: </span><span>requested_quote</span></div>
+            <div class="tg-field"><span>Duration: </span><span>87s</span></div>
+            <div class="tg-summary">
+              Caller asked about getting an AI receptionist set up for their contracting business.
+              Runs a 4-person crew, currently missing 3 to 5 calls a week. Interested in the setup package.
+              Wants a callback to discuss pricing.
+            </div>
+            <div class="tg-action">
+              <span>&#9989;</span>
+              <span>Lead captured &mdash; callback requested by end of day</span>
+            </div>
+            <div class="tg-time">4:59 PM</div>
+          </div>
+          <div class="tg-draft-btn">&#9993;&#65039;&nbsp;&nbsp;Draft Email</div>
+        </div>
+        <div class="wyg-points">
+          <div class="wyg-point">
+            <div class="wyg-point-icon">&#9889;</div>
+            <div>
+              <h4>Instant. Every Time.</h4>
+              <p>The summary hits your phone the second the call ends. Not batched, not delayed. You always know who called and why before you call them back.</p>
+            </div>
+          </div>
+          <div class="wyg-point">
+            <div class="wyg-point-icon">&#127919;</div>
+            <div>
+              <h4>Only What Matters.</h4>
+              <p>Name, number, reason for the call, urgency level. Clean and readable in under 10 seconds. No transcripts to dig through.</p>
+            </div>
+          </div>
+          <div class="wyg-point">
+            <div class="wyg-point-icon">&#128242;</div>
+            <div>
+              <h4>Goes Where You Are.</h4>
+              <p>Summaries go straight to Telegram, already on your phone. No apps to install, no dashboards to check. It finds you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ════ LOW-PRESSURE CTA ════ -->
+  <!-- ════ CTA ════ -->
   <section class="footer-cta" aria-labelledby="footer-cta-heading">
     <div class="container">
       <h2 id="footer-cta-heading">
@@ -322,13 +455,12 @@
          target="_blank" rel="noopener noreferrer"
          class="btn">Book Your Free Call</a>
       <div style="margin-top:1rem;">
-        <span class="micro">Free &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; 30 minutes</span>
+        <span class="micro">Free &nbsp;&#183;&nbsp; No credit card &nbsp;&#183;&nbsp; 30 minutes</span>
       </div>
     </div>
   </section>
 
 </main>
-
 
 <!-- ════ FOOTER ════ -->
 <footer>
@@ -350,5 +482,91 @@
 </footer>
 
 <script src="../js/main.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // SWAP: replace DEMO_ASSISTANT_ID_HERE with the real Vapi assistant ID after Step 2
+  var VAPI_PUBLIC_KEY = '12ad7b40-584d-4d74-8488-28fbe8298a3f';
+  var ASSISTANT_ID    = 'b41a6283-e3f8-4b75-8619-53724eb39de7';
+
+  var btn      = document.getElementById('vapiCallBtn');
+  var btnIcon  = document.getElementById('btnIcon');
+  var btnText  = document.getElementById('btnText');
+  var statusEl = document.getElementById('callStatus');
+  var vapi     = null;
+  var calling  = false;
+
+  function loadVapiSDK(cb) {
+    if (window.Vapi) { cb(); return; }
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi.js';
+    s.onload = cb;
+    s.onerror = function() { setStatus('Could not load the call SDK. Please refresh and try again.'); };
+    document.head.appendChild(s);
+  }
+
+  function setStatus(msg, active) {
+    statusEl.textContent = msg;
+    statusEl.className = active ? 'active' : '';
+  }
+
+  function endCall() {
+    calling = false;
+    btn.disabled = false;
+    btn.classList.remove('calling');
+    btnIcon.textContent = '📞';
+    btnText.textContent = 'Talk to Riley';
+    vapi = null;
+  }
+
+  function startCall() {
+    calling = true;
+    btn.disabled = true;
+    btn.classList.add('calling');
+    btnIcon.textContent = '🔴';
+    btnText.textContent = 'Connecting...';
+    setStatus('Starting your call with Riley...', true);
+
+    loadVapiSDK(function() {
+      try {
+        vapi = new window.Vapi(VAPI_PUBLIC_KEY);
+        vapi.on('call-start', function() {
+          btnText.textContent = 'End Call';
+          btn.disabled = false;
+          setStatus('You are connected to Riley. Go ahead and speak.', true);
+        });
+        vapi.on('call-end', function() {
+          endCall();
+          setStatus('Call ended. Your summary is on its way.');
+        });
+        vapi.on('error', function(e) {
+          console.error('[Vapi]', e);
+          endCall();
+          setStatus('Something went wrong. Please try again.');
+        });
+        vapi.start(ASSISTANT_ID);
+      } catch(e) {
+        console.error('[Vapi init]', e);
+        endCall();
+        setStatus('Could not start the call. Please try again.');
+      }
+    });
+  }
+
+  function stopCall() {
+    if (vapi) { try { vapi.stop(); } catch(e) {} }
+    endCall();
+    setStatus('Call ended. Your summary is on its way.');
+  }
+
+  btn.addEventListener('click', function() {
+    if (!calling) { startCall(); } else { stopCall(); }
+  });
+
+}());
+</script>
+
 </body>
 </html>
