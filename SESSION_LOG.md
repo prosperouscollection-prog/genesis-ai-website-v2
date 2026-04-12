@@ -18,16 +18,16 @@ Only exception: favicon where space forces abbreviation.
 ├── pages/
 │   ├── index.html              ← FULL V2 homepage (built, not live yet)
 │   ├── about.html              ← BUILT
-│   ├── demo.html               ← placeholder
+│   ├── demo.html               ← BUILT
 │   ├── faq.html                ← BUILT
-│   └── pricing.html            ← placeholder
+│   └── pricing.html            ← BUILT
 ├── assets/
 │   ├── logos/                  ← logo-dark.png, logo-light.png, favicon-32.png, favicon-180.png, favicon.png
 │   ├── images/                 ← EMPTY
 │   └── video/                  ← EMPTY
 ├── css/style.css               ← empty, styles are inline for now
 ├── js/main.js                  ← empty, JS is inline for now
-├── config/stripe.js            ← placeholder
+├── config/stripe.js            ← live Stripe payment links (build, retainer, combined)
 ├── .gitignore                  ← DS_Store, node_modules, .env
 ├── SESSION_LOG.md              ← this file
 └── docs/
@@ -124,7 +124,7 @@ Goes on every CTA button on every page. Opens in new tab.
 | About    | BUILT — pages/about.html      | Complete                                   |
 | Demo     | BUILT — pages/demo.html       | Vapi web call widget + Telegram mockup, wired to Demo Riley (b41a6283) |
 | FAQ      | BUILT — pages/faq.html        | Complete                                   |
-| Pricing  | Empty placeholder             | 3 cards, no pricing on homepage            |
+| Pricing  | BUILT — pages/pricing.html    | Stripe links wired, complete               |
 
 ---
 
@@ -162,7 +162,7 @@ Goes on every CTA button on every page. Opens in new tab.
 ## Next Steps (in order)
 1. [x] Complete Cloudflare DNS changes (see above)
 2. [x] Enable GitHub Pages in repo settings, set custom domain to genesisai.systems
-3. [ ] Confirm temp page is live on genesisai.systems
+3. [x] Confirm temp page is live on genesisai.systems
 4. [x] Export logo PNGs from Illustrator, drop into assets/logos/, swap comments
 5. [x] Build Demo page
 6. [x] Build Pricing page
@@ -175,7 +175,7 @@ Goes on every CTA button on every page. Opens in new tab.
 13. [x] Extract shared CSS into css/style.css and shared JS into js/main.js, link from all 5 pages
 14. [x] Fix mobile menu visibility on load with hidden attribute + hidden property toggle in main.js
 15. [x] Reset footer nav so it does not inherit the fixed/blurred topnav styles
-16. [ ] Real browser test of demo page Vapi button once GitHub Pages is live
+16. [x] Real browser test of demo page Vapi button — confirmed working 2026-04-12
 17. [x] Export logos — see docs/LOGO-EXPORT-SPECS.md
 
 ---
@@ -197,16 +197,24 @@ Brand name is always Genesis AI Systems — never shortened in public-facing tex
 Never touch GitHub repo prosperouscollection-prog/ai-automation-portfolio — archived
 Output all code as text for me to paste into Claude Code — do not run tools yourself
 Pure HTML/CSS/JS only — no frameworks, no external dependencies
+No em dashes anywhere in copy. Use commas or periods instead.
+Copy must not read like AI wrote it. Plain, direct, human.
 
 Current state summary:
 
+Site is LIVE at https://genesisai.systems
 Repo: https://github.com/prosperouscollection-prog/genesis-ai-website-v2 (public, main branch)
-root index.html = temp "Something Sharper Is Coming" page
-pages/index.html = full V2 homepage (built, not live yet)
-DNS is Cloudflare — changes still pending (details in SESSION_LOG.md)
-GitHub Pages not enabled yet
+root index.html = temp "Something Sharper Is Coming" holding page (intentional, not swapping yet)
+All 5 pages built and live at /pages/
+Real logos in across all 5 pages
+Demo page Vapi web call working, Demo Riley live, Telegram confirmed
+Stripe payment links wired into pricing page, all three smoke tested in live mode
+config/stripe.js written with all three payment link URLs
 
-Immediate next task: Push all built pages live behind temp page, export logos per docs/LOGO-EXPORT-SPECS.md, enable GitHub Pages once logos are confirmed.
+Open items:
+- Swap root index.html to full homepage when ready (holding intentionally)
+- Get real metric from Cortland deployment when available
+- Quote BUSINESS_MAILING_ADDRESS value in .env before next sourcing session
 
 ---
 
@@ -234,7 +242,7 @@ Immediate next task: Push all built pages live behind temp page, export logos pe
 - `.env` lines containing unquoted `BUSINESS_MAILING_ADDRESS` values will break scripts that use `set -e` while sourcing. Quote those values before next sourcing session.
 - Demo page Telegram mockup previously showed "contractor" — fixed to "service business" in commit `01aaefe`.
 - `assets/images/founder.jpg`: resized from 2.3 MB to 43 KB at 400px via sips. RESOLVED.
-- `logo-dark.png` and `logo-light.png` have black canvas areas visible — confirm transparent on live site before going public.
+- `logo-dark.png` and `logo-light.png` — PNG format confirmed, black canvas issue resolved.
 
 ---
 
@@ -264,7 +272,7 @@ Combined link puts $1,500 setup fee as a one-time line item alongside the $479/m
 - config/stripe.js: Written with all three payment link URLs as named constants, no secret keys
 
 ### Next Steps
-- [ ] Commit and push pricing.html + config/stripe.js to main
-- [ ] Smoke test all three Stripe links in browser — confirm checkout loads correctly in live mode
+- [x] Commit and push pricing.html + config/stripe.js to main — commit 5e68f22
+- [x] Smoke test all three Stripe links in browser — all three confirmed loading correctly in live mode 2026-04-12
 - [x] Build About page
 - [x] Build FAQ page
