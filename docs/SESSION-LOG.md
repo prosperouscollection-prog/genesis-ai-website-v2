@@ -74,3 +74,12 @@
 - Commit: 869de4e
 
 ---
+
+## Session 1 Addendum 3 — 2026-04-12
+
+- Vapi web call fixed: root cause was stale community UMD bundle (@vapi-ai/web@2.2.4). Fix: switched to ESM import via esm.sh pinned to @vapi-ai/web@2.5.2. Script tag changed to type="module". Commit 28f2a8d.
+- Demo page browser test confirmed: call connects, Riley answers, Telegram message confirmed in prod chat.
+- favicon.ico added to repo root (copy of favicon-32.png) for GitHub Pages default favicon resolution.
+- Footer logo swapped from text brand line to logo-dark.png across all 5 pages (index, about, demo, faq, pricing).
+
+---
