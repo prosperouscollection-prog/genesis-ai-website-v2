@@ -234,3 +234,4 @@ Immediate next task: Push all built pages live behind temp page, export logos pe
 ### Known issues
 - `.env` lines containing unquoted `BUSINESS_MAILING_ADDRESS` values will break scripts that use `set -e` while sourcing. Quote those values before next sourcing session.
 - Demo page Telegram mockup previously showed "contractor" — fixed to "service business" in commit `01aaefe`.
+- `assets/images/founder.jpg`: resized from 2.3 MB to 43 KB at 400px via sips. RESOLVED.

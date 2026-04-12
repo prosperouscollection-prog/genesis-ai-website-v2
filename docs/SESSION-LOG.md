@@ -52,6 +52,7 @@
 - Created docs/LOGO-EXPORT-SPECS.md with export instructions for the designer
 - V1 access rule updated: read access permitted, write requires explicit per-session approval. Standing approval for appending to docs/SESSION-LOG.md.
 - Fixed remaining contractor references in demo mockup summary text (commit: ba4a433)
+- Founder photo resized with sips: 400px longest side, 75% JPEG quality. Final size: 43 KB. Committed as c44493e.
 
 ### Outstanding going into Session 2
 - [ ] Enable GitHub Pages on genesis-ai-website-v2 (Settings → Pages → main / root → custom domain genesisai.systems)
