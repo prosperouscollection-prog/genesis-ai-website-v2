@@ -539,9 +539,12 @@
           setStatus('Call ended. Your summary is on its way.');
         });
         vapi.on('error', function(e) {
-          console.error('[Vapi]', e);
+          console.error('[Vapi] error:', JSON.stringify(e));
           endCall();
-          setStatus('Something went wrong. Please try again.');
+          var msg = (e && e.error && e.error.message) ? e.error.message :
+                    (e && e.message) ? e.message :
+                    'Unknown error — check browser console';
+          setStatus('Error: ' + msg);
         });
         vapi.start(ASSISTANT_ID);
       } catch(e) {
