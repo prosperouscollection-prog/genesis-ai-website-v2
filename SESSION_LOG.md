@@ -17,9 +17,9 @@ Only exception: favicon where space forces abbreviation.
 ├── index.html                  ← TEMP "Something Sharper Is Coming" page (LIVE)
 ├── pages/
 │   ├── index.html              ← FULL V2 homepage (built, not live yet)
-│   ├── about.html              ← placeholder
+│   ├── about.html              ← BUILT
 │   ├── demo.html               ← placeholder
-│   ├── faq.html                ← placeholder
+│   ├── faq.html                ← BUILT
 │   └── pricing.html            ← placeholder
 ├── assets/
 │   ├── logos/                  ← logo-dark.png, logo-light.png, favicon-32.png, favicon-180.png, favicon.png
@@ -121,9 +121,9 @@ Goes on every CTA button on every page. Opens in new tab.
 | Page     | Status                        | Notes                                      |
 |----------|-------------------------------|--------------------------------------------|
 | Home     | BUILT — pages/index.html      | Full production code, waiting behind temp  |
-| About    | Empty placeholder             | Not started                                |
+| About    | BUILT — pages/about.html      | Complete                                   |
 | Demo     | BUILT — pages/demo.html       | Vapi web call widget + Telegram mockup, wired to Demo Riley (b41a6283) |
-| FAQ      | Empty placeholder             | Not started                                |
+| FAQ      | BUILT — pages/faq.html        | Complete                                   |
 | Pricing  | Empty placeholder             | 3 cards, no pricing on homepage            |
 
 ---
@@ -266,5 +266,5 @@ Combined link puts $1,500 setup fee as a one-time line item alongside the $479/m
 ### Next Steps
 - [ ] Commit and push pricing.html + config/stripe.js to main
 - [ ] Smoke test all three Stripe links in browser — confirm checkout loads correctly in live mode
-- [ ] Build About page
-- [ ] Build FAQ page
+- [x] Build About page
+- [x] Build FAQ page
