@@ -394,3 +394,15 @@ Rewrote the full homepage copy to align tighter with a Pain → Value → Low CT
 - Real Cortland deployment metrics to replace or supplement the cited industry stats on the home page once available.
 - Real screenshot of a Genesis AI Systems call summary to replace the handcrafted replica on the home-page operational proof block.
 - Live browser smoke test of the demo page Option A / Option B layout and Vapi call flow (not performed in this environment).
+
+---
+
+## 2026-04-13 — Root swap: site fully live
+
+- Root `/index.html` swapped to full homepage (content mirrored from `pages/index.html`).
+- Site is fully live at genesisai.systems.
+- Temp holding page retired.
+- Internal nav hrefs in the root `/index.html` rewritten to absolute paths (`/`, `/pages/about.html`, `/pages/demo.html`, `/pages/faq.html`, `/pages/pricing.html`, `/pages/privacy.html`, `/pages/terms.html`) so the top nav, mobile menu, and footer nav resolve correctly from the site root. Asset/CSS/JS refs left as `../assets/...`, `../css/style.css`, `../js/main.js`; browser URL normalization collapses these to the correct root paths so they load without issue.
+
+### Open item
+- Replace call summary replica card with real screenshot when available.
