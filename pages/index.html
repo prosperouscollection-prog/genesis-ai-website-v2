@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Genesis AI Systems: Stop Losing Calls. Start Winning Jobs.</title>
-  <meta name="description" content="Genesis AI Systems builds AI receptionists that answer every call, qualify every lead, and send you a summary the moment it ends. No voicemail. No missed jobs." />
-  <meta property="og:title" content="Genesis AI Systems: Stop Losing Calls. Start Winning Jobs." />
-  <meta property="og:description" content="Your phone rings while you're on a job. We make sure you never lose that call again." />
+  <title>Genesis AI Systems. Stop losing jobs from missed calls.</title>
+  <meta name="description" content="Genesis AI Systems gives local businesses a trained AI receptionist that answers calls, captures the reason for the call, and sends the owner a clean summary so they can respond faster without hiring front-desk staff." />
+  <meta property="og:title" content="Genesis AI Systems. Stop losing jobs from missed calls." />
+  <meta property="og:description" content="A trained AI receptionist for local service businesses. Answers calls, captures the reason, sends the owner a clean summary." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genesisai.systems" />
   <link rel="icon" type="image/png" href="../assets/logos/favicon-32.png" sizes="32x32" />
@@ -18,10 +18,51 @@
 
     /* Hero overrides */
     .hero { padding: 148px 0 100px; }
-    .hero-sub { margin: 0 auto 1.25rem; }
-    .hero-audience { margin: 0 auto 2.25rem; max-width: 560px; }
+    .hero-sub { margin: 0 auto 2.25rem; }
+    .hero-trust {
+      margin: 2rem auto 0;
+      max-width: 560px;
+      color: var(--muted);
+      letter-spacing: .02em;
+    }
     .hero-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
     .hero-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
+
+    /* Value list ("What Riley actually does") */
+    .value-list {
+      max-width: 780px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1.1rem;
+    }
+    .value-item {
+      display: flex; align-items: flex-start; gap: 1.15rem;
+      background: var(--navy-light); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.35rem 1.5rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .value-item:hover {
+      border-color: rgba(74, 143, 212, .45);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .25);
+    }
+    .value-num {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(74, 143, 212, .12);
+      border: 1px solid rgba(74, 143, 212, .4);
+      color: var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .82rem; font-weight: 800; flex-shrink: 0;
+    }
+    .value-item h3 {
+      font-size: 1rem; font-weight: 700; color: var(--white);
+      margin-bottom: .3rem; line-height: 1.4;
+    }
+    .value-item p {
+      font-size: .9rem; color: var(--muted); line-height: 1.6;
+    }
+
+    /* Founder trust block (reused .mid-cta wrapper) */
+    .mid-cta.founder-trust p {
+      max-width: 640px;
+    }
 
     /* Sitewide CTA pair */
     .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
@@ -278,7 +319,7 @@
       <li>
         <a href="/pages/demo.html"
            target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Talk to Riley (60 sec)</a>
+           class="btn nav-btn">Talk to Riley</a>
       </li>
     </ul>
 
@@ -297,7 +338,7 @@
   <a href="pricing.html">Pricing</a>
   <div class="m-cta">
     <a href="/pages/demo.html"
-       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley (60 sec)</a>
+       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley</a>
   </div>
 </div>
 
@@ -312,27 +353,18 @@
         Genesis AI Systems, AI Receptionist Service
       </div>
       <h1 id="hero-heading">
-        Your Phone Rings While You Are on the Job.<br>
-        <span class="accent">That Call Just Went to a Competitor.</span>
+        Stop losing jobs just because you<br>
+        <span class="accent">could not answer the phone.</span>
       </h1>
       <p class="hero-sub">
-        Service businesses lose thousands of dollars every month to unanswered calls.
-        Genesis AI Systems fixes that with an AI receptionist that answers every call,
-        qualifies every lead, and sends you a summary before you even put your tools down.
-        No staff. No voicemail. No missed jobs.
-      </p>
-      <p class="micro hero-audience">
-        Built for contractors, plumbers, HVAC, electricians, roofers, landscapers, and other phone-driven service businesses.
-      </p>
-      <p class="micro" style="max-width:560px;margin:0 auto 1rem;">
-        Hear Riley now. If it fits, book a short audit call and get a recommended setup plan. Setup takes less than a week.
+        Genesis AI Systems gives local businesses a trained AI receptionist that answers calls, captures the reason for the call, and sends you a clean summary so you can respond faster without hiring front-desk staff.
       </p>
       <div class="cta-pair">
         <div class="cta-stack">
           <a href="/pages/demo.html"
              target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley (60 sec)</a>
-          <p class="micro">No credit card. Hear the call flow now.</p>
+             class="btn">Talk to Riley</a>
+          <p class="micro">Hear the call flow now. About 60 seconds.</p>
         </div>
         <div class="cta-stack">
           <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
@@ -341,6 +373,9 @@
           <p class="micro">15-30 min. Get a recommended setup plan.</p>
         </div>
       </div>
+      <p class="micro hero-trust">
+        Live on our own business line. Built for local service businesses. No long-term contract.
+      </p>
     </div>
   </section>
 
@@ -372,42 +407,42 @@
       <div>
         <div class="section-label">The Problem</div>
         <h2 id="pain-heading">
-          Every Missed Call Is<br>
-          <span class="accent">Money You Never See.</span>
+          Most missed calls are not neutral.<br>
+          <span class="accent">They are lost opportunities.</span>
         </h2>
         <div class="pain-body">
-          <p>You are busy running your business. Your phone rings. You cannot answer. <strong>That caller hangs up and calls the next name on Google.</strong></p>
-          <p>You never even knew the job existed. That is not a bad day. That is a broken system that costs you <strong>thousands of dollars every single month.</strong></p>
-          <p>Hiring a receptionist costs $3,000 to $4,500 a month before benefits. Most small business owners cannot justify it. So the calls keep getting missed. Until now.</p>
+          <p>You are on the job. Driving. With a customer. Off the clock. The phone rings and you cannot pick up. <strong>Callers do not wait. They move to the next business on the list.</strong></p>
+          <p>You never even knew the job existed. That is not a bad day. It is a quiet, repeating loss. Every week. Every month.</p>
+          <p>Hiring someone to sit at a phone costs more than most local businesses can justify. So the calls keep slipping through. That is the gap Riley is built to close.</p>
         </div>
       </div>
       <div class="pain-cards">
         <div class="pain-card">
-          <div class="pain-card-icon">📵</div>
+          <div class="pain-card-icon">🔨</div>
           <div>
-            <h3>Calls Go to Voicemail</h3>
-            <p>62% of callers will not leave a message. If you do not answer, they move on. Immediately.</p>
+            <h3>On the job</h3>
+            <p>Your hands are busy. A call comes in. You cannot answer. The job goes to whoever picks up next.</p>
           </div>
         </div>
         <div class="pain-card">
-          <div class="pain-card-icon">⏱️</div>
+          <div class="pain-card-icon">🚗</div>
           <div>
-            <h3>Speed Wins the Customer</h3>
-            <p>Every minute you wait is a customer choosing someone else.</p>
+            <h3>Driving</h3>
+            <p>You see the phone ring from the driver seat. Safer not to grab it. The caller moves on.</p>
           </div>
         </div>
         <div class="pain-card">
-          <div class="pain-card-icon">💸</div>
+          <div class="pain-card-icon">👥</div>
           <div>
-            <h3>Receptionist Is Too Expensive</h3>
-            <p>A full-time receptionist runs $36,000 to $54,000 a year. Genesis AI Systems costs a fraction of that and never calls in sick.</p>
+            <h3>With a customer</h3>
+            <p>You are in front of a paying customer. You will not interrupt them to answer a stranger. So the stranger leaves.</p>
           </div>
         </div>
         <div class="pain-card">
           <div class="pain-card-icon">🌙</div>
           <div>
-            <h3>After-Hours Jobs Disappear</h3>
-            <p>A customer calls at 9pm with an urgent need. Another business picks up. You find out Monday morning.</p>
+            <h3>Off the clock</h3>
+            <p>Evenings, weekends, holidays. That is when a lot of the calls come in. That is when nobody picks up.</p>
           </div>
         </div>
       </div>
@@ -415,107 +450,105 @@
   </section>
 
 
-  <!-- ════ OUTCOMES ════ -->
-  <section class="outcomes" aria-labelledby="outcomes-heading">
+  <!-- ════ VALUE: WHAT RILEY ACTUALLY DOES ════ -->
+  <section class="outcomes" aria-labelledby="value-heading">
     <div class="container">
       <div class="section-header">
         <div class="section-label">What You Get</div>
-        <h2 id="outcomes-heading">Not Features. <span style="color:var(--blue-light)">Results.</span></h2>
-        <p>Here's what your business looks like after Genesis AI Systems is running.</p>
+        <h2 id="value-heading">What Riley <span style="color:var(--blue-light)">actually does.</span></h2>
+        <p>Plain, specific, no buzzwords. Here is what happens on every call.</p>
       </div>
-      <div class="outcomes-grid">
-        <div class="outcome-card">
-          <div class="outcome-icon">📞</div>
-          <h3>Calls Answered Around the Clock</h3>
-          <p>Every call gets answered in under 2 seconds, 24 hours a day, 7 days a week, including holidays and weekends.</p>
+      <div class="value-list">
+        <div class="value-item">
+          <div class="value-num">1</div>
+          <div>
+            <h3>Answers incoming calls</h3>
+            <p>Riley picks up when you cannot. Day, night, weekend, holiday. No voicemail.</p>
+          </div>
         </div>
-        <div class="outcome-card">
-          <div class="outcome-icon">📋</div>
-          <h3>Instant Job Summaries</h3>
-          <p>After every call you get a clean summary sent straight to your phone. Caller name, number, reason for the call, and urgency level.</p>
+        <div class="value-item">
+          <div class="value-num">2</div>
+          <div>
+            <h3>Handles the first response</h3>
+            <p>Greets the caller in your voice. Sounds like a calm front-desk person, not a phone tree.</p>
+          </div>
         </div>
-        <div class="outcome-card">
-          <div class="outcome-icon">🎯</div>
-          <h3>Pre-Qualified Leads Only</h3>
-          <p>Your AI receptionist asks the right questions, filters out time-wasters, and only escalates calls worth your time.</p>
+        <div class="value-item">
+          <div class="value-num">3</div>
+          <div>
+            <h3>Collects what the caller needs</h3>
+            <p>Asks the questions that matter to your business. Writes down the reason for the call in plain language.</p>
+          </div>
         </div>
-        <div class="outcome-card">
-          <div class="outcome-icon">📅</div>
-          <h3>Bookings While You Work</h3>
-          <p>Appointments get scheduled, callbacks get promised, and customers feel taken care of, all while you're on the job.</p>
+        <div class="value-item">
+          <div class="value-num">4</div>
+          <div>
+            <h3>Qualifies basic lead details</h3>
+            <p>Gets the caller's name, number, service area, and how urgent the request is so you know what to prioritize.</p>
+          </div>
         </div>
-        <div class="outcome-card">
-          <div class="outcome-icon">💬</div>
-          <h3>Sounds Like Your Business</h3>
-          <p>Your AI receptionist is trained on your services, your prices, your service area. It represents you, not a call center.</p>
+        <div class="value-item">
+          <div class="value-num">5</div>
+          <div>
+            <h3>Sends you a clean summary</h3>
+            <p>A short, readable note lands on your phone after the call. Who called. What they want. What to do next.</p>
+          </div>
         </div>
-        <div class="outcome-card">
-          <div class="outcome-icon">🔄</div>
-          <h3>Runs Itself After Setup</h3>
-          <p>One setup call, one phone number forward. After that, it runs in the background. No maintenance, no babysitting.</p>
+        <div class="value-item">
+          <div class="value-num">6</div>
+          <div>
+            <h3>Helps you respond faster without adding staff</h3>
+            <p>No front-desk hire. No app for you to check every hour. You get back to the caller on your time, from the information Riley already captured.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ SOCIAL PROOF ════ -->
-  <section class="social-proof" aria-labelledby="proof-heading">
+  <!-- ════ HOW IT WORKS ════ -->
+  <section class="how" aria-labelledby="how-heading">
     <div class="container">
       <div class="section-header">
-        <div class="section-label">Proof It Works</div>
-        <h2 id="proof-heading">We Do Not Ask You to Take <span style="color:var(--blue-light)">Our Word for It.</span></h2>
-        <p>Riley is live on our own business line right now. Two client deployments are running today. This is not a pitch. It is a track record.</p>
+        <div class="section-label">The Process</div>
+        <h2 id="how-heading">Simple to <span style="color:var(--blue-light)">launch.</span></h2>
+        <p>Four clear steps. No technical setup on your end. No long onboarding.</p>
       </div>
-
-      <div class="proof-card">
-        <div class="proof-card-head">
-          <div class="avatar">🤖</div>
-          <div class="proof-meta">
-            <h4>Meet Riley</h4>
-            <span>Genesis AI Systems AI Receptionist, Live Right Now</span>
-          </div>
-          <span class="live-badge"><span class="live-dot"></span> Live</span>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num">1</div>
+          <h3>We learn your business</h3>
+          <p>A short call to understand what you do, who calls you, and how you want calls handled.</p>
         </div>
-        <p>
-          Riley answers every call to Genesis AI Systems right now. Same system we build for clients.
-          <strong>Answers in under 2 seconds, qualifies the caller, and sends a full summary the moment the call ends.</strong>
-          We built it. We use it. We stand behind it.
-        </p>
-        <p style="margin-top:.85rem;font-size:.82rem;color:var(--muted);border-top:1px solid var(--border);padding-top:.85rem;">Currently live with a Michigan-based service business that has not missed a single call since day one.</p>
-        <div class="proof-footer">
-          ▶ Hear what Riley sounds like, <a href="demo.html" style="color:var(--blue-light);text-decoration:none;">visit the Demo page</a>
+        <div class="how-step">
+          <div class="step-num">2</div>
+          <h3>We configure your call flow</h3>
+          <p>Riley is set up around your services, your area, your hours, and the questions you want asked.</p>
         </div>
-      </div>
-
-      <div class="proof-strip-inner" style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);">
-        <div class="stat">
-          <div class="num">2</div>
-          <div class="lbl">Live Client Deployments</div>
+        <div class="how-step">
+          <div class="step-num">3</div>
+          <h3>Riley goes live on your line</h3>
+          <p>You forward your number. Riley starts answering. No new phone number, no new app.</p>
         </div>
-        <div class="divider" aria-hidden="true"></div>
-        <div class="stat">
-          <div class="num" style="font-size:1rem;max-width:180px;line-height:1.35;">Every call gets a response</div>
-          <div class="lbl">Since Go-Live</div>
-        </div>
-        <div class="divider" aria-hidden="true"></div>
-        <div class="stat">
-          <div class="num">Day 1</div>
-          <div class="lbl">Calls Answered Since Go-Live</div>
+        <div class="how-step">
+          <div class="step-num">4</div>
+          <h3>You start catching calls you would have missed</h3>
+          <p>Every call ends with a clean summary on your phone so you can follow up fast.</p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ WE USE WHAT WE BUILD ════ -->
-  <section class="we-use" aria-labelledby="we-use-heading">
+  <!-- ════ OPERATIONAL PROOF ════ -->
+  <section class="we-use" aria-labelledby="op-proof-heading">
     <div class="container">
       <div class="we-use-inner">
-        <h3 id="we-use-heading">We use what we build.</h3>
-        <p class="lede">Riley has been answering calls for Genesis AI Systems since March. Before we put it on client lines, we put it on our own.</p>
-        <div class="section-label">Actual call summary from our own line</div>
-        <div class="call-summary-card" role="figure" aria-label="Example call summary from the Genesis AI Systems line">
+        <div class="section-label">Operational Proof</div>
+        <h3 id="op-proof-heading">Built to be practical, not theoretical.</h3>
+        <p class="lede">Riley has been answering calls for Genesis AI Systems on our own business line since March. Before we put it on any other line, we put it on ours. That is the proof we can point to today. No case studies, no inflated numbers.</p>
+        <div class="section-label">Sample owner notification from our own line</div>
+        <div class="call-summary-card" role="figure" aria-label="Example owner notification from the Genesis AI Systems line">
           <div class="csc-head">
             <span class="csc-badge">📞 Call Complete</span>
             <span class="csc-time">8:47 PM</span>
@@ -527,28 +560,27 @@
           <div class="csc-row"><span class="csc-label">Status</span><span class="csc-value">Lead captured, callback requested</span></div>
           <div class="csc-row"><span class="csc-label">Next step</span><span class="csc-value">Owner follow-up before noon next day</span></div>
         </div>
-        <p class="we-use-caption">Name and number redacted for privacy. Same summary format clients receive after each call.</p>
+        <p class="we-use-caption">Name and number redacted for privacy. This is the same format an owner receives after every call: who called, what they needed, and what to do next.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ MID CTA ════ -->
-  <section class="mid-cta" aria-labelledby="mid-cta-heading">
+  <!-- ════ FOUNDER TRUST ════ -->
+  <section class="mid-cta founder-trust" aria-labelledby="founder-heading">
     <div class="container">
-      <h2 id="mid-cta-heading">
-        How Much Is One Missed Call<br>Worth to Your Business?
+      <h2 id="founder-heading">
+        You are not handed off<br>to a sales team.
       </h2>
       <p>
-        If the average job is worth $500 to $2,000 and you're missing even 4 calls a month,
-        that is up to $8,000 walking out the door. We can stop that in one week.
+        Genesis AI Systems is founder-led. When you book the audit call or set up Riley for your business, you are talking directly with the person building the system, shaping the call flow, and making sure it fits how your business actually operates. No account managers. No handoffs. No script.
       </p>
       <div class="cta-pair">
         <div class="cta-stack">
           <a href="/pages/demo.html"
              target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley (60 sec)</a>
-          <p class="micro">No credit card. Hear the call flow now.</p>
+             class="btn">Talk to Riley</a>
+          <p class="micro">Hear the call flow now. About 60 seconds.</p>
         </div>
         <div class="cta-stack">
           <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
@@ -561,55 +593,21 @@
   </section>
 
 
-  <!-- ════ HOW IT WORKS ════ -->
-  <section class="how" aria-labelledby="how-heading">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">The Process</div>
-        <h2 id="how-heading">Up and Running in <span style="color:var(--blue-light)">Under a Week.</span></h2>
-        <p>No IT team. No complicated setup. Four steps and your AI receptionist is live.</p>
-      </div>
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="step-num">1</div>
-          <h3>Free Audit Call</h3>
-          <p>We listen to your business, your calls, and your pain points. No pitch. Just clarity.</p>
-        </div>
-        <div class="how-step">
-          <div class="step-num">2</div>
-          <h3>We Build Your AI</h3>
-          <p>We train your AI receptionist on your services, your area, your prices. Sounds like you, not a robot.</p>
-        </div>
-        <div class="how-step">
-          <div class="step-num">3</div>
-          <h3>Forward Your Number</h3>
-          <p>One call forward setting. Takes 90 seconds. Your AI is live and answering immediately.</p>
-        </div>
-        <div class="how-step">
-          <div class="step-num">4</div>
-          <h3>Get Summaries Instantly</h3>
-          <p>Every call gets summarized and sent to your phone. You always know who called and why.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <!-- ════ FOOTER CTA ════ -->
   <section class="footer-cta" aria-labelledby="footer-cta-heading">
     <div class="container">
       <h2 id="footer-cta-heading">
-        Stop Losing Jobs<br>to Voicemail.
+        The next missed call<br>does not have to happen.
       </h2>
       <p>
-        Hear exactly what your AI receptionist would sound like right now, or book a short audit call and get a recommended setup plan.
+        Hear Riley right now, or book a short audit call. No credit card. No long-term contract. Low pressure either way.
       </p>
       <div class="cta-pair">
         <div class="cta-stack">
           <a href="/pages/demo.html"
              target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley (60 sec)</a>
-          <p class="micro">No credit card. Hear the call flow now.</p>
+             class="btn">Talk to Riley</a>
+          <p class="micro">Hear the call flow now. About 60 seconds.</p>
         </div>
         <div class="cta-stack">
           <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"

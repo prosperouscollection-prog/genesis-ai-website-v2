@@ -328,3 +328,69 @@ Combined link puts $1,500 setup fee as a one-time line item alongside the $479/m
 - Swap root `/index.html` to the full homepage once all content is final. Currently still the holding page.
 - Get a real metric from the Cortland deployment to replace the Invoca/BT/InsideSales citations where appropriate.
 - Record and drop in a real screenshot of a Genesis AI Systems call summary to replace the handcrafted replica on the home-page proof block.
+
+---
+
+## 2026-04-12 — Homepage rewrite to Pain → Value → Low CTA framework
+
+### Homepage (pages/index.html)
+Rewrote the full homepage copy to align tighter with a Pain → Value → Low CTA structure, without redesigning around case studies or quantified client results.
+
+- **Meta**: title and description updated to lead with "Stop losing jobs from missed calls" and the trained AI receptionist positioning.
+- **Hero**:
+  - H1: "Stop losing jobs just because you could not answer the phone."
+  - Sub: "Genesis AI Systems gives local businesses a trained AI receptionist that answers calls, captures the reason for the call, and sends you a clean summary so you can respond faster without hiring front-desk staff."
+  - Primary CTA: "Talk to Riley" (demo.html, new tab). Secondary CTA: "Book Free Audit Call" (Calendly, new tab).
+  - Trust line below the CTA pair: "Live on our own business line. Built for local service businesses. No long-term contract."
+  - Dropped the audience micro line and the extra reassurance micro line added in the earlier pass.
+- **Pain section**:
+  - H2: "Most missed calls are not neutral. They are lost opportunities."
+  - Body reframed around on-the-job / driving / with-a-customer / off-the-clock scenarios.
+  - Pain cards rewritten to 4 specific miss moments: On the job, Driving, With a customer, Off the clock.
+- **Value section** (replaces the old Outcomes grid):
+  - New H2: "What Riley actually does."
+  - Reuses the `.outcomes` section wrapper for styling continuity. Replaces the 6-card grid with a single-column numbered `.value-list` of 6 items: answers incoming calls, handles first response, collects what the caller needs, qualifies basic lead details, sends a clean summary, helps the owner respond faster without adding staff.
+- **How it works** (moved up in the flow, above operational proof):
+  - New H2: "Simple to launch."
+  - Four new step labels: "We learn your business", "We configure your call flow", "Riley goes live on your line", "You start catching calls you would have missed".
+- **Operational proof** (replaces the old social-proof + we-use blocks):
+  - New H3: "Built to be practical, not theoretical."
+  - Leads with "Riley has been answering calls for Genesis AI Systems on our own business line since March. Before we put it on any other line, we put it on ours."
+  - Explicitly states "No case studies, no inflated numbers."
+  - Keeps the sample owner-notification summary card and its caption.
+  - Dropped the "2 live client deployments" stat and the "Day 1 Calls Answered Since Go-Live" stat to avoid implying deployment history.
+- **Founder trust section** (replaces the old mid CTA):
+  - New H2: "You are not handed off to a sales team."
+  - Body explicitly names founder-led posture, no account managers, no handoffs, no script.
+  - Standard CTA pair.
+- **Footer CTA**: softer headline "The next missed call does not have to happen." with matching body, keeping the standard CTA pair.
+- **Button label normalized**: "Talk to Riley (60 sec)" becomes just "Talk to Riley" on every CTA across every page (index, about, demo, faq, pricing, privacy, terms), per the framework's canonical primary label. `btnText` reset string in the demo.html Vapi script also updated.
+
+### About page (pages/about.html) — strong founder presence
+- Hero sub rewritten to lead with founder-led posture: "Genesis AI Systems is founder-led out of Michigan. One person builds, configures, and supports the AI receptionist you end up running."
+- "Why We Exist" value body reworded to name founder-led origin without losing the "not a tech company that stumbled into AI" line.
+- "Small Team. Real Results." headline softened to "Small team. No handoffs." because "Real Results" implies measurable client outcomes that don't yet exist. Body rewritten to emphasize no account managers and single point of contact.
+- "We Use What We Build" trust section renamed "Operational Proof", body softened to remove the "Two live client deployments running today" line and add an explicit "No case studies yet, no inflated numbers."
+
+### Demo page (pages/demo.html) — moderate founder presence
+- Meet Riley value body gained a single moderate founder line: "Built and tuned directly by the founder on our own business line before anything goes out to a client." Rest of the page left alone.
+
+### Pricing page (pages/pricing.html) — minimal founder presence
+- No founder language added. "Most Popular" badge on the retainer plan softened to "Recommended" so the plan does not imply multiple customers having chosen it when the dataset is still small.
+
+### FAQ page (pages/faq.html)
+- No changes beyond the global button label normalization. Already minimal founder presence.
+
+### Verification pass (post-edit)
+- Banned phrase grep across `pages/`: 0 matches for "Book Your Free Demo Call", "Book Your Free Call", "Book Your Free Audit Call", "Stop Losing Calls. Book Your Free Demo".
+- `[Tt]elegram` grep: 0 matches.
+- Em-dash grep (`—` and `&mdash;`): 0 matches.
+- "Talk to Riley (60 sec)" grep: 0 matches; 28 occurrences of "Talk to Riley" across the 7 pages.
+- Vapi integration on demo.html untouched: assistant id `b41a6283-e3f8-4b75-8619-53724eb39de7`, public key, `@vapi-ai/web@2.5.2` import, and `#vapiCallBtn`/`#btnIcon`/`#btnText`/`#callStatus` element ids unchanged. Only the `btnText.textContent` reset string was updated to match the new primary label.
+- `css/style.css`, `js/main.js`, and root `/index.html` not touched.
+
+### Open items (carried forward)
+- Swap root `/index.html` to the full homepage once ready.
+- Real Cortland deployment metrics to replace or supplement the cited industry stats on the home page once available.
+- Real screenshot of a Genesis AI Systems call summary to replace the handcrafted replica on the home-page operational proof block.
+- Live browser smoke test of the demo page Option A / Option B layout and Vapi call flow (not performed in this environment).
