@@ -14,249 +14,172 @@
   <link rel="stylesheet" href="../css/style.css" />
 
   <style>
-    /* ── PAGE-SPECIFIC: index.html ── */
+    /* ── PAGE-SPECIFIC: index.html (v3) ── */
 
-    /* Hero overrides */
-    .hero { padding: 148px 0 100px; }
-    .hero-sub { margin: 0 auto 2.25rem; }
+    /* Hero */
+    .hero { padding: 148px 0 80px; }
+    .hero-sub { margin: 0 auto 2.25rem; max-width: 620px; }
+    .hero-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+    .hero-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
     .hero-trust {
       margin: 2rem auto 0;
       max-width: 560px;
       color: var(--muted);
       letter-spacing: .02em;
     }
-    .hero-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
-    .hero-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
 
-    /* Value list ("What Riley actually does") */
-    .value-list {
-      max-width: 780px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 1.1rem;
-    }
-    .value-item {
-      display: flex; align-items: flex-start; gap: 1.15rem;
-      background: var(--navy-light); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.35rem 1.5rem;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .value-item:hover {
-      border-color: rgba(74, 143, 212, .45);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, .25);
-    }
-    .value-num {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(74, 143, 212, .12);
-      border: 1px solid rgba(74, 143, 212, .4);
-      color: var(--blue-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .82rem; font-weight: 800; flex-shrink: 0;
-    }
-    .value-item h3 {
-      font-size: 1rem; font-weight: 700; color: var(--white);
-      margin-bottom: .3rem; line-height: 1.4;
-    }
-    .value-item p {
-      font-size: .9rem; color: var(--muted); line-height: 1.6;
-    }
-
-    /* Founder trust block (reused .mid-cta wrapper) */
-    .mid-cta.founder-trust p {
-      max-width: 640px;
-    }
-
-    /* Sitewide CTA pair */
-    .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
-    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
-    .cta-stack .micro { margin: 0; }
-    .btn-outline {
-      display: inline-block; background: transparent; color: var(--blue-light);
-      border: 1px solid var(--blue); padding: 1rem 2rem; border-radius: 10px;
-      font-weight: 700; text-decoration: none; transition: background .2s, color .2s;
-    }
-    .btn-outline:hover, .btn-outline:focus {
-      background: rgba(58, 134, 255, .08); color: var(--white);
-    }
-
-    /* Cited stats overrides */
-    .stat.cited { max-width: 300px; }
-    .stat.cited .num {
-      font-size: .92rem; line-height: 1.45; color: var(--offwhite); font-weight: 600;
-      white-space: normal;
-    }
-    .stat.cited .lbl {
-      font-size: .65rem; color: var(--muted); margin-top: .6rem;
-      text-transform: none; letter-spacing: .02em; font-style: italic;
-    }
-
-    /* We use what we build */
-    .we-use {
-      padding: 0 0 104px;
-    }
-    .we-use-inner {
-      background: rgba(255, 255, 255, .025);
-      border: 1px solid rgba(255, 255, 255, .08);
+    /* Live Demo (Section 2), inline Vapi widget */
+    .live-demo { padding: 0 0 96px; scroll-margin-top: 96px; }
+    .live-demo-card {
+      max-width: 820px; margin: 0 auto;
+      background: var(--navy-light);
+      border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 2.75rem;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+      box-shadow: 0 18px 60px rgba(74,143,212,.12);
     }
-    .we-use h3 {
-      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-      font-weight: 800; letter-spacing: -.01em; margin-bottom: .75rem;
-    }
-    .we-use > .we-use-inner > p.lede {
-      font-size: 1rem; color: var(--muted); line-height: 1.65; max-width: 620px; margin-bottom: 1.75rem;
-    }
-    .we-use .section-label { margin-bottom: .75rem; }
-
-    .call-summary-card {
-      background: #1a1f2e;
-      border: 1px solid rgba(107, 174, 232, .22);
-      border-radius: 12px;
-      padding: 1.6rem 1.75rem;
-      font-family: "SF Mono", Menlo, Consolas, monospace;
-      font-size: .82rem;
-      line-height: 1.7;
-      color: #d7e1f0;
-      max-width: 620px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, .35);
-    }
-    .call-summary-card .csc-head {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-bottom: .85rem; margin-bottom: .85rem;
-      border-bottom: 1px solid rgba(255, 255, 255, .08);
-    }
-    .call-summary-card .csc-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(74, 222, 128, .1); color: #4ade80;
-      border: 1px solid rgba(74, 222, 128, .28);
-      font-size: .68rem; font-weight: 700;
-      padding: 4px 10px; border-radius: 100px;
-      text-transform: uppercase; letter-spacing: .08em;
-      font-family: inherit;
-    }
-    .call-summary-card .csc-time { color: #8fa3bf; font-size: .72rem; }
-    .call-summary-card .csc-row { display: flex; gap: .5rem; }
-    .call-summary-card .csc-row .csc-label {
-      color: #8fa3bf; min-width: 82px; text-transform: uppercase;
-      font-size: .68rem; letter-spacing: .06em; padding-top: 3px;
-    }
-    .call-summary-card .csc-row .csc-value { flex: 1; color: #e7edf7; }
-    .we-use-caption { font-size: .78rem; color: var(--muted); margin-top: .9rem; max-width: 620px; }
-
-    /* Proof strip */
-    .proof-strip {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 1.75rem 0;
-    }
-    .proof-strip-inner {
-      display: flex; align-items: center; justify-content: center;
-      gap: 2.75rem; flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat .num { font-size: 1.9rem; font-weight: 800; color: var(--blue-light); line-height: 1; }
-    .stat .lbl {
-      font-size: .7rem; color: var(--muted); letter-spacing: .07em;
-      text-transform: uppercase; margin-top: 5px;
-    }
-    .divider { width: 1px; height: 42px; background: var(--border); }
-
-    /* Pain */
-    .pain { padding: 104px 0; }
-    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
-    .pain h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.25rem;
-    }
-    .pain h2 .accent { color: var(--blue-light); }
-    .pain-body { font-size: 1rem; line-height: 1.78; color: var(--muted); }
-    .pain-body p + p { margin-top: 1rem; }
-    .pain-body strong { color: var(--offwhite); }
-    .pain-cards { display: flex; flex-direction: column; gap: 1rem; }
-    .pain-card {
-      background: var(--navy-mid); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.2rem 1.4rem;
-      display: flex; align-items: flex-start; gap: .95rem;
-    }
-    .pain-card-icon { font-size: 1.45rem; flex-shrink: 0; margin-top: 1px; }
-    .pain-card h3 { font-size: .92rem; font-weight: 700; color: var(--white); margin-bottom: .22rem; }
-    .pain-card p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
-
-    /* Outcomes */
-    .outcomes {
-      padding: 104px 0;
-      background: var(--navy-mid);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
-    .outcomes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
-    .outcome-card {
-      background: var(--navy-light); border: 1px solid var(--border);
-      border-radius: 12px; padding: 2rem 1.65rem; position: relative; overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .outcome-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,.32); }
-    .outcome-card::before {
+    .live-demo-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--blue), var(--blue-light));
     }
-    .outcome-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .outcome-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .55rem; }
-    .outcome-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .live-demo-card .section-label { margin-bottom: 1rem; }
+    .live-demo-card .live-demo-intro {
+      font-size: 1rem; color: var(--offwhite); line-height: 1.65;
+      max-width: 620px; margin: 0 auto 1.5rem;
+    }
+    .live-demo-card h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800; letter-spacing: -.02em; line-height: 1.15;
+      margin-bottom: .85rem;
+    }
+    .live-demo-card h2 .accent { color: var(--blue-light); }
+    .live-demo-card p {
+      font-size: 1rem; color: var(--muted); line-height: 1.65;
+      max-width: 540px; margin: 0 auto 1.75rem;
+    }
+    .live-demo-card .live-demo-micro {
+      margin-top: 1rem; font-size: .82rem; color: var(--muted);
+    }
+    .live-demo-card .live-demo-disclaimer {
+      margin-top: 1rem; font-size: .78rem; color: var(--muted);
+      max-width: 520px; line-height: 1.55;
+    }
 
-    /* Social proof */
-    .social-proof { padding: 104px 0; }
-    .proof-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .proof-card {
+    /* Vapi call button (homepage embed, mirrors demo.html pattern) */
+    #vapiCallBtn {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-size: 1.05rem; font-weight: 700;
+      padding: 1rem 2.4rem; border-radius: 6px;
+      border: 2px solid var(--cta); background: var(--cta); color: var(--white);
+      cursor: pointer; transition: background .2s, transform .15s, box-shadow .2s;
+      font-family: inherit;
+    }
+    #vapiCallBtn:hover:not(:disabled) {
+      background: var(--cta-hover); border-color: var(--cta-hover);
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(74,143,212,.35);
+    }
+    #vapiCallBtn:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+    #vapiCallBtn.calling {
+      background: #1a3a5c; border-color: var(--blue);
+      animation: pulse-btn 2s infinite;
+    }
+    @keyframes pulse-btn {
+      0%,100% { box-shadow: 0 0 0 0 rgba(74,143,212,.5); }
+      50%     { box-shadow: 0 0 0 10px rgba(74,143,212,0); }
+    }
+    #callStatus {
+      margin-top: 1.25rem; font-size: .85rem; color: var(--muted);
+      min-height: 1.4em; transition: color .3s;
+    }
+    #callStatus.active { color: var(--blue-light); }
+
+    /* Problem (Section 3, 3 bullets) */
+    .problem { padding: 96px 0; }
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
+      max-width: 980px; margin: 0 auto;
+    }
+    .problem-card {
       background: var(--navy-mid); border: 1px solid var(--border);
-      border-radius: 12px; padding: 2rem;
+      border-radius: 12px; padding: 1.75rem 1.5rem;
     }
-    .proof-card-head {
-      display: flex; align-items: center; gap: .95rem; margin-bottom: 1.25rem;
+    .problem-card .num {
+      font-size: 2.1rem; font-weight: 800; color: var(--blue-light);
+      line-height: 1; margin-bottom: .75rem;
     }
-    .avatar {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--navy-light));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; flex-shrink: 0;
+    .problem-card h3 {
+      font-size: 1rem; font-weight: 700; color: var(--white);
+      margin-bottom: .5rem; line-height: 1.4;
     }
-    .proof-meta h4 { font-size: .98rem; font-weight: 700; }
-    .proof-meta span {
-      font-size: .75rem; color: var(--blue);
-      letter-spacing: .05em; text-transform: uppercase;
-    }
-    .live-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: #4ade80; background: rgba(74,222,128,.1);
-      border: 1px solid rgba(74,222,128,.28); padding: 3px 9px; border-radius: 100px;
-      margin-left: auto;
-    }
-    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: blink 1.8s infinite; }
-    .proof-card p { font-size: .92rem; color: var(--muted); line-height: 1.68; }
-    .proof-card p strong { color: var(--offwhite); }
-    .proof-footer {
-      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
-      font-size: .78rem; color: var(--blue); font-weight: 600; letter-spacing: .04em;
-    }
+    .problem-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; }
 
-    /* Mid CTA */
-    .mid-cta {
-      padding: 104px 0; text-align: center;
+    /* Cost Compare (Section 4, Detroit math) */
+    .cost-compare {
+      padding: 96px 0;
       background: var(--navy-mid);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
-    .mid-cta h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.75rem);
-      font-weight: 800; letter-spacing: -.02em; line-height: 1.13; margin-bottom: 1rem;
+    .compare-stack {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem;
+      align-items: stretch;
+      max-width: 920px; margin: 0 auto;
     }
-    .mid-cta p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.65; }
-    .mid-cta .btn { font-size: 1.05rem; padding: 1.05rem 2.5rem; }
+    .compare-card {
+      background: var(--navy-light); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2.25rem 1.85rem;
+      text-align: center;
+    }
+    .compare-card.gais {
+      border-color: rgba(74,143,212,.45);
+      box-shadow: 0 18px 60px rgba(74,143,212,.18);
+    }
+    .compare-card .label {
+      font-size: .72rem; font-weight: 800; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: .85rem;
+    }
+    .compare-card.gais .label { color: var(--blue-light); }
+    .compare-card .price {
+      font-size: 2.15rem; font-weight: 800; color: var(--white);
+      letter-spacing: -.02em; line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .compare-card .price-sub {
+      font-size: 1rem; color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .compare-card .price-note {
+      font-size: .82rem; color: var(--muted); line-height: 1.55;
+    }
+    .compare-vs {
+      align-self: center;
+      font-size: .85rem; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .compare-takeaway {
+      text-align: center;
+      font-size: 1.02rem; color: var(--offwhite); line-height: 1.65;
+      max-width: 620px; margin: 2.5rem auto 0;
+    }
+    .compare-takeaway strong { color: var(--white); }
+    .compare-source {
+      text-align: center;
+      font-size: .74rem; color: var(--muted); margin-top: 1rem;
+      font-style: italic;
+    }
 
-    /* How it works */
+    /* How (Section 5, 3 steps) */
     .how { padding: 104px 0; }
-    .how-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; position: relative; }
+    .how-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      position: relative;
+      max-width: 920px; margin: 0 auto;
+    }
     .how-steps::before {
       content: ''; position: absolute; top: 27px;
-      left: calc(12.5% + 27px); right: calc(12.5% + 27px);
+      left: calc(16.66% + 27px); right: calc(16.66% + 27px);
       height: 1px; background: var(--border); z-index: 0;
     }
     .how-step { text-align: center; position: relative; z-index: 1; }
@@ -267,36 +190,161 @@
       font-size: 1.05rem; font-weight: 800; color: var(--blue-light);
       margin: 0 auto 1.2rem;
     }
-    .how-step h3 { font-size: .92rem; font-weight: 700; margin-bottom: .45rem; }
-    .how-step p { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+    .how-step h3 { font-size: 1rem; font-weight: 700; margin-bottom: .55rem; }
+    .how-step p { font-size: .88rem; color: var(--muted); line-height: 1.6; max-width: 280px; margin: 0 auto; }
 
-    /* Footer CTA override (homepage version has no navy-mid bg) */
-    .footer-cta {
-      padding: 128px 0;
+    /* Social Proof (Section 6) */
+    .social-proof {
+      padding: 96px 0;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
+    .social-proof-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .social-proof h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
+    }
+    .social-proof h2 .accent { color: var(--blue-light); }
+    .social-proof p { font-size: 1.02rem; color: var(--muted); line-height: 1.78; }
+    .social-proof p + p { margin-top: 1rem; }
+    .social-proof p strong { color: var(--offwhite); }
+
+    /* Founder Authority (Section 7) */
+    .founder { padding: 104px 0; }
+    .founder-grid {
+      display: grid; grid-template-columns: 240px 1fr; gap: 2.75rem;
+      align-items: center;
+      max-width: 880px; margin: 0 auto;
+    }
+    .founder-photo {
+      width: 240px; height: 240px; border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      background: var(--navy-mid);
+      flex-shrink: 0;
+    }
+    .founder-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .founder-text .section-label { margin-bottom: .85rem; }
+    .founder-text h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+      font-weight: 800; letter-spacing: -.02em; line-height: 1.15;
+      margin-bottom: .35rem;
+    }
+    .founder-text .founder-role {
+      font-size: .78rem; color: var(--blue);
+      letter-spacing: .14em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 1.25rem;
+    }
+    .founder-text p { font-size: 1rem; color: var(--muted); line-height: 1.78; }
+    .founder-text p + p { margin-top: 1rem; }
+    .founder-text strong { color: var(--offwhite); }
+    .founder-text a {
+      color: var(--blue-light); text-decoration: none; font-weight: 600;
+      border-bottom: 1px solid rgba(107,174,232,.35); transition: border-color .2s, color .2s;
+    }
+    .founder-text a:hover {
+      color: var(--white); border-color: var(--blue-light);
+    }
+
+    /* FAQ accordion (Section 8, duplicated from faq.html by design) */
+    .home-faq { padding: 104px 0; }
+    .faq-list {
+      max-width: 820px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: .8rem;
+    }
+    .faq-item {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .faq-item:hover { border-color: rgba(74,143,212,.32); }
+    .faq-item.open {
+      border-color: rgba(74,143,212,.45);
+      box-shadow: 0 10px 40px rgba(0,0,0,.2);
+    }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      width: 100%;
+      padding: 1.4rem 1.65rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.4;
+      transition: color .2s;
+    }
+    .faq-question:hover { color: var(--blue-light); }
+    .faq-question:focus { outline: none; color: var(--blue-light); }
+    .faq-arrow {
+      width: 22px; height: 22px; flex-shrink: 0;
+      transition: transform .3s ease;
+      color: var(--blue-light);
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .4s ease;
+      padding: 0 1.65rem;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 600px;
+      padding: 0 1.65rem 1.5rem;
+    }
+    .faq-answer p { font-size: .95rem; line-height: 1.72; color: var(--muted); }
+    .faq-answer p + p { margin-top: .75rem; }
+    .faq-answer strong { color: var(--offwhite); }
+    .faq-answer a { color: var(--blue-light); text-decoration: none; font-weight: 600; }
+    .faq-answer a:hover { text-decoration: underline; }
+    .home-faq-foot {
+      text-align: center; margin-top: 2rem;
+      font-size: .9rem; color: var(--muted);
+    }
+    .home-faq-foot a { color: var(--blue-light); text-decoration: none; font-weight: 600; }
+    .home-faq-foot a:hover { text-decoration: underline; }
+
+    /* Footer CTA + Risk Reversal (Section 9) */
+    .footer-cta { padding: 128px 0; }
     .footer-cta h2 {
       font-size: clamp(2rem, 4.5vw, 3.25rem);
       max-width: none;
     }
-    .footer-cta p { max-width: 460px; }
+    .risk-reversal {
+      margin: 1.25rem auto 2.25rem;
+      max-width: 540px;
+      font-size: 1rem; color: var(--offwhite); line-height: 1.6;
+      font-weight: 600;
+    }
+    .risk-reversal strong { color: var(--white); }
+    .footer-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
 
     /* Homepage responsive */
     @media (max-width: 900px) {
-      .pain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .outcomes-grid { grid-template-columns: 1fr 1fr; }
-      .how-steps { grid-template-columns: 1fr 1fr; }
+      .problem-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .compare-stack { grid-template-columns: 1fr; gap: 1.25rem; }
+      .compare-vs { padding: .25rem 0; }
+      .how-steps { grid-template-columns: 1fr; max-width: 360px; }
       .how-steps::before { display: none; }
-      .proof-cards { grid-template-columns: 1fr; }
+      .founder-grid { grid-template-columns: 1fr; gap: 1.75rem; text-align: center; }
+      .founder-photo { margin: 0 auto; }
     }
     @media (max-width: 768px) {
-      .divider { display: none; }
-      .proof-strip-inner { gap: 1.5rem; }
-      .outcomes-grid { grid-template-columns: 1fr; }
+      .hero { padding: 132px 0 60px; }
+      .footer-cta { padding: 96px 0; }
     }
     @media (max-width: 480px) {
-      .hero { padding: 116px 0 80px; }
+      .hero { padding: 116px 0 50px; }
       .hero-cta { padding: 0 1rem; }
-      .how-steps { grid-template-columns: 1fr; }
+      .live-demo-card { padding: 2rem 1.5rem; }
+      .home-faq { padding: 80px 0; }
     }
   </style>
 </head>
@@ -305,24 +353,20 @@
 <!-- ════ NAV ════ -->
 <nav role="navigation" aria-label="Main navigation">
   <div class="container nav-inner">
-
     <a href="../index.html" class="nav-logo" aria-label="Genesis AI Systems home">
       <img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="38">
     </a>
-
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="demo.html">Demo</a></li>
-      <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
       <li>
-        <a href="/pages/demo.html"
-           target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Talk to Riley</a>
+        <a href="#live-demo" class="btn nav-btn">Talk to Riley</a>
       </li>
     </ul>
-
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -334,18 +378,18 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="demo.html">Demo</a>
-  <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
+  <a href="faq.html">FAQ</a>
+  <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
   <div class="m-cta">
-    <a href="/pages/demo.html"
-       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley</a>
+    <a href="#live-demo" class="btn">Talk to Riley</a>
   </div>
 </div>
 
 
 <main>
 
-  <!-- ════ HERO ════ -->
+  <!-- ════ 1. HERO ════ -->
   <section class="hero" aria-labelledby="hero-heading">
     <div class="container">
       <div class="eyebrow">
@@ -353,25 +397,15 @@
         Genesis AI Systems, AI Receptionist Service
       </div>
       <h1 id="hero-heading">
-        Stop losing jobs just because you<br>
-        <span class="accent">could not answer the phone.</span>
+        You are losing calls while you<br>
+        <span class="accent">are working. Riley handles them.</span>
       </h1>
       <p class="hero-sub">
-        Genesis AI Systems gives local businesses a trained AI receptionist that answers calls, captures the reason for the call, and sends you a clean summary so you can respond faster without hiring front-desk staff.
+        We are a Detroit company. Riley is our AI receptionist. Riley answers your business phone when you cannot, captures who called and why, and sends you a clean summary. Your version is built and tuned for your business. No front-desk hire.
       </p>
-      <div class="cta-pair">
-        <div class="cta-stack">
-          <a href="/pages/demo.html"
-             target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley</a>
-          <p class="micro">Hear the call flow now. About 60 seconds.</p>
-        </div>
-        <div class="cta-stack">
-          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-             target="_blank" rel="noopener noreferrer"
-             class="btn-outline">Book Free Audit Call</a>
-          <p class="micro">15-30 min. Get a recommended setup plan.</p>
-        </div>
+      <div class="hero-cta">
+        <a href="#live-demo" class="btn">Talk to Riley</a>
+        <p class="micro">Hear the call flow now. About 60 seconds.</p>
       </div>
       <p class="micro hero-trust">
         Live on our own business line. Built for local service businesses. No long-term contract.
@@ -380,242 +414,269 @@
   </section>
 
 
-  <!-- ════ PROOF STRIP ════ -->
-  <div class="proof-strip" role="region" aria-label="Industry call-handling research">
-    <div class="container proof-strip-inner">
-      <div class="stat cited">
-        <div class="num">Small businesses miss up to 60% of inbound calls, and only 2-3% of callers ever leave a voicemail.</div>
-        <div class="lbl">Invoca, 2021</div>
-      </div>
-      <div class="divider" aria-hidden="true"></div>
-      <div class="stat cited">
-        <div class="num">Customers will try calling a maximum of twice before taking their business elsewhere.</div>
-        <div class="lbl">BT Business Research, 2014</div>
-      </div>
-      <div class="divider" aria-hidden="true"></div>
-      <div class="stat cited">
-        <div class="num">Leads contacted within 5 minutes convert at 8x the rate of leads contacted later.</div>
-        <div class="lbl">InsideSales.com, 2021</div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ════ PAIN ════ -->
-  <section class="pain" aria-labelledby="pain-heading">
-    <div class="container pain-grid">
-      <div>
-        <div class="section-label">The Problem</div>
-        <h2 id="pain-heading">
-          Most missed calls are not neutral.<br>
-          <span class="accent">They are lost opportunities.</span>
+  <!-- ════ 2. LIVE DEMO (inline Vapi widget) ════ -->
+  <section class="live-demo" id="live-demo" aria-labelledby="live-demo-heading">
+    <div class="container">
+      <div class="live-demo-card">
+        <div class="section-label">Hear It For Yourself</div>
+        <p class="live-demo-intro">
+          Riley is our AI receptionist. Click below and have a quick conversation. The version we build for your business is tuned for what you actually do.
+        </p>
+        <h2 id="live-demo-heading">
+          Hear what your callers will hear. <span class="accent">Right in your browser.</span>
         </h2>
-        <div class="pain-body">
-          <p>You are on the job. Driving. With a customer. Off the clock. The phone rings and you cannot pick up. <strong>Callers do not wait. They move to the next business on the list.</strong></p>
-          <p>You never even knew the job existed. That is not a bad day. It is a quiet, repeating loss. Every week. Every month.</p>
-          <p>Hiring someone to sit at a phone costs more than most local businesses can justify. So the calls keep slipping through. That is the gap Riley is built to close.</p>
-        </div>
-      </div>
-      <div class="pain-cards">
-        <div class="pain-card">
-          <div class="pain-card-icon">🔨</div>
-          <div>
-            <h3>On the job</h3>
-            <p>Your hands are busy. A call comes in. You cannot answer. The job goes to whoever picks up next.</p>
-          </div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-card-icon">🚗</div>
-          <div>
-            <h3>Driving</h3>
-            <p>You see the phone ring from the driver seat. Safer not to grab it. The caller moves on.</p>
-          </div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-card-icon">👥</div>
-          <div>
-            <h3>With a customer</h3>
-            <p>You are in front of a paying customer. You will not interrupt them to answer a stranger. So the stranger leaves.</p>
-          </div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-card-icon">🌙</div>
-          <div>
-            <h3>Off the clock</h3>
-            <p>Evenings, weekends, holidays. That is when a lot of the calls come in. That is when nobody picks up.</p>
-          </div>
-        </div>
+        <p>
+          This is the same Riley your callers will reach. No phone number to dial. Click the button, talk for a minute, hang up. You will know exactly how it sounds.
+        </p>
+        <button id="vapiCallBtn" aria-label="Start demo call with Riley">
+          <span id="btnIcon">📞</span>
+          <span id="btnText">Talk to Riley</span>
+        </button>
+        <div id="callStatus" role="status" aria-live="polite"></div>
+        <p class="live-demo-micro">Click to start a sample call. About 60 seconds.</p>
+        <p class="live-demo-disclaimer">
+          Riley will ask for your name, phone number, and what kind of business you run. This is a real AI, not a recording.
+        </p>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ VALUE: WHAT RILEY ACTUALLY DOES ════ -->
-  <section class="outcomes" aria-labelledby="value-heading">
+  <!-- ════ 3. PROBLEM ════ -->
+  <section class="problem" aria-labelledby="problem-heading">
     <div class="container">
       <div class="section-header">
-        <div class="section-label">What You Get</div>
-        <h2 id="value-heading">What Riley <span style="color:var(--blue-light)">actually does.</span></h2>
-        <p>Plain, specific, no buzzwords. Here is what happens on every call.</p>
+        <div class="section-label">The Math of the Problem</div>
+        <h2 id="problem-heading">
+          Three reasons local businesses <span class="accent">lose calls every week.</span>
+        </h2>
+        <p>The problem is not complicated. It is just expensive.</p>
       </div>
-      <div class="value-list">
-        <div class="value-item">
-          <div class="value-num">1</div>
-          <div>
-            <h3>Answers incoming calls</h3>
-            <p>Riley picks up when you cannot. Day, night, weekend, holiday. No voicemail.</p>
-          </div>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="num">1</div>
+          <h3>Missed calls equal lost revenue</h3>
+          <p>Most callers do not leave a voicemail. They try once, maybe twice, then move to the next business on the list. The job is gone before you even knew it existed.</p>
         </div>
-        <div class="value-item">
-          <div class="value-num">2</div>
-          <div>
-            <h3>Handles the first response</h3>
-            <p>Greets the caller in your voice. Sounds like a calm front-desk person, not a phone tree.</p>
-          </div>
+        <div class="problem-card">
+          <div class="num">2</div>
+          <h3>Hiring a receptionist is expensive</h3>
+          <p>A full-time receptionist in Detroit runs $4,000 to $5,000 a month once you load in benefits, taxes, and turnover. Most small contractors cannot justify that number.</p>
         </div>
-        <div class="value-item">
-          <div class="value-num">3</div>
-          <div>
-            <h3>Collects what the caller needs</h3>
-            <p>Asks the questions that matter to your business. Writes down the reason for the call in plain language.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <div class="value-num">4</div>
-          <div>
-            <h3>Qualifies basic lead details</h3>
-            <p>Gets the caller's name, number, service area, and how urgent the request is so you know what to prioritize.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <div class="value-num">5</div>
-          <div>
-            <h3>Sends you a clean summary</h3>
-            <p>A short, readable note lands on your phone after the call. Who called. What they want. What to do next.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <div class="value-num">6</div>
-          <div>
-            <h3>Helps you respond faster without adding staff</h3>
-            <p>No front-desk hire. No app for you to check every hour. You get back to the caller on your time, from the information Riley already captured.</p>
-          </div>
+        <div class="problem-card">
+          <div class="num">3</div>
+          <h3>Training takes months</h3>
+          <p>Even when you can afford the hire, the new person is not useful for weeks. They learn your business slowly. They turn over before they are fully trained. Then you do it again.</p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ HOW IT WORKS ════ -->
+  <!-- ════ 4. COST COMPARE ════ -->
+  <section class="cost-compare" aria-labelledby="compare-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Side By Side</div>
+        <h2 id="compare-heading">
+          What it actually costs to <span class="accent">answer your phone.</span>
+        </h2>
+        <p>Same job. Very different math.</p>
+      </div>
+      <div class="compare-stack">
+        <div class="compare-card">
+          <div class="label">Detroit Receptionist</div>
+          <div class="price">$4,000 to $5,000</div>
+          <div class="price-sub">a month</div>
+          <p class="price-note">Fully loaded with benefits, taxes, paid time off, and turnover. Full time, eight hours a day.</p>
+        </div>
+        <div class="compare-vs" aria-hidden="true">vs</div>
+        <div class="compare-card gais">
+          <div class="label">Genesis AI Systems</div>
+          <div class="price">$1,500 setup</div>
+          <div class="price-sub">+ $479 a month</div>
+          <p class="price-note">One-time build, then a monthly retainer. Twenty-four hours a day, seven days a week. No turnover.</p>
+        </div>
+      </div>
+      <p class="compare-takeaway">
+        That is the gap. <strong>You catch the same calls without the overhead.</strong>
+      </p>
+      <p class="compare-source">
+        Receptionist range based on US Bureau of Labor Statistics Q4 2025 wage data and local Detroit Indeed listings, fully loaded.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════ 5. HOW IT WORKS ════ -->
   <section class="how" aria-labelledby="how-heading">
     <div class="container">
       <div class="section-header">
         <div class="section-label">The Process</div>
-        <h2 id="how-heading">Simple to <span style="color:var(--blue-light)">launch.</span></h2>
-        <p>Four clear steps. No technical setup on your end. No long onboarding.</p>
+        <h2 id="how-heading">
+          Three steps to get Riley <span class="accent">on your line.</span>
+        </h2>
+        <p>No technical setup on your end. No long onboarding.</p>
       </div>
       <div class="how-steps">
         <div class="how-step">
           <div class="step-num">1</div>
-          <h3>We learn your business</h3>
-          <p>A short call to understand what you do, who calls you, and how you want calls handled.</p>
+          <h3>Plug in your number</h3>
+          <p>You forward your business line to Riley. No new phone number, no new app for you to check.</p>
         </div>
         <div class="how-step">
           <div class="step-num">2</div>
-          <h3>We configure your call flow</h3>
-          <p>Riley is set up around your services, your area, your hours, and the questions you want asked.</p>
+          <h3>Riley answers, qualifies, books</h3>
+          <p>Calm front-desk voice. Asks the questions that matter. Captures the reason for the call in plain language.</p>
         </div>
         <div class="how-step">
           <div class="step-num">3</div>
-          <h3>Riley goes live on your line</h3>
-          <p>You forward your number. Riley starts answering. No new phone number, no new app.</p>
-        </div>
-        <div class="how-step">
-          <div class="step-num">4</div>
-          <h3>You start catching calls you would have missed</h3>
-          <p>Every call ends with a clean summary on your phone so you can follow up fast.</p>
+          <h3>You get a clean summary</h3>
+          <p>The moment the call ends, a short note hits your phone. Who called, what they need, what to do next.</p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ OPERATIONAL PROOF ════ -->
-  <section class="we-use" aria-labelledby="op-proof-heading">
+  <!-- ════ 6. SOCIAL PROOF ════ -->
+  <section class="social-proof" aria-labelledby="social-proof-heading">
     <div class="container">
-      <div class="we-use-inner">
-        <div class="section-label">Operational Proof</div>
-        <h3 id="op-proof-heading">Built to be practical, not theoretical.</h3>
-        <p class="lede">Riley has been answering calls for Genesis AI Systems on our own business line since March. Before we put it on any other line, we put it on ours. That is the proof we can point to today. No case studies, no inflated numbers.</p>
-        <div class="section-label">Sample owner notification from our own line</div>
-        <div class="call-summary-card" role="figure" aria-label="Example owner notification from the Genesis AI Systems line">
-          <div class="csc-head">
-            <span class="csc-badge">📞 Call Complete</span>
-            <span class="csc-time">8:47 PM</span>
+      <div class="social-proof-inner">
+        <h2 id="social-proof-heading">
+          Every Riley is built by the founder. <span class="accent">Personally.</span>
+        </h2>
+        <p>
+          Currently working with our first Detroit clients. <strong>Each Riley is built and tuned by the founder, not by an account manager and not by a sales team.</strong> By the person who built the system.
+        </p>
+        <p>
+          As real outcomes land, they show up here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ 7. FOUNDER AUTHORITY ════ -->
+  <section class="founder" aria-labelledby="founder-heading">
+    <div class="container">
+      <div class="founder-grid">
+        <div class="founder-photo">
+          <img src="../assets/images/founder.jpg"
+               alt="Trendell Fordham, Founder of Genesis AI Systems">
+        </div>
+        <div class="founder-text">
+          <div class="section-label">Built By An Owner</div>
+          <h2 id="founder-heading">Trendell Fordham.</h2>
+          <div class="founder-role">Founder, Genesis AI Systems</div>
+          <p>
+            I built Genesis AI Systems because I lived the problem. <strong>Detroit business owner, calls slipping through the cracks every week.</strong> Hiring a receptionist was not in the budget. Voicemail was a graveyard. Something had to change.
+          </p>
+          <p>
+            So I built Riley for myself first. Put it on my own business line. Tuned it on real calls before it ever went out to a client. <strong>The system you would get is the same one I trust on my own line.</strong>
+          </p>
+          <p>
+            Genesis AI Systems is founder-led. When you book the audit call, you talk directly with me. No handoffs. No script. <a href="about.html">Read more about Trendell →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ 8. OBJECTION HANDLING (FAQ) ════ -->
+  <section class="home-faq" aria-labelledby="home-faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Common Questions</div>
+        <h2 id="home-faq-heading">
+          Things people ask before <span class="accent">they talk to Riley.</span>
+        </h2>
+        <p>Five quick answers. The full list lives on the FAQ page.</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is Genesis AI Systems and what is Riley?</span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Genesis AI Systems is the company. Riley is our AI receptionist. Riley runs on our own business line and answers calls for Genesis AI Systems. When you sign on with Genesis AI Systems, we build a version of Riley for your business. We tune it for what you do, and you decide on the audit call what to call it. Same product every Genesis AI Systems client gets. Tuned for your business, named however you want.</p>
           </div>
-          <div class="csc-row"><span class="csc-label">Caller</span><span class="csc-value">[Redacted]</span></div>
-          <div class="csc-row"><span class="csc-label">Time</span><span class="csc-value">8:47 PM</span></div>
-          <div class="csc-row"><span class="csc-label">Duration</span><span class="csc-value">2m 14s</span></div>
-          <div class="csc-row"><span class="csc-label">Intent</span><span class="csc-value">Pricing inquiry, asked about monthly cost and setup timeline</span></div>
-          <div class="csc-row"><span class="csc-label">Status</span><span class="csc-value">Lead captured, callback requested</span></div>
-          <div class="csc-row"><span class="csc-label">Next step</span><span class="csc-value">Owner follow-up before noon next day</span></div>
         </div>
-        <p class="we-use-caption">Name and number redacted for privacy. This is the same format an owner receives after every call: who called, what they needed, and what to do next.</p>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Will my callers know it is AI?</span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Riley sounds like a calm front-desk person. Some callers ask. Most just have their conversation and move on. <strong>If you want Riley to disclose, that is a setting we configure during build.</strong> It is your choice.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What if Riley gets something wrong?</span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Every call ends with a summary on your phone. You can step in, fix anything, and call the customer back yourself. <strong>Riley does not make commitments your business cannot keep.</strong> It captures, it does not promise.</p>
+            <p>If we spot a pattern in how Riley handles a question wrong, we update the call flow. That is what the monthly retainer covers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What industries do you work with?</span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Local service businesses. Trades, contractors, home services, professional offices. <strong>If your phone rings and a missed call costs you money, Riley fits.</strong> We tune the call flow to your specific business during build.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I cancel anytime?</span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. <strong>No long-term contract.</strong> The monthly retainer ends when you say it ends. The system you paid to build is yours to keep.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Is there a human involved?</span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Riley is the AI. <strong>The setup, the training, the call flow tuning, all done by Trendell Fordham.</strong> You are not handed off to an account manager. When you book the audit call, you are talking with the person who builds the system.</p>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
-
-
-  <!-- ════ FOUNDER TRUST ════ -->
-  <section class="mid-cta founder-trust" aria-labelledby="founder-heading">
-    <div class="container">
-      <h2 id="founder-heading">
-        You are not handed off<br>to a sales team.
-      </h2>
-      <p>
-        Genesis AI Systems is founder-led. When you book the audit call or set up Riley for your business, you are talking directly with the person building the system, shaping the call flow, and making sure it fits how your business actually operates. No account managers. No handoffs. No script.
+      <p class="home-faq-foot">
+        More questions? <a href="faq.html">See the full FAQ.</a>
       </p>
-      <div class="cta-pair">
-        <div class="cta-stack">
-          <a href="/pages/demo.html"
-             target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley</a>
-          <p class="micro">Hear the call flow now. About 60 seconds.</p>
-        </div>
-        <div class="cta-stack">
-          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-             target="_blank" rel="noopener noreferrer"
-             class="btn-outline">Book Free Audit Call</a>
-          <p class="micro">15-30 min. Get a recommended setup plan.</p>
-        </div>
-      </div>
     </div>
   </section>
 
 
-  <!-- ════ FOOTER CTA ════ -->
+  <!-- ════ 9. FINAL CTA + RISK REVERSAL ════ -->
   <section class="footer-cta" aria-labelledby="footer-cta-heading">
     <div class="container">
       <h2 id="footer-cta-heading">
-        The next missed call<br>does not have to happen.
+        The next missed call <span class="accent">does not have to happen.</span>
       </h2>
-      <p>
-        Hear Riley right now, or book a short audit call. No credit card. No long-term contract. Low pressure either way.
+      <p class="risk-reversal">
+        <strong>Free audit call. No credit card. No contract.</strong>
       </p>
-      <div class="cta-pair">
-        <div class="cta-stack">
-          <a href="/pages/demo.html"
-             target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley</a>
-          <p class="micro">Hear the call flow now. About 60 seconds.</p>
-        </div>
-        <div class="cta-stack">
-          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-             target="_blank" rel="noopener noreferrer"
-             class="btn-outline">Book Free Audit Call</a>
-          <p class="micro">15-30 min. Get a recommended setup plan.</p>
-        </div>
-      </div>
+      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+         target="_blank" rel="noopener noreferrer"
+         class="btn">Book Free Audit Call</a>
     </div>
   </section>
 
@@ -644,5 +705,99 @@
 </footer>
 
 <script src="../js/main.js"></script>
+
+<script>
+  /* FAQ accordion, page-specific (homepage objection handling) */
+  document.querySelectorAll('.faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var willOpen = !item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+
+      if (willOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<script type="module">
+  /* Vapi inline call widget for homepage Live Demo (Section 2) */
+  import Vapi from 'https://esm.sh/@vapi-ai/web@2.5.2';
+
+  var VAPI_PUBLIC_KEY = 'c0dbd835-2af2-4230-bd9b-2158c4ae9300';
+  var ASSISTANT_ID    = 'b41a6283-e3f8-4b75-8619-53724eb39de7';
+
+  var btn      = document.getElementById('vapiCallBtn');
+  var btnIcon  = document.getElementById('btnIcon');
+  var btnText  = document.getElementById('btnText');
+  var statusEl = document.getElementById('callStatus');
+  var vapi     = null;
+  var calling  = false;
+
+  function setStatus(msg, active) {
+    statusEl.textContent = msg;
+    statusEl.className = active ? 'active' : '';
+  }
+
+  function endCall() {
+    calling = false;
+    btn.disabled = false;
+    btn.classList.remove('calling');
+    btnIcon.textContent = '📞';
+    btnText.textContent = 'Talk to Riley';
+    vapi = null;
+  }
+
+  function startCall() {
+    calling = true;
+    btn.disabled = true;
+    btn.classList.add('calling');
+    btnIcon.textContent = '🔴';
+    btnText.textContent = 'Connecting';
+    setStatus('Starting your call with Riley', true);
+
+    try {
+      vapi = new Vapi(VAPI_PUBLIC_KEY);
+      vapi.on('call-start', function() {
+        btnText.textContent = 'End Call';
+        btn.disabled = false;
+        setStatus('You are connected to Riley. Go ahead and speak.', true);
+      });
+      vapi.on('call-end', function() {
+        endCall();
+        setStatus('Call ended. Your summary is on its way.');
+      });
+      vapi.on('error', function(e) {
+        console.error('[Vapi] error:', JSON.stringify(e));
+        endCall();
+        var msg = (e && e.error && e.error.message) ? e.error.message :
+                  (e && e.message) ? e.message :
+                  'Unknown error, check browser console';
+        setStatus('Error: ' + msg);
+      });
+      vapi.start(ASSISTANT_ID);
+    } catch(e) {
+      console.error('[Vapi init]', e);
+      endCall();
+      setStatus('Could not start the call. Please try again.');
+    }
+  }
+
+  function stopCall() {
+    if (vapi) { try { vapi.stop(); } catch(e) {} }
+    endCall();
+    setStatus('Call ended. Your summary is on its way.');
+  }
+
+  btn.addEventListener('click', function() {
+    if (!calling) { startCall(); } else { stopCall(); }
+  });
+</script>
 </body>
 </html>

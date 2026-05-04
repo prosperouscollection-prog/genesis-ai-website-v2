@@ -49,7 +49,7 @@
     .value-body strong { color: var(--offwhite); }
 
     /* Demo call section */
-    .demo-card-section { padding: 96px 0; }
+    .demo-card-section { padding: 96px 0; scroll-margin-top: 88px; }
     .phone-card {
       max-width: 720px; margin: 0 auto;
       background: var(--navy-light);
@@ -111,6 +111,7 @@
       min-height: 1.4em; transition: color .3s;
     }
     #callStatus.active { color: var(--blue-light); }
+    .vapi-micro { margin-top: .85rem; font-size: .82rem; color: var(--muted); }
     .phone-disclaimer {
       margin-top: 1.5rem; font-size: .78rem; color: var(--muted);
       max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6;
@@ -260,11 +261,11 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="demo.html" class="active">Demo</a></li>
-      <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
       <li>
-        <a href="/pages/demo.html"
-           target="_blank" rel="noopener noreferrer"
+        <a href="#demo-card"
            class="btn nav-btn">Talk to Riley</a>
       </li>
     </ul>
@@ -278,11 +279,12 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="demo.html">Demo</a>
-  <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
+  <a href="faq.html">FAQ</a>
+  <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
   <div class="m-cta">
-    <a href="/pages/demo.html"
-       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley</a>
+    <a href="#demo-card"
+       class="btn">Talk to Riley</a>
   </div>
 </div>
 
@@ -296,12 +298,12 @@
         Live Demo
       </div>
       <h1 id="hero-heading">
-        Talk to an AI Receptionist.<br>
+        Talk to Riley.<br>
         <span class="accent">Right Now, in Your Browser.</span>
       </h1>
       <p class="hero-sub">
         This is not a recording. Click the button below and have a real conversation
-        with Riley, the demo AI receptionist built by Genesis AI Systems.
+        with Riley, the demo Genesis AI Systems built and runs on its own line.
       </p>
     </div>
   </section>
@@ -347,7 +349,7 @@
   </section>
 
   <!-- ════ DEMO CALL CARD ════ -->
-  <section class="demo-card-section" aria-labelledby="demo-card-heading">
+  <section class="demo-card-section" id="demo-card" aria-labelledby="demo-card-heading">
     <div class="container">
       <div class="phone-card">
         <div class="phone-icon">🎙️</div>
@@ -367,6 +369,7 @@
               <span id="btnText">Talk to Riley</span>
             </button>
             <div id="callStatus" role="status" aria-live="polite"></div>
+            <p class="micro vapi-micro">Click to start a sample call. About 60 seconds.</p>
           </div>
           <div class="demo-options-sep" aria-hidden="true">or</div>
           <div class="demo-option">
@@ -438,10 +441,10 @@
             <div class="tg-badge">📞 Call Complete</div>
             <div class="tg-field"><span>From: </span><span>John Smith (<span class="tg-link">+1 313 555 1234</span>)</span></div>
             <div class="tg-field"><span>Business: </span><span>Demo Genesis AI Systems, service business</span></div>
-            <div class="tg-field"><span>Intent: </span><span>requested_quote</span></div>
+            <div class="tg-field"><span>Intent: </span><span>Requested a quote</span></div>
             <div class="tg-field"><span>Duration: </span><span>87s</span></div>
             <div class="tg-summary">
-              Caller asked about getting an AI receptionist set up for their service business.
+              Caller asked about getting Riley set up for their business.
               Currently missing several calls a week. Interested in learning more about the setup package.
               Wants a callback to discuss pricing.
             </div>
@@ -487,12 +490,11 @@
         Want One Built <span class="accent">for Your Business?</span>
       </h2>
       <p>
-        Hear exactly what an AI receptionist trained on your business would sound like, or book a short audit call and get a recommended setup plan.
+        Hear exactly what your version of Riley would sound like, or book a short audit call and get a recommended setup plan.
       </p>
       <div class="cta-pair">
         <div class="cta-stack">
-          <a href="/pages/demo.html"
-             target="_blank" rel="noopener noreferrer"
+          <a href="#demo-card"
              class="btn">Talk to Riley</a>
           <p class="micro">No credit card. Hear the call flow now.</p>
         </div>
@@ -563,8 +565,8 @@
     btn.disabled = true;
     btn.classList.add('calling');
     btnIcon.textContent = '🔴';
-    btnText.textContent = 'Connecting...';
-    setStatus('Starting your call with Riley...', true);
+    btnText.textContent = 'Connecting';
+    setStatus('Starting your call with Riley', true);
 
     try {
       vapi = new Vapi(VAPI_PUBLIC_KEY);

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Genesis AI Systems. Built for the Trades.</title>
-  <meta name="description" content="Genesis AI Systems is a small Michigan team building AI receptionists for service businesses. Built by someone who watched small contractors lose jobs to voicemail." />
-  <meta property="og:title" content="Genesis AI Systems. Built for the Trades." />
-  <meta property="og:description" content="Not a tech company that stumbled into AI. Built specifically for service businesses that run on phone calls." />
+  <title>Genesis AI Systems. About Trendell Fordham and the build.</title>
+  <meta name="description" content="Genesis AI Systems is built by Trendell Fordham, a Detroit business owner who lived the missed-call problem. Founder-led. One person. Built on his own line first." />
+  <meta property="og:title" content="Genesis AI Systems. About Trendell Fordham and the build." />
+  <meta property="og:description" content="Detroit business owner. Built Riley for himself first. Founder-led with no handoffs." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genesisai.systems/pages/about.html" />
   <link rel="icon" type="image/png" href="../assets/logos/favicon-32.png" sizes="32x32" />
@@ -14,41 +14,57 @@
   <link rel="stylesheet" href="../css/style.css" />
 
   <style>
-    /* ── PAGE-SPECIFIC: about.html ── */
+    /* ── PAGE-SPECIFIC: about.html (v3) ── */
 
-    /* Hero override */
-    .hero { padding: 148px 0 80px; }
-    .hero-sub { margin: 0 auto; }
+    /* Hero */
+    .hero { padding: 148px 0 64px; }
+    .hero-sub { margin: 0 auto; max-width: 620px; }
 
-    /* Section header override */
-    .section-header p { max-width: 620px; line-height: 1.7; }
-
-    /* Pain */
-    .pain { padding: 96px 0; }
-    .pain-inner { max-width: 780px; margin: 0 auto; text-align: center; }
-    .pain h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
+    /* Founder block (about page lead, photo + bio side by side) */
+    .founder-block { padding: 64px 0 96px; }
+    .founder-grid {
+      display: grid; grid-template-columns: 280px 1fr; gap: 3rem;
+      align-items: center;
+      max-width: 940px; margin: 0 auto;
     }
-    .pain h2 .accent { color: var(--blue-light); }
-    .pain-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); }
-    .pain-body strong { color: var(--offwhite); }
+    .founder-photo {
+      width: 280px; height: 280px; border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      background: var(--navy-mid);
+      flex-shrink: 0;
+    }
+    .founder-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .founder-text .section-label { margin-bottom: .85rem; }
+    .founder-text h2 {
+      font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+      font-weight: 800; letter-spacing: -.02em; line-height: 1.13;
+      margin-bottom: .35rem;
+    }
+    .founder-text .founder-role {
+      font-size: .78rem; color: var(--blue);
+      letter-spacing: .14em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 1.5rem;
+    }
+    .founder-text p { font-size: 1rem; color: var(--muted); line-height: 1.78; }
+    .founder-text p + p { margin-top: 1rem; }
+    .founder-text strong { color: var(--offwhite); }
 
-    /* Value */
-    .value {
+    /* Why we exist */
+    .why-exist {
       padding: 96px 0;
       background: var(--navy-mid);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
-    .value-inner { max-width: 780px; margin: 0 auto; text-align: center; }
-    .value h2 {
+    .why-exist-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .why-exist h2 {
       font-size: clamp(1.7rem, 3.5vw, 2.6rem);
       font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
     }
-    .value h2 .accent { color: var(--blue-light); }
-    .value-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); }
-    .value-body p + p { margin-top: 1rem; }
-    .value-body strong { color: var(--offwhite); }
+    .why-exist h2 .accent { color: var(--blue-light); }
+    .why-exist-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); text-align: left; }
+    .why-exist-body p + p { margin-top: 1rem; }
+    .why-exist-body strong { color: var(--offwhite); }
 
     /* Beliefs */
     .beliefs { padding: 104px 0; }
@@ -73,75 +89,40 @@
     .belief-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .65rem; line-height: 1.35; }
     .belief-card p { font-size: .92rem; color: var(--muted); line-height: 1.65; }
 
-    /* Team */
-    .team {
+    /* Our own line */
+    .own-line {
       padding: 104px 0;
       background: var(--navy-mid);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
-    .team-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-    .team h2 {
+    .own-line-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .own-line h2 {
       font-size: clamp(1.7rem, 3.5vw, 2.6rem);
       font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
     }
-    .team h2 .accent { color: var(--blue-light); }
-    .team-body { font-size: 1rem; line-height: 1.78; color: var(--muted); margin-bottom: 2.75rem; }
-    .team-body strong { color: var(--offwhite); }
-    .founder { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    .founder-name { font-size: 1.1rem; font-weight: 800; color: var(--white); }
-    .founder-role {
-      font-size: .78rem; color: var(--blue);
-      letter-spacing: .08em; text-transform: uppercase;
-    }
+    .own-line h2 .accent { color: var(--blue-light); }
+    .own-line-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); text-align: left; }
+    .own-line-body p + p { margin-top: 1rem; }
+    .own-line-body strong { color: var(--offwhite); }
 
-    /* Trust */
-    .trust { padding: 104px 0; }
-    .trust-inner { max-width: 780px; margin: 0 auto; text-align: center; }
-    .trust h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-      font-weight: 800; line-height: 1.13; letter-spacing: -.02em; margin-bottom: 1.5rem;
-    }
-    .trust h2 .accent { color: var(--blue-light); }
-    .trust-body { font-size: 1.02rem; line-height: 1.8; color: var(--muted); }
-    .trust-body p + p { margin-top: 1rem; }
-    .trust-body strong { color: var(--offwhite); }
-
-    /* Footer CTA override */
-    .footer-cta {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--border);
-    }
+    /* Final CTA */
+    .footer-cta { padding: 128px 0; }
     .footer-cta h2 { max-width: 740px; }
-
-    /* Sitewide CTA pair */
-    .cta-pair { display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem; }
-    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
-    .cta-stack .micro { margin: 0; }
-    .btn-outline {
-      display: inline-block; background: transparent; color: var(--blue-light);
-      border: 1px solid var(--blue); padding: 1rem 2rem; border-radius: 10px;
-      font-weight: 700; text-decoration: none; transition: background .2s, color .2s;
-    }
-    .btn-outline:hover, .btn-outline:focus {
-      background: rgba(58, 134, 255, .08); color: var(--white);
-    }
-    .early-cta {
-      padding: 80px 0 0;
-    }
-    .early-cta-inner {
-      max-width: 720px; margin: 0 auto; text-align: center;
-    }
-    .early-cta h3 {
-      font-size: clamp(1.35rem, 2.6vw, 1.8rem);
-      font-weight: 800; letter-spacing: -.01em;
-    }
+    .footer-cta-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+    .footer-cta-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
 
     /* About responsive */
     @media (max-width: 900px) {
+      .founder-grid { grid-template-columns: 1fr; gap: 1.75rem; text-align: center; max-width: 480px; }
+      .founder-photo { margin: 0 auto; }
+      .why-exist-body, .own-line-body { text-align: left; }
       .beliefs-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
     }
+    @media (max-width: 768px) {
+      .hero { padding: 132px 0 48px; }
+    }
     @media (max-width: 480px) {
-      .hero { padding: 116px 0 60px; }
+      .hero { padding: 116px 0 40px; }
     }
   </style>
 </head>
@@ -150,24 +131,20 @@
 <!-- ════ NAV ════ -->
 <nav role="navigation" aria-label="Main navigation">
   <div class="container nav-inner">
-
     <a href="../index.html" class="nav-logo" aria-label="Genesis AI Systems home">
       <img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="38">
     </a>
-
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="demo.html">Demo</a></li>
-      <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
       <li>
-        <a href="/pages/demo.html"
-           target="_blank" rel="noopener noreferrer"
-           class="btn nav-btn">Talk to Riley</a>
+        <a href="/pages/demo.html" class="btn nav-btn">Talk to Riley</a>
       </li>
     </ul>
-
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -178,11 +155,11 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="demo.html">Demo</a>
-  <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
+  <a href="faq.html">FAQ</a>
+  <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
   <div class="m-cta">
-    <a href="/pages/demo.html"
-       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley</a>
+    <a href="/pages/demo.html#demo-card" class="btn">Talk to Riley</a>
   </div>
 </div>
 
@@ -194,74 +171,60 @@
     <div class="container">
       <div class="eyebrow">About Genesis AI Systems</div>
       <h1 id="hero-heading">
-        Built for the Trades.<br>
-        <span class="accent">Not for the Boardroom.</span>
+        Built in Detroit.<br>
+        <span class="accent">By a business owner.</span>
       </h1>
       <p class="hero-sub">
-        Genesis AI Systems is founder-led out of Michigan. One person builds, configures, and supports the AI receptionist you end up running. You forward your number to us. No new phone number required. Setup takes less than a week.
+        Genesis AI Systems is a Detroit company. Riley is our AI receptionist. We build, tune, and run a version of Riley for local businesses that need their phone answered. One person builds it. The same person you talk to when you book the audit call.
       </p>
     </div>
   </section>
 
-  <!-- ════ EARLY CTA ════ -->
-  <section class="early-cta" aria-labelledby="early-cta-heading">
+
+  <!-- ════ FOUNDER BLOCK (lead) ════ -->
+  <section class="founder-block" aria-labelledby="founder-heading">
     <div class="container">
-      <div class="early-cta-inner">
-        <h3 id="early-cta-heading">Want to hear it before you talk to anyone?</h3>
-        <div class="cta-pair">
-          <div class="cta-stack">
-            <a href="/pages/demo.html"
-               target="_blank" rel="noopener noreferrer"
-               class="btn">Talk to Riley</a>
-            <p class="micro">No credit card. Hear the call flow now.</p>
-          </div>
-          <div class="cta-stack">
-            <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-               target="_blank" rel="noopener noreferrer"
-               class="btn-outline">Book Free Audit Call</a>
-            <p class="micro">15-30 min. Get a recommended setup plan.</p>
-          </div>
+      <div class="founder-grid">
+        <div class="founder-photo">
+          <img src="../assets/images/founder.jpg"
+               alt="Trendell Fordham, Founder of Genesis AI Systems">
+        </div>
+        <div class="founder-text">
+          <div class="section-label">The Founder</div>
+          <h2 id="founder-heading">Trendell Fordham.</h2>
+          <div class="founder-role">Founder, Genesis AI Systems</div>
+          <p>
+            I am a Detroit business owner. I built Genesis AI Systems because I lived the problem firsthand. <strong>Calls slipping through the cracks every week.</strong> Voicemail piling up. Customers moving on before I even knew they had called.
+          </p>
+          <p>
+            Hiring a full-time receptionist was not in the budget. I tried the off-the-shelf phone answering tools. They sounded like a robot. They lost callers. They were not built for a business that runs on the phone the way mine does.
+          </p>
+          <p>
+            So I built one myself. Put it on my own business line first. Tuned it on real calls before it ever went out to a client. <strong>The system you would get is the same one I trust to handle my own calls every day.</strong>
+          </p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ PAIN ════ -->
-  <section class="pain" aria-labelledby="pain-heading">
+  <!-- ════ WHY GENESIS EXISTS ════ -->
+  <section class="why-exist" aria-labelledby="why-heading">
     <div class="container">
-      <div class="pain-inner">
-        <div class="section-label">The Problem</div>
-        <h2 id="pain-heading">
-          Most AI Companies Have <span class="accent">Never Run a Business.</span>
+      <div class="why-exist-inner">
+        <div class="section-label">Why Genesis AI Systems Exists</div>
+        <h2 id="why-heading">
+          For local businesses that <span class="accent">run on phone calls.</span>
         </h2>
-        <p class="pain-body">
-          They build tools that look impressive in a demo and fall apart in real life.
-          You end up paying for something your guys cannot use and your customers do not trust.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════ VALUE ════ -->
-  <section class="value" aria-labelledby="value-heading">
-    <div class="container">
-      <div class="value-inner">
-        <div class="section-label">Why We Exist</div>
-        <h2 id="value-heading">
-          We Built This Because <span class="accent">the Problem Was Real.</span>
-        </h2>
-        <div class="value-body">
+        <div class="why-exist-body">
           <p>
-            Genesis AI Systems was built by a founder who watched small local businesses
-            lose jobs to voicemail every single week. Not an agency model. Not a tech company
-            that stumbled into AI. One person sitting with owners and shaping the call flow
-            until it matched how the business actually runs.
+            Genesis AI Systems is for the same kind of business I run. Local. Service-based. The kind of shop where the phone is how you get work, and a missed call is a job that went somewhere else.
           </p>
           <p>
-            <strong>Built specifically for local service businesses that run on phone calls.</strong>
-            If the owner misses the call, the job goes somewhere else. That is the problem Riley exists to close.
+            <strong>This is not a tech company that stumbled into AI.</strong> I am not selling a platform. I am building one Riley at a time, sitting with the owner, learning how their business actually answers the phone, and shaping the call flow until it fits. Same way I would build it for myself.
+          </p>
+          <p>
+            One person builds it. One person tunes it. One person picks up when something needs to change. That is the whole company. By design.
           </p>
         </div>
       </div>
@@ -273,75 +236,47 @@
   <section class="beliefs" aria-labelledby="beliefs-heading">
     <div class="container">
       <div class="section-header">
-        <div class="section-label">What We Believe</div>
+        <div class="section-label">What I Believe</div>
         <h2 id="beliefs-heading">
-          Three Things We <span class="accent">Will Not Budge On.</span>
+          Three things I <span class="accent">will not budge on.</span>
         </h2>
-        <p>Everything we build is measured against these.</p>
+        <p>Everything I build is measured against these.</p>
       </div>
       <div class="beliefs-grid">
         <div class="belief-card">
           <div class="belief-num">1</div>
-          <h3>Every Missed Call Is a Missed Paycheck</h3>
-          <p>That is not a technology problem. It is a revenue problem. And it has a straightforward fix.</p>
+          <h3>Every missed call is a missed paycheck</h3>
+          <p>That is not a tech problem. It is a revenue problem. And it has a straightforward fix.</p>
         </div>
         <div class="belief-card">
           <div class="belief-num">2</div>
-          <h3>If Setup Takes More Than a Week, It Is Too Complicated</h3>
+          <h3>If setup takes more than a week, it is too complicated</h3>
           <p>Your business should not have to adapt to your tools. The tools should adapt to your business.</p>
         </div>
         <div class="belief-card">
           <div class="belief-num">3</div>
-          <h3>Small Businesses Deserve the Same Advantages Big Companies Have</h3>
-          <p>Enterprise-level call handling used to cost $40,000 a year in staff alone. Not anymore.</p>
+          <h3>Small businesses deserve the same advantages big companies have</h3>
+          <p>The kind of call handling that used to cost $4,000 to $5,000 a month in staff alone. That gap should not exist anymore.</p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ════ TEAM ════ -->
-  <section class="team" aria-labelledby="team-heading">
+  <!-- ════ OUR OWN LINE ════ -->
+  <section class="own-line" aria-labelledby="own-line-heading">
     <div class="container">
-      <div class="team-inner">
-        <div class="section-label">The Team</div>
-        <h2 id="team-heading">
-          Small team. <span class="accent">No handoffs.</span>
+      <div class="own-line-inner">
+        <div class="section-label">We Run It Ourselves</div>
+        <h2 id="own-line-heading">
+          Riley answers <span class="accent">my own line.</span>
         </h2>
-        <p class="team-body">
-          No roster of titles. No stock photos. No account managers. The founder builds the
-          system, runs it on his own business line, and is the same person you talk to when
-          something needs to change.
-          <strong>If something is not working, you are talking to the person who built it.</strong>
-        </p>
-        <div class="founder">
-          <img src="../assets/images/founder.jpg"
-               alt="Trendell Fordham, Founder of Genesis AI Systems"
-               style="width:180px;height:180px;object-fit:cover;border-radius:50%;border:3px solid var(--blue);">
-          <div class="founder-name">Trendell Fordham</div>
-          <div class="founder-role">Founder, Genesis AI Systems</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════ OPERATIONAL PROOF ════ -->
-  <section class="trust" aria-labelledby="trust-heading">
-    <div class="container">
-      <div class="trust-inner">
-        <div class="section-label">Operational Proof</div>
-        <h2 id="trust-heading">
-          We use <span class="accent">what we build.</span>
-        </h2>
-        <div class="trust-body">
+        <div class="own-line-body">
           <p>
-            Riley, our AI receptionist, answers calls to Genesis AI Systems on our own
-            business line right now. Same system we set up for the local businesses we work with.
+            Riley is the AI receptionist for Genesis AI Systems. Every call to my own business line goes through it. Same system I set up for the local businesses I work with.
           </p>
           <p>
-            <strong>We do not sell anything we have not run on our own line first.</strong>
-            That is the proof we can point to today. No case studies yet, no inflated numbers.
+            <strong>I do not sell anything I have not run on my own line first.</strong> No case studies yet, no inflated numbers. The proof I can point to today is that the system works for me, every day, before I ever ship one to a client.
           </p>
         </div>
       </div>
@@ -349,28 +284,18 @@
   </section>
 
 
-  <!-- ════ LOW-PRESSURE CTA ════ -->
+  <!-- ════ FINAL CTA ════ -->
   <section class="footer-cta" aria-labelledby="footer-cta-heading">
     <div class="container">
       <h2 id="footer-cta-heading">
-        If This Sounds Like What <span class="accent">Your Business Needs.</span>
+        Want to hear what <span class="accent">your Riley would sound like?</span>
       </h2>
       <p>
-        Hear exactly what an AI receptionist built for your business would sound like right now, or book a short audit call. If it is not a fit, we will tell you that too.
+        Hear the live call flow right now. About 60 seconds. If it is a fit, the next step is a free audit call where we walk through exactly how a Riley built for your business would run.
       </p>
-      <div class="cta-pair">
-        <div class="cta-stack">
-          <a href="/pages/demo.html"
-             target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley</a>
-          <p class="micro">No credit card. Hear the call flow now.</p>
-        </div>
-        <div class="cta-stack">
-          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-             target="_blank" rel="noopener noreferrer"
-             class="btn-outline">Book Free Audit Call</a>
-          <p class="micro">15-30 min. Get a recommended setup plan.</p>
-        </div>
+      <div class="footer-cta-cta">
+        <a href="/pages/demo.html#demo-card" class="btn">Talk to Riley</a>
+        <p class="micro">Hear the call flow now. About 60 seconds.</p>
       </div>
     </div>
   </section>

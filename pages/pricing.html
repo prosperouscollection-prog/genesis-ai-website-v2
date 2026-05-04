@@ -118,7 +118,11 @@
       flex-shrink: 0; margin-top: 1px;
     }
     .plan-cta { margin-top: auto; }
-    .plan-cta .btn { width: 100%; text-align: center; }
+    .plan-cta .btn {
+      width: 100%; text-align: center;
+      white-space: normal; line-height: 1.3;
+      padding: .9rem 1rem; font-size: .95rem;
+    }
 
     /* Included */
     .included { padding: 104px 0; }
@@ -186,26 +190,25 @@
     .cta-stack { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
     .cta-stack .micro { margin: 0; }
 
-    /* Pre-pricing single CTA */
-    .pre-pricing-cta {
-      padding: 0 0 72px;
-      text-align: center;
+    /* Footer-CTA single column (Gate 4 revision) */
+    .footer-cta-cta { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+    .footer-cta-cta .btn { font-size: 1.1rem; padding: 1.1rem 2.6rem; }
+    .footer-cta-cta .footer-cta-secondary {
+      margin-top: .75rem;
+      font-size: .95rem;
+      padding: .75rem 1.75rem;
     }
-    .pre-pricing-cta-inner {
-      max-width: 720px; margin: 0 auto;
-      padding: 2.25rem 2rem;
-      background: rgba(74, 143, 212, .06);
-      border: 1px solid rgba(107, 174, 232, .25);
-      border-radius: 14px;
+
+    /* Plans phone callout */
+    .plans-phone {
+      text-align: center; margin-top: 2.25rem;
+      font-size: .92rem; color: var(--muted); line-height: 1.6;
     }
-    .pre-pricing-cta h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 800; letter-spacing: -.01em; margin-bottom: .65rem;
+    .plans-phone a {
+      color: var(--blue-light); text-decoration: none; font-weight: 700;
+      border-bottom: 1px solid rgba(107,174,232,.35);
     }
-    .pre-pricing-cta p {
-      font-size: 1rem; color: var(--muted); max-width: 520px;
-      margin: 0 auto 1.5rem; line-height: 1.6;
-    }
+    .plans-phone a:hover { color: var(--white); border-color: var(--blue-light); }
 
     /* Pricing responsive */
     @media (max-width: 900px) {
@@ -254,11 +257,11 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="demo.html">Demo</a></li>
-      <li><a href="faq.html">FAQ</a></li>
       <li><a href="pricing.html" class="active">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
       <li>
         <a href="/pages/demo.html"
-           target="_blank" rel="noopener noreferrer"
            class="btn nav-btn">Talk to Riley</a>
       </li>
     </ul>
@@ -273,11 +276,12 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="demo.html">Demo</a>
-  <a href="faq.html">FAQ</a>
   <a href="pricing.html">Pricing</a>
+  <a href="faq.html">FAQ</a>
+  <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call" target="_blank" rel="noopener noreferrer">Book a Call</a>
   <div class="m-cta">
     <a href="/pages/demo.html"
-       target="_blank" rel="noopener noreferrer" class="btn">Talk to Riley</a>
+       class="btn">Talk to Riley</a>
   </div>
 </div>
 
@@ -305,7 +309,7 @@
       <div class="pain-inner">
         <div class="section-label">The Problem</div>
         <h2 id="pain-heading">
-          A Full-Time Receptionist Costs <span class="accent">$3,000 to $4,500 a Month.</span>
+          A Full-Time Receptionist Costs <span class="accent">$4,000 to $5,000 a Month.</span>
         </h2>
         <p class="pain-body">
           Before you factor in benefits, sick days, and turnover.
@@ -317,19 +321,6 @@
     </div>
   </section>
 
-
-  <!-- ════ PRE-PRICING CTA ════ -->
-  <section class="pre-pricing-cta" aria-labelledby="pre-pricing-heading">
-    <div class="container">
-      <div class="pre-pricing-cta-inner">
-        <h2 id="pre-pricing-heading">Not sure yet? Talk to Riley first.</h2>
-        <p>Hear exactly how it handles a call before you decide anything.</p>
-        <a href="/pages/demo.html"
-           target="_blank" rel="noopener noreferrer"
-           class="btn">Talk to Riley</a>
-      </div>
-    </div>
-  </section>
 
 
   <!-- ════ PLANS ════ -->
@@ -351,7 +342,7 @@
           <p class="plan-price-note">No credit card. No obligation.</p>
           <ul class="plan-features">
             <li>30-minute call with a real person</li>
-            <li>You hear a live AI receptionist during the call</li>
+            <li>You hear Riley live during the call</li>
             <li>We audit your current call handling</li>
             <li>You leave knowing exactly what a system built for your business would look like</li>
           </ul>
@@ -368,7 +359,7 @@
           <div class="plan-price">$1,500</div>
           <p class="plan-price-note">One-time fee. Yours to keep.</p>
           <ul class="plan-features">
-            <li>AI receptionist built and trained on your business</li>
+            <li>Your version of Riley, built and trained on your business</li>
             <li>Trained on your services, service area, pricing, and tone</li>
             <li>Tested before it goes live</li>
             <li>You own the system</li>
@@ -401,6 +392,9 @@
         </div>
 
       </div>
+      <p class="plans-phone">
+        Questions about pricing? <a href="tel:+15866369550">Call (586) 636-9550</a>.
+      </p>
     </div>
   </section>
 
@@ -445,7 +439,7 @@
         </div>
         <div class="compare-row" role="row">
           <div class="compare-cell label" role="rowheader">Monthly cost</div>
-          <div class="compare-cell human" role="cell">$3,000 to $4,500</div>
+          <div class="compare-cell human" role="cell">$4,000 to $5,000</div>
           <div class="compare-cell gais" role="cell">$479 after setup</div>
         </div>
         <div class="compare-row" role="row">
@@ -508,24 +502,17 @@
   <section class="footer-cta" aria-labelledby="footer-cta-heading">
     <div class="container">
       <h2 id="footer-cta-heading">
-        The Audit Call <span class="accent">Is Free.</span>
+        The audit call <span class="accent">is free.</span>
       </h2>
       <p>
-        Hear Riley right now, or book a short audit call and leave knowing whether this makes sense for your business.
+        Book the audit call and we will walk through whether this makes sense for your business. If it is not the right fit, you walk away knowing exactly what is.
       </p>
-      <div class="cta-pair">
-        <div class="cta-stack">
-          <a href="/pages/demo.html"
-             target="_blank" rel="noopener noreferrer"
-             class="btn">Talk to Riley</a>
-          <p class="micro">No credit card. Hear the call flow now.</p>
-        </div>
-        <div class="cta-stack">
-          <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
-             target="_blank" rel="noopener noreferrer"
-             class="btn btn-outline">Book Free Audit Call</a>
-          <p class="micro">15-30 min. Get a recommended setup plan.</p>
-        </div>
+      <div class="footer-cta-cta">
+        <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call"
+           target="_blank" rel="noopener noreferrer"
+           class="btn">Book Free Audit Call</a>
+        <p class="micro">15-30 minutes. No credit card. No commitment.</p>
+        <a href="/pages/faq.html" class="btn btn-outline footer-cta-secondary">More Questions?</a>
       </div>
     </div>
   </section>
