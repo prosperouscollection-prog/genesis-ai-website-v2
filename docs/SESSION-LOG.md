@@ -273,3 +273,33 @@ Line-height pattern: 1.09–1.13 on display headings, 1.55–1.8 on body.
 4. No design system file (no `tokens.css`, no `theme.js`, no Storybook). The 11 CSS variables in `style.css:10-23` are the entire system.
 
 ---
+
+## Session 3 — 2026-05-04 — Gate 6 cutover (v3 launch)
+
+Cutover sequence executed against `prosperouscollection-prog/genesis-ai-website-v2` after auth swap on Mac mini.
+
+- **Cutover timestamp:** 2026-05-04 (UTC).
+- **Pre-rebuild archive:** `archive/v2-final` branch pushed to origin from `1d8a305` (the recon-log commit on top of the prior live `fe187fa`). Preserves the entire pre-rebuild v2 site state plus the recon log for forensic reference.
+- **Squash commit:** `a407b44 feat: v3 launch — homepage rebuild, About/FAQ rewrite, name lock, single-CTA architecture, Detroit benchmark, Riley-named copy`. Squashed 6 rebuild/v3 commits (1aa8de8 → 4b511ba → 0fedc3a → 5dcadb4 → f028cd9 → 20073f6) into one merge to `main`.
+- **Tag:** `v3-launch-20260504` annotated against `a407b44`. Pushed to origin.
+- **Branch state at cutover:**
+  - `main` → `a407b44` (live)
+  - `archive/v2-final` → `1d8a305` (frozen pre-rebuild state)
+  - `rebuild/v3` → `20073f6` (kept for forensic reference; do not delete until live site is confirmed healthy)
+- **GitHub Pages deploy:** triggered automatically by push to `main`. Production URL: `https://genesisai.systems`. Custom domain wired via root `CNAME` file.
+
+What shipped in v3:
+- Homepage: 9-section structure, inline Vapi widget at `#live-demo`, hero CTA scrolls to inline demo, final CTA flips to Calendly with risk reversal copy, "What is Genesis AI Systems and what is Riley?" Q1 in the objection FAQ.
+- About: full first-person founder narrative, 280px headshot, banned vocab removed (no more "Operational Proof" / "Enterprise-level"), Detroit benchmark applied to belief #3.
+- FAQ: 13 Qs in 4 grouped sections (Common Objections, Setup & Operations, Pricing & Trial, Privacy). Top question mirrors homepage Section 8. Footer-cta uses `Book Free Audit Call` Calendly + tel: secondary line.
+- Demo: `#vapiCallBtn` self-anchors swapped to `#demo-card` so visitors land at the top of the demo card section. Telegram mockup label changed `requested_quote` → `Requested a quote`. Trailing-dot ellipses stripped from Vapi status text.
+- Pricing: $4,000-$5,000 Detroit Q4 2025 benchmark applied (hero pain copy + comparison table). `.plan-cta .btn` now wraps text to two lines on the recommended card. Phone callout under plans grid. Footer-cta is now `Book Free Audit Call` primary + `More Questions?` outline button. Pre-pricing "Not sure yet? Talk to Riley first" section deleted entirely.
+- Site-wide: top nav reordered to `Home / About / Demo / Pricing / FAQ / Book a Call / [Talk to Riley]` on every page, mobile menu mirrors. New-tab carve-out: only Calendly + Stripe URLs use `target="_blank"`. Site-wide name lock: every customer-facing "Genesis" expanded to "Genesis AI Systems."
+- Token block at `css/style.css:10-23` and all 5 logo files + favicon + founder.jpg byte-identical to Gate 1 baseline.
+
+Outstanding Gate-6 follow-ups:
+- Real-browser test of the live `genesisai.systems` post-deploy (Vapi widget, Stripe checkouts, Calendly link).
+- Lighthouse score from a network-realistic environment.
+- Decide when to delete `rebuild/v3` (keep until live site is confirmed healthy).
+
+---
