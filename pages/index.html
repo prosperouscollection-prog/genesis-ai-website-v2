@@ -726,6 +726,7 @@
   });
 </script>
 
+<script src="../js/click-tracker.js" defer></script>
 <script type="module">
   /* Vapi inline call widget for homepage Live Demo (Section 2) */
   import Vapi from 'https://esm.sh/@vapi-ai/web@2.5.2';
@@ -761,6 +762,7 @@
     btnIcon.textContent = '🔴';
     btnText.textContent = 'Connecting';
     setStatus('Starting your call with Riley', true);
+    if (typeof window.trackRileyClick === 'function') { window.trackRileyClick(); }
 
     try {
       vapi = new Vapi(VAPI_PUBLIC_KEY);

@@ -532,6 +532,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script src="../js/click-tracker.js" defer></script>
 
 <script type="module">
   import Vapi from 'https://esm.sh/@vapi-ai/web@2.5.2';
@@ -567,6 +568,7 @@
     btnIcon.textContent = '🔴';
     btnText.textContent = 'Connecting';
     setStatus('Starting your call with Riley', true);
+    if (typeof window.trackRileyClick === 'function') { window.trackRileyClick(); }
 
     try {
       vapi = new Vapi(VAPI_PUBLIC_KEY);
