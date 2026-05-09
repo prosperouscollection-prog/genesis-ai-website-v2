@@ -82,5 +82,25 @@
     } catch (_) { /* no-op */ }
   }
 
+  /* Compact context for Vapi metadata. Stitches the click event to the
+     Vapi call so workflow 12/13 can show "from instagram · visitor abc"
+     on the 📞 Incoming Call message. */
+  function vapiMetadata() {
+    var p;
+    try { p = payload(); } catch (_) { return {}; }
+    var refHost = '';
+    try { if (p.referrer) refHost = new URL(p.referrer).hostname || ''; } catch (_) {}
+    return {
+      visitor_id: p.visitor_id,
+      click_count: p.click_count,
+      returning: p.returning,
+      from: refHost || 'direct',
+      utm_source: (p.utm && p.utm.utm_source) || '',
+      utm_campaign: (p.utm && p.utm.utm_campaign) || '',
+      page_path: p.path
+    };
+  }
+
   window.trackRileyClick = send;
+  window.gasVapiMetadata = vapiMetadata;
 })();

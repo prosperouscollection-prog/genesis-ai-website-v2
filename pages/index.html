@@ -783,7 +783,8 @@
                   'Unknown error, check browser console';
         setStatus('Error: ' + msg);
       });
-      vapi.start(ASSISTANT_ID);
+      var _meta = (typeof window.gasVapiMetadata === 'function') ? window.gasVapiMetadata() : {};
+      vapi.start(ASSISTANT_ID, { metadata: _meta });
     } catch(e) {
       console.error('[Vapi init]', e);
       endCall();
