@@ -406,3 +406,35 @@ Rewrote the full homepage copy to align tighter with a Pain → Value → Low CT
 
 ### Open item
 - Replace call summary replica card with real screenshot when available.
+
+---
+
+## 2026-05-09 / 10 — Riley demo click tracking + Vapi metadata stitching
+
+Added end-to-end visitor attribution for the "Talk to Riley" button. Operator confirmed the live demo flow on 2026-05-10.
+
+### Files
+- `js/click-tracker.js` (new). Exposes `window.trackRileyClick()` (fire-and-forget POST to `https://n8n.genesisai.systems/webhook/riley-demo-click`) and `window.gasVapiMetadata()` (compact context). Visitor ID + click count persist in `localStorage` (keys `gas_visitor_id`, `gas_session_id`, `gas_riley_click_count`, `gas_first_seen`). UA, timezone, screen, viewport, UTM params, and referrer captured client-side.
+- `index.html`, `pages/index.html`, `pages/demo.html`: identical edit pattern. Added `<script src="..../js/click-tracker.js" defer>` before the existing `<script type="module">` Vapi block. Inside `startCall()`, added `trackRileyClick()` invocation and changed `vapi.start(ASSISTANT_ID)` to `vapi.start(ASSISTANT_ID, { metadata: window.gasVapiMetadata() })`. Tracker only fires on actual demo starts (not on hang-up clicks).
+
+### What the visitor sees
+Nothing — tracker is invisible, fire-and-forget, never blocks the Vapi call.
+
+### What the operator sees in Telegram (per real demo)
+1. `👀 Riley demo click` — ~1 sec after click. City/region/country, device, browser, source (referrer host), UTM, returning vs new.
+2. `⚡️ Demo Riley — Lead Captured (live)` — ~15-25 sec into call. Riley captures name/phone/business via Vapi tool; Telegram pings while call is still in progress.
+3. `📞 DEMO LEAD — Call Complete` — at hangup. End-of-call summary with conversational data + web visitor stitch.
+
+### Commits
+- `a98c0e9 feat: track Riley demo clicks with anonymous visitor fingerprint`
+- `f8ccbc7 feat: stitch click context into Vapi call metadata`
+Both on `main`, pushed to `prosperouscollection-prog/genesis-ai-website-v2`. GitHub Pages auto-deployed.
+
+### Vapi + n8n side (lives in the v1-launch repo session log; mentioned here for cross-reference)
+- Demo Riley assistant `b41a6283-e3f8-4b75-8619-53724eb39de7`: added `captureContact` function tool (`async: true`) and a REAL-TIME CAPTURE directive in the system prompt.
+- n8n workflow 14 (new): receives the click webhook, geolocates IP, sends Telegram. Active.
+- n8n workflows 12 + 13: parse code reads `call.metadata`; outbound Telegram messages enriched with visitor context. Workflow 13 also has a new `capture-contact` route that fires the live capture Telegram message.
+
+### Open items
+- Optional: pass `visitor_id` to PostHog `posthog.identify()` once session replay is wired (parked).
+- Click endpoint is open POST. Add HMAC or Cloudflare Turnstile if spam appears.
