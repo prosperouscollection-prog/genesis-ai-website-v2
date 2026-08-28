@@ -37,6 +37,7 @@
     </div>
   </section>
 </main>
+<script src="../js/click-tracker.js"></script>
 <script type="module">
   import Vapi from 'https://esm.sh/@vapi-ai/web@2.5.2';
   var vapi = null;
@@ -45,11 +46,14 @@
     if (vapi) { try { vapi.stop(); } catch(e) {} vapi = null;
       btn.textContent = 'Talk to Claire'; return; }
     btn.disabled = true; btn.textContent = 'Connecting...';
+    try { window.trackRileyClick && window.trackRileyClick(); } catch(e) {}
     vapi = new Vapi('c0dbd835-2af2-4230-bd9b-2158c4ae9300');
     vapi.on('call-start', function() { btn.disabled = false; btn.textContent = 'End call'; });
     vapi.on('call-end', function() { btn.textContent = 'Talk to Claire'; vapi = null; });
     vapi.on('error', function() { btn.disabled = false; btn.textContent = 'Talk to Claire'; vapi = null; });
-    vapi.start('a524c87f-d08c-4aa7-a3e1-b43adb5b8c5f');
+    var meta = {};
+    try { meta = (window.gasVapiMetadata && window.gasVapiMetadata()) || {}; } catch(e) {}
+    vapi.start('a524c87f-d08c-4aa7-a3e1-b43adb5b8c5f', { metadata: meta });
   });
 </script>
 </body>
