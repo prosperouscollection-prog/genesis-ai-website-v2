@@ -24,10 +24,10 @@
 <main>
   <section class="pdemo">
     <a href="https://genesisai.systems/"><img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="34"></a>
-    <h1>Meet the receptionist we built for Orfin and Associates, Inc.</h1>
-    <p class="sub">Click the button and talk to Riley exactly the way your callers would.</p>
+    <h1>Meet Claire, the receptionist we built for Orfin and Associates, Inc.</h1>
+    <p class="sub">Click the button and talk to Claire exactly the way your callers would.</p>
     <div class="pdemo-card">
-      <button id="vapiCallBtn" class="btn">Talk to your receptionist</button>
+      <button id="vapiCallBtn" class="btn">Talk to Claire</button>
       <p class="micro">Live demo. About 60 seconds. Nothing to install.</p>
     </div>
     <div class="backlinks">
@@ -43,12 +43,12 @@
   var btn = document.getElementById('vapiCallBtn');
   btn.addEventListener('click', function() {
     if (vapi) { try { vapi.stop(); } catch(e) {} vapi = null;
-      btn.textContent = 'Talk to your receptionist'; return; }
+      btn.textContent = 'Talk to Claire'; return; }
     btn.disabled = true; btn.textContent = 'Connecting...';
     vapi = new Vapi('c0dbd835-2af2-4230-bd9b-2158c4ae9300');
     vapi.on('call-start', function() { btn.disabled = false; btn.textContent = 'End call'; });
-    vapi.on('call-end', function() { btn.textContent = 'Talk to your receptionist'; vapi = null; });
-    vapi.on('error', function() { btn.disabled = false; btn.textContent = 'Talk to your receptionist'; vapi = null; });
+    vapi.on('call-end', function() { btn.textContent = 'Talk to Claire'; vapi = null; });
+    vapi.on('error', function() { btn.disabled = false; btn.textContent = 'Talk to Claire'; vapi = null; });
     vapi.start('a524c87f-d08c-4aa7-a3e1-b43adb5b8c5f');
   });
 </script>
