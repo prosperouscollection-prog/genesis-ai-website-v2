@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Pearls Event Center | Genesis AI Systems Demo</title>
+  <link rel="icon" type="image/png" href="../assets/logos/favicon-32.png" sizes="32x32" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .pdemo { max-width: 680px; margin: 0 auto; padding: 148px 20px 96px; text-align: center; }
+    .pdemo h1 { font-size: 1.9rem; margin-bottom: .6rem; }
+    .pdemo .sub { color: var(--muted); margin-bottom: 2.2rem; }
+    .pdemo-card { background: var(--navy-light); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2.5rem 2rem; }
+    #vapiCallBtn { font-size: 1.1rem; padding: 1.1rem 2.6rem; cursor: pointer; }
+    #vapiCallBtn:disabled { opacity: .55; cursor: not-allowed; }
+    .micro { margin-top: .9rem; font-size: .82rem; color: var(--muted); }
+    .backlinks { margin-top: 2.5rem; }
+    .backlinks a { margin: 0 .8rem; }
+  </style>
+</head>
+<body>
+<main>
+  <section class="pdemo">
+    <a href="https://genesisai.systems/"><img src="../assets/logos/logo-dark.png" alt="Genesis AI Systems" height="34"></a>
+    <h1>Meet Grace, the receptionist we built for Pearls Event Center</h1>
+    <p class="sub">Click the button and talk to Grace exactly the way your callers would.</p>
+    <div class="pdemo-card">
+      <button id="vapiCallBtn" class="btn">Talk to Grace</button>
+      <p class="micro">Live demo. About 60 seconds. Nothing to install.</p>
+    </div>
+    <div class="backlinks">
+      <a href="https://genesisai.systems/pages/pricing.html">Pricing</a>
+      <a href="https://calendly.com/genesisai-info-ptmt/free-ai-demo-call">Book a call with Trendell</a>
+      <a href="https://genesisai.systems/">Genesis AI Systems</a>
+    </div>
+  </section>
+</main>
+<script src="../js/click-tracker.js"></script>
+<script type="module">
+  import Vapi from 'https://esm.sh/@vapi-ai/web@2.5.2';
+  var vapi = null;
+  var btn = document.getElementById('vapiCallBtn');
+  btn.addEventListener('click', function() {
+    if (vapi) { try { vapi.stop(); } catch(e) {} vapi = null;
+      btn.textContent = 'Talk to Grace'; return; }
+    btn.disabled = true; btn.textContent = 'Connecting...';
+    try { window.trackRileyClick && window.trackRileyClick(); } catch(e) {}
+    vapi = new Vapi('c0dbd835-2af2-4230-bd9b-2158c4ae9300');
+    vapi.on('call-start', function() { btn.disabled = false; btn.textContent = 'End call'; });
+    vapi.on('call-end', function() { btn.textContent = 'Talk to Grace'; vapi = null; });
+    vapi.on('error', function() { btn.disabled = false; btn.textContent = 'Talk to Grace'; vapi = null; });
+    var meta = {};
+    try { meta = (window.gasVapiMetadata && window.gasVapiMetadata()) || {}; } catch(e) {}
+    vapi.start('e1cbf86f-6502-4a24-8187-a478c7348b7d', { metadata: meta });
+  });
+</script>
+</body>
+</html>
