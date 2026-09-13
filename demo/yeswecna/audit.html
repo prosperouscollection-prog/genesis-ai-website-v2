@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit: yeswecna.com and social, September 2026</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  .audit table { font-size: 0.95rem; }
+  .audit th, .audit td { text-align: left; vertical-align: top; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule); }
+  .audit th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .audit .sev { white-space: nowrap; font-weight: 600; }
+  .audit .sev--high { color: var(--burgundy); }
+  .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .shots figure { margin: 0; }
+  .shots img { border: 1px solid var(--rule-strong); border-radius: var(--radius); }
+  .shots figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+  .shots .tall { max-height: 640px; overflow: auto; border: 1px solid var(--rule-strong); border-radius: var(--radius); }
+  .shots .tall img { border: 0; border-radius: 0; }
+  @media (max-width: 760px) { .shots { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div style="background:#1E1A1B;color:#EFE3DF;font:14px/1.4 -apple-system,Helvetica,Arial,sans-serif;text-align:center;padding:8px 16px">Design preview of the new yeswecna.com. Not the live site yet. Questions: <a href="mailto:hello@genesisai.systems" style="color:#fff">Genesis AI Systems</a></div>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Yes We CNA logo" width="52" height="52">
+      <span><span class="brand__name">Yes We CNA</span><span class="brand__sub">Redesign audit, internal</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="index.html">View the new site</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="audit">
+
+<section class="hero hero--compact">
+  <div class="container">
+    <p class="eyebrow">Internal. Not part of the public site.</p>
+    <h1>What the old site and the social accounts were doing wrong.</h1>
+    <p class="lede">Audit of yeswecna.com, Facebook, Instagram, TikTok, YouTube and the Google Business Profile, taken September 11, 2026, before the redesign.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow prose">
+    <h2>Summary</h2>
+    <p>The school has more proof than almost any competitor in Detroit and the website shows none of it. Google rates it 4.7 from 150 reviews. TikTok has 5,245 followers and 45,300 likes. The state program number is printed on every certificate. The site mentions none of these. Instead, the homepage is a single 13,966 pixel scroll that opens on a silent video with no headline, runs five checkout forms in a row, lists scrubs at thirty billion dollars, and gives three different answers to "what does this cost."</p>
+    <p>The redesign is not a restyle. It fixes the facts first, then the structure, then the look.</p>
+  </div>
+</section>
+
+<section class="section section--paper section--rule-top">
+  <div class="container">
+    <h2>The site as it was</h2>
+    <div class="shots">
+      <figure><img src="assets/before/live-hero-chrome.jpg" alt="Old homepage first screen: announcement bar, logo, and a video embed with no headline" width="1568" height="720"><figcaption>First screen. The announcement bar is 4 lines of caps, and the "hero" is a video with no headline or button.</figcaption></figure>
+      <figure><div class="tall"><img src="assets/before/live-home-desktop-full.jpeg" alt="Full old homepage scroll, 13,966 pixels tall" width="1920" height="13966" loading="lazy"></div><figcaption>The full homepage, 13,966 pixels. Scroll inside the box.</figcaption></figure>
+      <figure><img src="assets/before/facebook.jpeg" alt="Facebook page" width="1280" height="900" loading="lazy"><figcaption>Facebook: 2.1K followers, bio still says "4 hours a day, 5 days a week for 4 weeks."</figcaption></figure>
+      <figure><img src="assets/before/instagram.jpeg" alt="Instagram profile" width="1280" height="900" loading="lazy"><figcaption>Instagram: 4,884 followers, following 7,231. No enrollment link.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Website findings</h2>
+    <p class="muted small">High = costs enrollments or creates legal exposure. Medium = confuses or slows people down. Low = polish.</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>#</th><th>Finding</th><th>Severity</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>No headline or call to action in the first screen. The hero is a YouTube embed that shows a play button and nothing else.</td><td class="sev sev--high">High</td></tr>
+        <tr><td>2</td><td>Pricing contradicts itself. Announcement bar: "total cost including everything is $1,312.00." Product pages: tuition $750, $700 if paid in full, $150 deposit, $600 balance. Nothing explains the gap.</td><td class="sev sev--high">High</td></tr>
+        <tr><td>3</td><td>Scrubs priced at $30,000,000,000, textbook at $7,500,000,000, refresher course at $3,000,000. Shop Pay then offers "installments for orders up to $30,000."</td><td class="sev sev--high">High</td></tr>
+        <tr><td>4</td><td>A theme placeholder is live: "Product title, $19.99, Fits true to size" with a backpack icon, between the scrubs and CPR blocks.</td><td class="sev sev--high">High</td></tr>
+        <tr><td>5</td><td>"Cannot possess a felony" is legally wrong. Michigan's rule (MCL 333.20173) bars a felony conviction within the previous 15 years, plus specific abuse, neglect, fraud and theft misdemeanors within 10 years. The current line turns away eligible applicants.</td><td class="sev sev--high">High</td></tr>
+        <tr><td>6</td><td>The Registration page still advertises class times that no longer exist (9a-1p and 5p-9p). Live classes are 8:30a-4p and 5p-10p.</td><td class="sev sev--high">High</td></tr>
+        <tr><td>7</td><td>The Registration Form page has no form. It is a paragraph with blank lines.</td><td class="sev sev--high">High</td></tr>
+        <tr><td>8</td><td>The Google rating (4.7, 150 reviews, with owner replies) appears nowhere. The site shows five testimonials with no source and no link.</td><td class="sev sev--high">High</td></tr>
+        <tr><td>9</td><td>Contact form has no phone field. Most applicants call; the form should collect a number.</td><td class="sev">Medium</td></tr>
+        <tr><td>10</td><td>Two addresses in circulation. The page text says 1004 W 7 Mile Rd, but the "Get directions" link still points to 18820 Woodward Ave.</td><td class="sev">Medium</td></tr>
+        <tr><td>11</td><td>All 28 images have empty alt text. The photos are the school's best asset and search engines cannot read any of them.</td><td class="sev">Medium</td></tr>
+        <tr><td>12</td><td>The homepage runs five separate "add to cart" forms with quantity selectors. A student can accidentally buy two deposits, or a deposit for both schedules.</td><td class="sev">Medium</td></tr>
+        <tr><td>13</td><td>Key information is hidden in nine collapsed accordions at the bottom of the page (hours, calendar, dress code, costs, CPR, mission, admission).</td><td class="sev">Medium</td></tr>
+        <tr><td>14</td><td>Instructor is never named. Reviews call her "Ms. Sam" and certificates read "Samania Peterson, RN, BSN." The state program number NATP #N19-00006 is on the certificates but not on the site.</td><td class="sev">Medium</td></tr>
+        <tr><td>15</td><td>The blog exists and is empty ("This blog is empty!").</td><td class="sev">Low</td></tr>
+        <tr><td>16</td><td>Copy is written in all caps with stacked exclamation points and emoji, which reads as shouting on desktop and wraps badly on phones.</td><td class="sev">Low</td></tr>
+        <tr><td>17</td><td>No page targets the searches people actually type: "CNA classes near me," "2 week CNA class Detroit," "evening CNA classes."</td><td class="sev">Low</td></tr>
+        <tr><td>18</td><td>Theme is Pixel Union "Startup" v10.0.0, a 2019 era theme with no Online Store 2.0 sections on pages, so every change requires editing the homepage.</td><td class="sev">Low</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="mt-2">What works today and is kept: the deposit-per-start-date product model, the five testimonials, the real classroom photos, the YouTube video, the plain-spoken payment plan rules, the faith statement, and the "we teach with love" voice in the owner's Google replies.</p>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <h2>Social media findings</h2>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>Channel</th><th>Numbers, Sept 11, 2026</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td>Google Business Profile</td><td>4.7 stars, 150 reviews, owner replies within weeks</td><td>Not linked or quoted on the site. The single strongest trust signal the school owns.</td></tr>
+        <tr><td>TikTok @yeswecnahealthcare</td><td>5,245 followers, 45.3K likes</td><td>Not linked anywhere on the site. Largest audience by engagement.</td></tr>
+        <tr><td>Instagram @yeswecnahealthcaretraining</td><td>4,884 followers, following 7,231</td><td>Following more than followers reads as follow-for-follow. Bio links to the 14,000 pixel homepage. Highlights ("Quizzes," "Student Reviews") are good and unused by the site. Collab reels with a CPR business are a cross-promotion opportunity.</td></tr>
+        <tr><td>Facebook /yeswecna</td><td>2.1K followers, 10 reviews at 100% recommend, posted 8 hours before the audit</td><td>Bio still says "4 hours a day, 5 days a week for 4 weeks." The program has been 2 to 3 weeks for years.</td></tr>
+        <tr><td>YouTube</td><td>One video embedded on the site</td><td>Channel not linked from the site or the social bios.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="mt-2">Three different handles (yeswecna, yeswecnahealthcaretraining, yeswecnahealthcare) make the school harder to find and to tag. Site photos date from 2019 to 2022 and most show masks; the social accounts have current photos and video.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow prose">
+    <h2>Market context</h2>
+    <p>Detroit area CNA schools checked: Williams Healthcare Training (Dearborn), Healing Healthcare Training Institute, Nursing Detroit, Serenity Health Training (Southfield), Heart to Heart (Dearborn).</p>
+    <ul>
+      <li>Tuition ranges from $750 to $1,543. Yes We CNA at $750 is at the low end, but the $1,312 line makes it look mid to high.</li>
+      <li>Every competitor site has a pricing table, an FAQ, and a clear "Apply" or "Enroll" button in the header. Several list funding partners by name. One publishes a pass rate.</li>
+      <li>All of them use a blue or teal "clinical" palette. Burgundy and cream stand apart and match the scrubs students actually wear.</li>
+    </ul>
+
+    <h2>Accuracy notes used in the new copy</h2>
+    <ul>
+      <li>Felony: the 15 year rule (MCL 333.20173), not "cannot possess a felony."</li>
+      <li>Tuition reimbursement: Section 4801 of OBRA 1987 is the right citation. Facilities that take Medicaid or Medicare must reimburse a self-paid nurse aide hired within 12 months.</li>
+      <li>State exam: Michigan's vendor has been Headmaster (D&amp;S Diversified Technologies) since July 2023; registry is the Michigan Nurse Aide Registry. The operator confirmed the school is a test site.</li>
+      <li>Training hours: Michigan requires the federal minimum of 75. Both schedules meet it (AM: 10 days at 7.5 hours; PM: 15 days at 5 hours).</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--paper section--rule-top">
+  <div class="container">
+    <h2>What the redesign changes</h2>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>Problem</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>Video hero, no headline</td><td>Headline, one sentence, one button, one real photo. Video moves inline lower on the page.</td></tr>
+        <tr><td>Three prices</td><td>One pricing sheet: $750 tuition, $700 paid in full, $150 deposit, payment plan rules, add-ons listed separately. The $1,312 line stays for now at the operator's request, labeled as the full cost with books, scrubs, exam and license fee.</td></tr>
+        <tr><td>Fake product prices</td><td>Theme hides price and buy button for any product listed as in-person only or priced above $10,000. Catalog unchanged.</td></tr>
+        <tr><td>Placeholder product</td><td>Removed. The homepage no longer lists loose products.</td></tr>
+        <tr><td>Wrong felony rule</td><td>Rewritten to the 15 year rule.</td></tr>
+        <tr><td>Stale registration pages</td><td>Replaced by one Apply page with a real form (name, phone, email, preferred class, start date, payment plan) that emails the school.</td></tr>
+        <tr><td>Hidden Google rating</td><td>Trust line under the hero, three Google reviews quoted with a link to all 150.</td></tr>
+        <tr><td>Old address link</td><td>All map and direction links point to 1004 W 7 Mile Rd.</td></tr>
+        <tr><td>Empty alt text</td><td>Every image has alt text. Gallery images have captions.</td></tr>
+        <tr><td>Five checkout forms</td><td>One class calendar table. Each start date has one "Reserve this seat" button that adds exactly one deposit.</td></tr>
+        <tr><td>Nine accordions</td><td>Six pages: Home, CNA Program, Tuition and Funding, CPR and Refresher, About, Apply.</td></tr>
+        <tr><td>Anonymous instructor</td><td>Ms. Sam is named with credentials on the homepage and has her own About section. Program number in the trust line and footer.</td></tr>
+        <tr><td>Missing social links</td><td>Footer links Google, TikTok, Instagram, Facebook, YouTube.</td></tr>
+        <tr><td>All caps copy</td><td>Sentence case, short sentences, the owner's own phrases.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container container--narrow prose">
+    <h2>Open items for Ms. Sam</h2>
+    <ol>
+      <li>Confirm whether the $1,312 figure should stay, and what it includes, so the pricing sheet can itemize it.</li>
+      <li>Set real prices on scrubs, textbook and refresher in Shopify, or leave them hidden as in-person items.</li>
+      <li>Update the Facebook bio to the 2 week and 3 week schedule.</li>
+      <li>Put the Apply page link in the Instagram and TikTok bios.</li>
+      <li>Decide whether to unfollow accounts on Instagram to bring the ratio under 1:1.</li>
+      <li>Provide a current class photo or two without masks for the hero and gallery. Swap-in slots are built into the theme.</li>
+      <li>Optional: a scanned handwritten note for the About page. The design leaves a slot for it and does not fake one.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__bottom" style="border-top:0;margin-top:0;padding-top:0">
+      <span>Internal audit for Yes We CNA, LLC. Prepared September 2026.</span>
+      <span><a href="index.html">View the new site</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
